@@ -10,11 +10,11 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>Profile</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/styles/bootstrap.css}">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" type="text/css" th:href="@{/fonts/css/fontawesome-all.min.css}">
-  <link rel="apple-touch-icon" sizes="180x180" th:href="@{/app/icons/icon-192x192.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/bootstrap.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/css/fontawesome-all.min.css}">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/app/icons/icon-192x192.png}">
 
 </head>
 
@@ -47,17 +47,18 @@
     <div class="page-title-clear"></div>
 
     <div class="page-content fixed-height-page">
-        <div class="card card-style" data-card-height="400" style="background-image: url(../images/pictures/34.jpg);">
+        <div class="card card-style" data-card-height="400"
+             th:style="'background-image: url(/user/getUserImg/'+${user.getId()}+');'">
             <div class="card-top">
-                <h1 class="color-white font-40 font-900 pl-3 pt-5">John Doe</h1>
-                <h1 class="color-white font-18 pl-3 pt-0 mb-0 opacity-50">
+                <h1 class="color-white font-40 font-900 pl-3 pt-5" th:text="${user.getFirstName()+' '+user.getLastName()}">John Doe</h1>
+                <h1 class="color-white font-18 pl-3 pt-0 mb-0 opacity-50" th:text="${user.getPosition()}">
                     Project manager
                 </h1>
             </div>
             <div class="card-overlay bg-gradient"></div>
         </div>
 
-        <form action="save">
+        <form action="/user/editUserProfile" method="post" enctype="multipart/form-data">
         <div class="card card-style">
             <div class="content mb-0">
                 <div class="d-flex">
@@ -69,7 +70,7 @@
                 
                 <p class="mb-2 color-highlight font-600">File size shouldn't be more than 1Mb.</p>
                 <div class="file-data">
-                    <input id="newImageInput" type="file" class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" />
+                    <input id="newImageInput" type="file" class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" name="multipartFile"/>
                     <p class="upload-file-text color-white">Upload Image</p>
                     <img id="displayedImage" src="images/empty.png" />
                 </div>
@@ -104,27 +105,28 @@
                     <div class="input-style input-style-2 mb-3 pb-1">
                         <span class="input-style-1-active">First Name</span>
                         <em>(required)</em>
-                        <input type="name" placeholder="First Name..." value="Jane" />
+                        <input type="hidden" name="id" th:value="${user.getId()}">
+                        <input type="name" placeholder="First Name..." th:value="${user.getFirstName()}" name="firstName"/>
                     </div>
                     <div class="input-style input-style-2 mb-3 pb-1">
                         <span class="input-style-1-active">Last Name</span>
                         <em>(required)</em>
-                        <input type="name" placeholder="Last Name..." value="Louder" />
+                        <input type="name" placeholder="Last Name..." th:value="${user.getLastName()}" name="lastName"/>
                     </div>
                     <div class="input-style input-style-2 mb-3 pb-1">
                         <span class="input-style-1-active">Position</span>
                         <em>(required)</em>
-                        <input type="name" placeholder="Position..." value="Project Manager" />
+                        <input type="name" placeholder="Position..." th:value="${user.getPosition()}" name="position"/>
                     </div>
                     <div class="input-style input-style-2 mb-3 pb-1">
                         <span class="input-style-1-active">Phone</span>
                         <em>(required)</em>
-                        <input type="tel" placeholder="Phone..." value="8800-555-35-35" />
+                        <input type="tel" placeholder="Phone..." th:value="${user.getPhoneNumber()}" name="phoneNumber"/>
                     </div>
                     <div class="input-style input-style-2 mb-3 pb-1">
                         <span class="input-style-1-active">Email</span>
                         <em>(required)</em>
-                        <input type="email" placeholder="Email..." value="name@domain.com" />
+                        <input type="email" placeholder="Email..." th:value="${user.getUsername()}" disabled/>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Save Changes</button>

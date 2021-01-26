@@ -22,10 +22,15 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String email;
+    private String username;
     private String phoneNumber;
     private String position;
     private String password;
+
+
+    private boolean enabled=true;
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.USER;
 
     @OneToMany(mappedBy = "owner",cascade = CascadeType.REMOVE)
     private List<Project> projectList;

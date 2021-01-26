@@ -32,31 +32,31 @@
                         <h1 class="font-40 color-white">Sign Up</h1>
                         <p class="boxed-text-xl color-white opacity-50 pt-3 font-15"></p>
                     </div>
-                    <form action="/signUp">
+                    <form action="/signUp" method="post">
                     <div class="content px-4">
                         <div class="input-style input-light has-icon input-style-1 input-required">
                             <i class="input-icon fa fa-user"></i>
                             <span>First Name</span>
                             <em>(required)</em>
-                            <input type="name" placeholder="First Name..." />
+                            <input type="name" placeholder="First Name..."  name="firstName"/>
                         </div>
                         <div class="input-style input-light has-icon input-style-1 input-required">
                             <i class="input-icon fa fa-user"></i>
                             <span>Last Name</span>
                             <em>(required)</em>
-                            <input type="name" placeholder="Last Name..." />
+                            <input type="name" placeholder="Last Name..." name="lastName"/>
                         </div>
                         <div class="input-style input-light has-icon input-style-1 input-required">
                             <i class="input-icon far fa-envelope-open"></i>
                             <span>Email</span>
                             <em>(required)</em>
-                            <input type="email" placeholder="Email" />
+                            <input type="email" placeholder="Email" name="username"/>
                         </div>
                         <div class="input-style input-light has-icon input-style-1 input-required">
                             <i class="input-icon fa fa-lock"></i>
                             <span>Choose Password</span>
                             <em>(required)</em>
-                            <input type="password" placeholder="Choose Password" />
+                            <input type="password" placeholder="Choose Password" name="password"/>
                         </div>
                         <div class="input-style input-light has-icon input-style-1 input-required">
                             <i class="input-icon fa fa-lock"></i>
@@ -68,10 +68,10 @@
 
                         <div class="row pt-3 mb-3">
                             <div class="col-6 text-left font-11">
-                                <a class="color-white opacity-50" href="page-forgot-2.html">Forgot Password?</a>
+                                <a class="color-white opacity-50" href="/frogotPassword">Forgot Password?</a>
                             </div>
                             <div class="col-6 text-right font-11">
-                                <a class="color-white opacity-50" href="page-signup-2.html">Sign In</a>
+                                <a class="color-white opacity-50" href="/login">Sign In</a>
                             </div>
                         </div>
                     </div>

@@ -30,22 +30,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .antMatchers("/**").authenticated()
+                .antMatchers("/projects/**").authenticated()
+                .antMatchers("/user/**").authenticated()
+                .antMatchers("/backlog/**").authenticated()
+                .antMatchers("/sprint/**").authenticated()
+                .antMatchers("/task/**").authenticated()
                 .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()
-                .failureForwardUrl("/login?error=true")
-                .successForwardUrl("/")
-                .passwordParameter("password")
-                .usernameParameter("username")
+                .loginPage("/login")
                 .permitAll()
                 .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .and()
-                .csrf().disable();
+                .csrf().disable()
+                .httpBasic();
     }
 
 
@@ -63,8 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select username, password, enabled from usr where username=?")
-                .authoritiesByUsernameQuery("select username from usr where username=?")
-                .passwordEncoder(NoOpPasswordEncoder.getInstance());//inner join user_role ur on u.id=ur.user_id where u.username=?
+                .authoritiesByUsernameQuery("select username, role from usr where username=?")
+                .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 
 

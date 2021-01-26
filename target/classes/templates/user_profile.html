@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en">
-
+<html class="wide wow-animation" lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -8,11 +8,11 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>Profile</title>
-  <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/bootstrap.css}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+        rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/fonts/css/fontawesome-all.min.css}">
+  <link rel="apple-touch-icon" sizes="180x180" th:href="@{/app/icons/icon-192x192.png}">
 
 </head>
 
@@ -43,10 +43,10 @@
     <div class="page-title-clear"></div>
 
     <div class="page-content fixed-height-page">
-        <div class="card card-style" data-card-height="400" style="background-image: url(../images/pictures/34.jpg);">
+        <div class="card card-style" data-card-height="400" th:style="'background-image: url(/user/getUserImg/'+${user.getId()}+');'">
             <div class="card-top">
-                <h1 class="color-white font-40 font-900 pl-3 pt-5">John Doe</h1>
-                <h1 class="color-white font-18 pl-3 pt-0 mb-0 opacity-50">
+                <h1 class="color-white font-40 font-900 pl-3 pt-5" th:text="${user.getFirstName()+' '+user.getLastName()}">John Doe</h1>
+                <h1 class="color-white font-18 pl-3 pt-0 mb-0 opacity-50" th:text="${user.getPosition()}">
                     Project manager
                 </h1>
             </div>
@@ -56,7 +56,7 @@
             <div class="content mt-3 mb-2">
                 <h1 class="vcard-title font-24 font-700 text-capitalize">Phone</h1>
                 <div class="vcard-field border-0 pt-0">
-                    <strong>Personal</strong><p class="mb-0">+3 234 567 890</p><i
+                    <strong>Personal</strong><p class="mb-0" th:text="${user.getPhoneNumber()}">+3 234 567 890</p><i
                         class="fa fa-user color-red2-dark"></i>
                 </div>
             </div>
@@ -66,13 +66,13 @@
             <div class="content mt-3 mb-2">
                 <h1 class="vcard-title font-24 font-700 text-capitalize">Email</h1>
                 <div class="vcard-field border-0 pt-0">
-                    <strong>Personal</strong><p class="mb-0">+3 234 567 890</p>
+                    <strong>Personal</strong><p class="mb-0" th:text="${user.getUsername()}">gmail</p>
                     <i class="far fa-envelope-open color-red2-dark"></i>
                 </div>
             </div>
         </div>
 
-        <a href="/" class="btn btn-full btn-margins rounded-s btn-m font-12 font-600 mb-4 gradient-highlight color-white">Edit Profile</a>
+        <a href="/user/editUserProfile" class="btn btn-full btn-margins rounded-s btn-m font-12 font-600 mb-4 gradient-highlight color-white">Edit Profile</a>
     </div>
 
 
@@ -262,9 +262,9 @@
         class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
     </div>
   </div>
-  <script type="text/javascript" src="scripts/jquery.js"></script>
-  <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-  <script type="text/javascript" src="scripts/custom.js"></script>
+  <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
+  <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
   <script>
     // Progress bar
     let progressBar = document.getElementsByClassName('progress-bar');
