@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en">
-
+<html class="wide wow-animation" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -8,12 +10,12 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
     <title>Project</title>
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" th:href="@{../../styles/bootstrap.css}">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <link rel="stylesheet" type="text/css" th:href="@{../../fonts/css/fontawesome-all.min.css}">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{app/icons/icon-192x192.png}">
 
 </head>
 
@@ -108,26 +110,26 @@
                                 <div class="row mb-0">
                                     <div class="col-6 pr-1">
                                         <div class="card card-style mx-0 mb-2 p-3">
-                                            <h6 class="font-14">Start</h6>
+                                            <h6 class="font-14" th:text="${project.getStarted()}">Start</h6>
                                             <h3 class="color-green-dark mb-0">01-01-2021</h3>
                                         </div>
                                     </div>
                                     <div class="col-6 pl-1">
                                         <div class="card card-style mx-0 mb-2 p-3">
-                                            <h6 class="font-14">Deadline</h6>
+                                            <h6 class="font-14" th:text="${project.getDeadline()}">Deadline</h6>
                                             <h3 class="color-red-dark mb-0">01-03-2021</h3>
                                         </div>
                                     </div>
                                     <div class="col-6 pr-1">
                                         <div class="card card-style mx-0 p-3">
                                             <h6 class="font-14">Co-workers</h6>
-                                            <h3 class="color-brown-dark mb-0 text-center">8</h3>
+                                            <h3 class="color-brown-dark mb-0 text-center" th:text="${project.getTeamList().size()}">8</h3>
                                         </div>
                                     </div>
                                     <div class="col-6 pl-1">
                                         <div class="card card-style mx-0 p-3">
                                             <h6 class="font-14">Sprint</h6>
-                                            <h3 class="color-blue-dark mb-0 text-center">5</h3>
+                                            <h3 class="color-blue-dark mb-0 text-center" th:text="${project.getSprintsList().size()}">5</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -151,8 +153,7 @@
                                             </div>
                                             <div class="card-bottom text-center">
                                                 <div class="content pb-1">
-                                                    <h1 class="mb-n1">24.55%</h1>
-                                                    <h5 class="opacity-30">5.7% today</h5>
+                                                    <h1 class="mb-n1" th:text="${project.getProgress()}">24.55%</h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -221,16 +222,10 @@
                                             <strong>Group Manager</strong>
                                             <i class="fas fa-phone color-highlight"></i>
                                         </a>
-                                        <a href="#">
-                                            <img src="images/avatars/8s.png" />
-                                            <span>Dora</span>
-                                            <strong>Support Staff Manager</strong>
-                                            <i class="fas fa-phone color-highlight"></i>
-                                        </a>
-                                        <a data-trigger-switch="switch-1" class="border-0" href="#">
-                                            <img src="images/avatars/5s.png" />
-                                            <span>Dave</span>
-                                            <strong>Senior Developer</strong>
+                                        <a href="#" th:each="colab : ${project.getTeamList()}">
+                                            <img src="images/avatars/8s.png"/>
+                                            <span th:text="${colab.getFirstName()}+' '+${colab.getLastName()}">Dora</span>
+                                            <strong th:text="${colab.getPosition()}">Support Staff Manager</strong>
                                             <i class="fas fa-phone color-highlight"></i>
                                         </a>
                                     </div>
@@ -242,54 +237,26 @@
                             class="btn btn-full btn-m rounded-sm gradient-dark font-600 mb-2">Close Project</a>
                     </div>
                     <div class="tab-content" id="tab-2">
-                        <div class="content">
-                            <div class="backlog-id d-flex my-3" id="45">
-                                <div class="align-self-center" style="width: 90%;">
-                                    <p class="backlog-description font-14 font-500 mb-0">Lorem ipsum dolor sit amet.</p>
-                                    <h5 class="backlog-priority font-12 opacity-30 m-0">Priority: 1</h5>
+                        <div th:each="backLog : ${project.getBacklogsList()}">
+                            <div class="content">
+                                <div class="backlog-id d-flex my-3" th:id="${backLog.getId()}">
+                                    <div class="align-self-center" style="width: 90%;">
+                                        <p class="backlog-description font-14 font-500 mb-0" th:text="${backLog.getDescription()}">Lorem ipsum dolor sit amet.</p>
+                                        <h5 class="backlog-priority font-12 opacity-30 m-0" th:text="'Priority: '+${backLog.getPriority()}">Priority: 1</h5>
+                                    </div>
+                                    <div class="align-self-center ml-auto">
+                                        <h1 class="font-20">
+                                            <a href="#" data-menu="edit-backlog-modal" onclick="editBacklogModal(this)">
+                                                <i class="fas fa-pen color-highlight"></i>
+                                            </a>
+                                        </h1>
+                                    </div>
                                 </div>
-                                <div class="align-self-center ml-auto">
-                                    <h1 class="font-20">
-                                        <a href="#" data-menu="edit-backlog-modal" onclick="editBacklogModal(this)">
-                                            <i class="fas fa-pen color-highlight"></i>
-                                        </a>
-                                    </h1>
-                                </div>
+                                <div class="divider  mb-2"></div>
                             </div>
-                            <div class="divider  mb-2"></div>
-                            <div class="backlog-id d-flex my-3" id="44">
-                                <div class="align-self-center" style="width: 90%;">
-                                    <p class="backlog-description font-14 font-500 mb-0">Lorem ipsum dolor.</p>
-                                    <h5 class="backlog-priority font-12 opacity-30 m-0">Priority: 5</h5>
-                                </div>
-                                <div class="align-self-center ml-auto">
-                                    <h1 class="font-20">
-                                        <a href="#" data-menu="edit-backlog-modal" onclick="editBacklogModal(this)">
-                                            <i class="fas fa-pen color-highlight"></i>
-                                        </a>
-                                    </h1>
-                                </div>
-                            </div>
-                            <div class="divider  mb-2"></div>
-                            <div class="backlog-id d-flex my-3" id="43">
-                                <div class="align-self-center" style="width: 90%;">
-                                    <p class="backlog-description font-14 font-500 mb-0">Lorem ipsum dolor sit amet. It
-                                        is simply dummy text.</p>
-                                    <h5 class="backlog-priority font-12 opacity-30 m-0">Priority: 3</h5>
-                                </div>
-                                <div class="align-self-center ml-auto">
-                                    <h1 class="font-20">
-                                        <a href="#" data-menu="edit-backlog-modal" onclick="editBacklogModal(this)">
-                                            <i class="fas fa-pen color-highlight"></i>
-                                        </a>
-                                    </h1>
-                                </div>
-                            </div>
-                            <div class="divider"></div>
-
-                            <a href="#" data-menu="create-backlog-modal"
-                                class="btn btn-full btn-m rounded-sm gradient-dark font-600">Create New Backlog</a>
                         </div>
+                        <a href="#" data-menu="create-backlog-modal"
+                           class="btn btn-full btn-m rounded-sm gradient-dark font-600">Create New Backlog</a>
                     </div>
                     <div class="tab-content" id="tab-3">
                         <div class="content">
@@ -507,18 +474,18 @@
             </div>
             <div class="content">
                 <div class="divider mt-n2"></div>
-                <form action="submit">
-                    <input type="hidden" id="backlogIdInput" name="backlogId" />
+                <form th:action="@{'/backlog/update/'+${project.getId()}}" method="post">
+                    <input type="hidden" id="backlogIdInput" name="id" />
                     <div class="input-style-2 input-required">
                         <span class="input-style-1-active" style="top: 10px;">Description</span>
                         <em>(required)</em>
-                        <textarea id="backlogDescription" class="form-control" placeholder=""></textarea>
+                        <textarea id="backlogDescription" class="form-control" placeholder="" name="description"></textarea>
                     </div>
 
                     <div class="input-style input-style-2 input-required">
                         <span class="input-style-1-active">Priority</span>
                         <em><i class="fa fa-angle-down"></i></em>
-                        <select class="form-control" id="editPriorities">
+                        <select class="form-control" id="editPriorities" name="priority">
                             <option value="ACHIEVED">Achieved</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -605,17 +572,17 @@
             </div>
             <div class="content">
                 <div class="divider mt-n2"></div>
-                <form action="/submit">
+                <form th:action="@{'/backlog/create/'+${project.getId()}}" method="post">
                     <div class="input-style input-style-2 input-required">
                         <span style="top: 10px;">Description</span>
                         <em>(required)</em>
-                        <textarea class="form-control" placeholder=""></textarea>
+                        <textarea class="form-control" placeholder="" name="description"></textarea>
                     </div>
 
                     <div class="input-style input-style-2 input-required">
                         <span>Priority</span>
                         <em><i class="fa fa-angle-down"></i></em>
-                        <select class="form-control">
+                        <select class="form-control" name="priority">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -635,7 +602,7 @@
                         <div class="col-12">
                             <button type="submit"
                                 class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Create
-                                Backlog</a>
+                                Backlog</button>
                         </div>
                     </div>
                 </form>
@@ -827,9 +794,9 @@
                 class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
         </div>
     </div>
-    <script type="text/javascript" src="scripts/jquery.js"></script>
-    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
     <script>
         $(document).ready(function () {
             let activeTab = localStorage.getItem('activeTab');

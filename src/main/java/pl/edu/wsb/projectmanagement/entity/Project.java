@@ -15,20 +15,19 @@ public class Project {
 
     private String name;
     private String description;
-    private Date started;
-    private Date deadline;
-    private double progress;
+    private String started;
+    private String deadline;
+    private int progress;
 
-    @OneToOne
+    @ManyToOne
     private User owner;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "collaborators")
     private List<User> teamList;
 
-    @OneToMany
+    @OneToMany(mappedBy = "project",cascade = CascadeType.REMOVE)
     private List<Backlog> backlogsList;
 
-    @OneToMany
+    @OneToMany(mappedBy = "project",cascade = CascadeType.REMOVE)
     private List<Sprint> sprintsList;
-
 }

@@ -18,6 +18,9 @@ public class Sprint {
     private Date startDate;
     private Date endDate;
 
-    @OneToMany
+    @ManyToOne
+    private Project project;
+
+    @OneToMany(mappedBy = "sprint",cascade = CascadeType.REMOVE)
     private List<Task> taskList;
 }

@@ -2,10 +2,7 @@ package pl.edu.wsb.projectmanagement.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -16,4 +13,7 @@ public class TaskItem {
 
     private String description;
     private boolean status;
+
+    @ManyToOne
+    private Task task;
 }
