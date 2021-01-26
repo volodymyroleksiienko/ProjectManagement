@@ -265,7 +265,7 @@
                                     <h1 class="font-40 opacity-20 mb-n1 icon-80"></h1>
                                 </div>
                                 <div class="align-self-center w-50">
-                                    <a href="tasks.html">
+                                    <a th:href="@{'/sprint/info/'+${spr.getId()}}">
                                         <h5 class="sprint-name mb-0" th:text="${spr.getName()}">Sprint name 0</h5>
                                         <div class="w-100" style="display: inline-flex;">
                                             <h5 class="sprint-start font-12 mb-2 opacity-30 w-50" th:text="${spr.getStartDate()}">2020-02-02</h5>
@@ -310,12 +310,12 @@
             </div>
             <div class="content">
                 <div class="divider mt-n2"></div>
-                <form action="submit">
-                    <input type="hidden" id="sprintIdInput" name="sprintId" />
+                <form th:action="@{'/sprint/update/'+${project.getId()}}" method="post">
+                    <input type="hidden" id="sprintIdInput" name="id" />
                     <div class="input-style input-style-2 input-required">
                         <span class="color-highlight input-style-1-active">Name</span>
                         <em>(required)</em>
-                        <input id="editSprintNameInput" class="form-control" type="name" placeholder="" />
+                        <input id="editSprintNameInput" class="form-control" type="name" placeholder="" name="name"/>
                     </div>
 
                     <div class="input-style input-style-2 input-required">
@@ -328,7 +328,7 @@
                     <div class="input-style input-style-2 input-required">
                         <span class="color-highlight input-style-1-active">Select End Date</span>
                         <em><i class="fa fa-angle-down"></i></em>
-                        <input id="editEndDateInput" type="date" value="1980-08-26" />
+                        <input id="editEndDateInput" type="date" value="1980-08-26" name="endDate"/>
                     </div>
 
                     <div class="divider my-1"></div>

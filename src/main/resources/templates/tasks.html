@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en">
-
+<html class="wide wow-animation" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -152,7 +154,7 @@
                             </div>
                         </div>
                         <div class="divider mt-3"></div>
-                        <a href="create_task.html"
+                        <a th:href="@{'/task/create/'+${sprint.getId()}}"
                             class="btn btn-full btn-m rounded-sm gradient-dark font-600 mb-2">Create New Task</a>
                     </div>
                     <div class="tab-content" id="tab-2">

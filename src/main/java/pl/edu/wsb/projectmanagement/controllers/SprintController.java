@@ -1,11 +1,11 @@
 package pl.edu.wsb.projectmanagement.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.edu.wsb.projectmanagement.entity.Backlog;
 import pl.edu.wsb.projectmanagement.entity.Sprint;
 import pl.edu.wsb.projectmanagement.service.ProjectService;
 import pl.edu.wsb.projectmanagement.service.SprintService;
@@ -20,6 +20,12 @@ public class SprintController {
     public SprintController(SprintService sprintService, ProjectService projectService) {
         this.sprintService = sprintService;
         this.projectService = projectService;
+    }
+
+    @GetMapping("/info/{id}")
+    public String getSprintInfo(@PathVariable int id, Model model){
+        model.addAttribute("sprint",sprintService.findById(id));
+        return "tasks";
     }
 
     @PostMapping("/create/{projectId}")
