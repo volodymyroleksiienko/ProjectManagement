@@ -16,7 +16,6 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/fonts/css/fontawesome-all.min.css}">
     <link rel="apple-touch-icon" sizes="180x180" th:href="@{/app/icons/icon-192x192.png}">
-
 </head>
 
 <body class="theme-light">
@@ -308,36 +307,35 @@
     <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
-    <script type="text/javascript" th:src="@{../../scripts/script.js}"></script>
     <script type="text/javascript">
-        // let tempId = document.getElementsByClassName("subtask-list-item").length;
-        // console.log("temp: " + tempId);
-        //
-        // $("#createSubtaskItem" ).on( "click", function() {
-        //     let subTaskItem = $('#subtaskDescription').val();
-        //     console.log('item: ' + subTaskItem);
-        //
-        //     tempId = tempId + 1;
-        //     console.log("temp_n: " + tempId);
-        //
-        //     if (subTaskItem !== '') {
-        //         $("#subtasksList").append('<li id="' + tempId +
-        //             '" class="d-flex subtask-list-item" style="margin-bottom: 1rem;"><i class="fa fa-check color-green-dark align-self-center"></i><p class="subtask-description mb-0 align-self-center">' +
-        //             subTaskItem +
-        //             '</p><button type="button" onclick="deleteSubtaskModal(this)" class="edit-subtask-a ml-auto pl-1 align-self-center" style="width: 10%; border: none; background: transparent"><i class="fas fa-trash-alt fa-lg color-highlight"></i></button></li>'
-        //         );
-        //
-        //         document.getElementById(tempId).getElementsByTagName('button')[0].setAttribute('data-menu',
-        //             'edit-subtask-modal');
-        //
-        //         $('#subtaskDescription').val('');
-        //         $('#subtaskDescription').focusout();
-        //         console.log('added');
-        //     }
-        // });
-        //
-        // function deleteSubtaskModal(btnObj) {
-        //     let trObj = $(btnObj).parent().remove();
-        // }
+        let tempId = document.getElementsByClassName("subtask-list-item").length;
+        console.log("temp: " + tempId);
+
+        $("#createSubtaskItem" ).on( "click", function() {
+            let subTaskItem = $('#subtaskDescription').val();
+            console.log('item: ' + subTaskItem);
+
+            tempId = tempId + 1;
+            console.log("temp_n: " + tempId);
+
+            if (subTaskItem !== '') {
+                $("#subtasksList").append('<li id="' + tempId +
+                    '" class="d-flex subtask-list-item" style="margin-bottom: 1rem;"><i class="fa fa-check color-green-dark align-self-center"></i><p class="subtask-description mb-0 align-self-center">' +
+                    subTaskItem +
+                    '</p><button type="button" onclick="deleteSubtaskModal(this)" class="edit-subtask-a ml-auto pl-1 align-self-center" style="width: 10%; border: none; background: transparent"><i class="fas fa-trash-alt fa-lg color-highlight"></i></button></li>'
+                );
+
+                document.getElementById(tempId).getElementsByTagName('button')[0].setAttribute('data-menu',
+                    'edit-subtask-modal');
+
+                $('#subtaskDescription').val('');
+                $('#subtaskDescription').focusout();
+                console.log('added');
+            }
+        });
+
+        function deleteSubtaskModal(btnObj) {
+            let trObj = $(btnObj).parent().remove();
+        }
     </script>
 </body>
