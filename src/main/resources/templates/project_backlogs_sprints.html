@@ -1,0 +1,921 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <title>Project</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+
+</head>
+
+<body class="theme-light">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <div id="page">
+        <div class="header header-fixed header-logo-center header-auto-show">
+            <a href="index.html" class="header-title">Project</a>
+            <a href="index.html" data-back-button class="header-icon header-icon-1"><i
+                    class="fas fa-chevron-left"></i></a>
+            <a href="#" data-menu="menu-main" class="header-icon header-icon-4"><i class="fas fa-bars"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-dark"><i
+                    class="fas fa-sun"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-light"><i
+                    class="fas fa-moon"></i></a>
+        </div>
+        <div class="page-title page-title-fixed">
+            <h1>Project</h1>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i
+                    class="fa fa-share-alt"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i
+                    class="fa fa-moon"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i
+                    class="fa fa-lightbulb color-yellow-dark"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-main"><i
+                    class="fa fa-bars"></i></a>
+        </div>
+        <div class="page-title-clear"></div>
+        <div>
+            <!-- CONTENT -->
+            <div class="card card-style bg-theme pb-0">
+                <div class="content">
+                    <div class="tab-controls tabs-round tab-animated tabs-medium tabs-rounded shadow-xl"
+                        data-tab-items="3" data-tab-active="bg-blue-dark color-white">
+                        <a href="#" id="infoTab" data-tab="tab-1 " onclick="getActiveId(this)">Info</a>
+                        <a href="#" id="backlogsTab" data-tab="tab-2" onclick="getActiveId(this)">Backlogs</a>
+                        <a href="#" id="sprintsTab" data-tab="tab-3" onclick="getActiveId(this)">Sprints</a>
+                    </div>
+                    <div class="clearfix mb-3"></div>
+                    <div class="tab-content" id="tab-1">
+                        <div>
+                            <div class="card card-style bg-11 mt-3" data-card-height="160">
+                                <div class="card-bottom pl-3 pb-3">
+                                    <h1 class="font-17 color-white mb-n3">Test Project</h1>
+                                    <h4 class="font-13 color-white mb-2 opacity-50">
+                                        project name
+                                    </h4>
+                                    <h2 class="font-16 font-weight-normal color-white">Lorem ipsum dolor sit amet</h2>
+                                </div>
+                                <div class="card-overlay bg-black opacity-80"></div>
+                            </div>
+                            <div class="content mb-0 mt-3">
+                                <h6 class="mb-2">Owner:</h6>
+                                <div class="user-slider owl-carousel">
+                                    <div class="user-left">
+                                        <div class="d-flex">
+                                            <div class="align-self-center">
+                                                <img src="images/avatars/5s.png"
+                                                    class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" />
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h5 class="mt-1 mb-0">Johnatan Unixer</h5>
+                                                <p class="font-10 mt-n1 color-blue-dark">
+                                                    Executive Officer
+                                                </p>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <span class="next-slide-user badge bg-blue-dark mt-2 p-2 font-8">TAP FOR
+                                                    MORE</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="user-right">
+                                        <div class="d-flex">
+                                            <div class="align-self-center">
+                                                <h5 class="mt-1 mb-0">Johnatan Doe</h5>
+                                                <p class="font-10 mt-n1 color-blue-dark">
+                                                    Executive Officer
+                                                </p>
+                                            </div>
+                                            <div class="ml-auto align-self-center">
+                                                <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone">
+                                                    <i class="fa fa-phone"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider mt-3"></div>
+                                <div class="row mb-0">
+                                    <div class="col-6 pr-1">
+                                        <div class="card card-style mx-0 mb-2 p-3">
+                                            <h6 class="font-14">Start</h6>
+                                            <h3 class="color-green-dark mb-0">01-01-2021</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pl-1">
+                                        <div class="card card-style mx-0 mb-2 p-3">
+                                            <h6 class="font-14">Deadline</h6>
+                                            <h3 class="color-red-dark mb-0">01-03-2021</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pr-1">
+                                        <div class="card card-style mx-0 p-3">
+                                            <h6 class="font-14">Co-workers</h6>
+                                            <h3 class="color-brown-dark mb-0 text-center">8</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pl-1">
+                                        <div class="card card-style mx-0 p-3">
+                                            <h6 class="font-14">Sprint</h6>
+                                            <h3 class="color-blue-dark mb-0 text-center">5</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content mt-0 mb-0">
+                                <div class="row mb-0">
+                                    <div class="col-12">
+                                        <div class="card mx-0 card-style" data-card-height="260">
+                                            <div class="content">
+                                                <h5 class="font-14 opacity-50">
+                                                    Completeness
+                                                    <a href="tasks.html" class="float-right color-highlight">
+                                                        <i class="fa fa-arrow-right"></i>
+                                                    </a>
+                                                </h5>
+                                                <div class="divider mb-3"></div>
+                                            </div>
+                                            <div class="card-center text-center pb-4">
+                                                <span class="icon icon-xxl rounded-m gradient-highlight scale-box"><i
+                                                        class="fa fa-arrow-up rotate-45 font-30"></i></span>
+                                            </div>
+                                            <div class="card-bottom text-center">
+                                                <div class="content pb-1">
+                                                    <h1 class="mb-n1">24.55%</h1>
+                                                    <h5 class="opacity-30">5.7% today</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="card mx-0 card-style" data-card-height="260">
+                                            <div class="content">
+                                                <h5 class="font-14 opacity-50">
+                                                    Tasks
+                                                    <a href="tasks.html" class="float-right color-highlight">
+                                                        <i class="fa fa-arrow-right"></i>
+                                                    </a>
+                                                </h5>
+                                                <div class="divider mb-3"></div>
+                                                <div class="mb-4">
+                                                    <h5>
+                                                        Open<span class="opacity-30 float-right">30%</span>
+                                                    </h5>
+                                                    <div class="progress" style="height: 8px">
+                                                        <div class="progress-bar border-0 bg-yellow-dark text-left pl-2"
+                                                            role="progressbar" style="width: 30%" aria-valuenow="30"
+                                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <h5>
+                                                        In process<span class="opacity-30 float-right">70%</span>
+                                                    </h5>
+                                                    <div class="progress" style="height: 8px">
+                                                        <div class="progress-bar border-0 bg-blue-dark text-left pl-2"
+                                                            role="progressbar" style="width: 70%" aria-valuenow="70"
+                                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <h5>
+                                                        Done<span class="opacity-30 float-right">40%</span>
+                                                    </h5>
+                                                    <div class="progress" style="height: 8px">
+                                                        <div class="progress-bar border-0 bg-green-dark text-left pl-2"
+                                                            role="progressbar" style="width: 40%" aria-valuenow="40"
+                                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-style">
+                                <div class="content">
+                                    <h5 class="font-14 opacity-50">
+                                        Co-workers<a href="team.html" class="float-right color-highlight">View All</a>
+                                    </h5>
+                                    <div class="divider mb-3"></div>
+                                    <div class="list-group list-custom-large">
+                                        <a href="#">
+                                            <img src="images/avatars/1s.png" />
+                                            <span>Jane</span>
+                                            <strong>Company Founder</strong>
+                                            <i class="fas fa-phone color-highlight"></i>
+                                        </a>
+                                        <a href="#">
+                                            <img src="images/avatars/2s.png" />
+                                            <span>Jack</span>
+                                            <strong>Group Manager</strong>
+                                            <i class="fas fa-phone color-highlight"></i>
+                                        </a>
+                                        <a href="#">
+                                            <img src="images/avatars/8s.png" />
+                                            <span>Dora</span>
+                                            <strong>Support Staff Manager</strong>
+                                            <i class="fas fa-phone color-highlight"></i>
+                                        </a>
+                                        <a data-trigger-switch="switch-1" class="border-0" href="#">
+                                            <img src="images/avatars/5s.png" />
+                                            <span>Dave</span>
+                                            <strong>Senior Developer</strong>
+                                            <i class="fas fa-phone color-highlight"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider mt-3"></div>
+                        <a href="#" data-menu="close-project-modal"
+                            class="btn btn-full btn-m rounded-sm gradient-dark font-600 mb-2">Close Project</a>
+                    </div>
+                    <div class="tab-content" id="tab-2">
+                        <div class="content">
+                            <div class="backlog-id d-flex my-3" id="45">
+                                <div class="align-self-center" style="width: 90%;">
+                                    <p class="backlog-description font-14 font-500 mb-0">Lorem ipsum dolor sit amet.</p>
+                                    <h5 class="backlog-priority font-12 opacity-30 m-0">Priority: 1</h5>
+                                </div>
+                                <div class="align-self-center ml-auto">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-backlog-modal" onclick="editBacklogModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider  mb-2"></div>
+                            <div class="backlog-id d-flex my-3" id="44">
+                                <div class="align-self-center" style="width: 90%;">
+                                    <p class="backlog-description font-14 font-500 mb-0">Lorem ipsum dolor.</p>
+                                    <h5 class="backlog-priority font-12 opacity-30 m-0">Priority: 5</h5>
+                                </div>
+                                <div class="align-self-center ml-auto">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-backlog-modal" onclick="editBacklogModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider  mb-2"></div>
+                            <div class="backlog-id d-flex my-3" id="43">
+                                <div class="align-self-center" style="width: 90%;">
+                                    <p class="backlog-description font-14 font-500 mb-0">Lorem ipsum dolor sit amet. It
+                                        is simply dummy text.</p>
+                                    <h5 class="backlog-priority font-12 opacity-30 m-0">Priority: 3</h5>
+                                </div>
+                                <div class="align-self-center ml-auto">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-backlog-modal" onclick="editBacklogModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+
+                            <a href="#" data-menu="create-backlog-modal"
+                                class="btn btn-full btn-m rounded-sm gradient-dark font-600">Create New Backlog</a>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab-3">
+                        <div class="content">
+                            <div class="row-id d-flex mb-4" id="45">
+                                <div class="align-self-center">
+                                    <h1 class="font-40 opacity-20 mb-n1 icon-80"></h1>
+                                </div>
+                                <div class="align-self-center w-50">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Sprint name 0</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 100%" aria-valuenow="100"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                100% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto">
+                                    <h1 class="font-20">
+                                        <a href="#" class="edit-button" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="row-id d-flex mb-4" id="56">
+                                <div class="align-self-center">
+                                    <h1 class="font-40 opacity-20 mb-n1 icon-80"></h1>
+                                </div>
+                                <div class="align-self-center w-50">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Sprint name 1</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 100%" aria-valuenow="100"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                100% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto">
+                                    <h1 class="font-20">
+                                        <a href="#" class="edit-button" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="row-id d-flex mb-4" id="8">
+                                <div class="align-self-center">
+                                    <h1 class="font-40 opacity-20 mb-n1 icon-80"></h1>
+                                </div>
+                                <div class="align-self-center w-50">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Sprint name 2</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 100%" aria-valuenow="100"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                100% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto">
+                                    <h1 class="font-20">
+                                        <a href="#" class="edit-button" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="row-id d-flex mb-4" id="4">
+                                <div class="align-self-center">
+                                    <h1 class="font-40 opacity-20 mb-n1 icon-80"></h1>
+                                </div>
+                                <div class="align-self-center w-50">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Sprint name 3</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 90%" aria-valuenow="90"
+                                                aria-valuemin="0" aria-valuemax="90">
+                                                90% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto">
+                                    <h1 class="font-20">
+                                        <a href="#" class="edit-button" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="row-id d-flex mb-4" id="5">
+                                <div class="align-self-center">
+                                    <h1 class="font-40 opacity-20 mb-n1 icon-80"></h1>
+                                </div>
+                                <div class="align-self-center w-50">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Last sprint name</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-01-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-04-01</h5>
+                                        </div>
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                0% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto">
+                                    <h1 class="font-20">
+                                        <a href="#" class="edit-button" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <a href="#" data-menu="create-sprint-modal"
+                                class="btn btn-full btn-m rounded-sm gradient-dark font-600">Create New Sprint</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Edit sprint modal start -->
+        <div id="edit-sprint-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+            data-menu-height="auto">
+            <div class="menu-title">
+                <h1 class="font-800">Edit Sprint</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="content">
+                <div class="divider mt-n2"></div>
+                <form action="submit">
+                    <input type="hidden" id="sprintIdInput" name="sprintId" />
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight input-style-1-active">Name</span>
+                        <em>(required)</em>
+                        <input id="editSprintNameInput" class="form-control" type="name" placeholder="" />
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight input-style-1-active">Select Start Date</span>
+                        <!-- <em class="mr-4">(required)</em> -->
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <input id="editStartDateInput" type="date" value="2020-10-10" />
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight input-style-1-active">Select End Date</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <input id="editEndDateInput" type="date" value="1980-08-26" />
+                    </div>
+
+                    <div class="divider my-1"></div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <a href="#"
+                                class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s"><span><i
+                                        class="fas fa-trash-alt fa-lg"></i></span></a>
+                        </div>
+                        <div class="col-9">
+                            <button type="submit"
+                                class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Save
+                                Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Edit sprint modal end -->
+
+        <!-- Edit backlog modal start -->
+        <div id="edit-backlog-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+            data-menu-height="auto">
+            <div class="menu-title">
+                <h1 class="font-800">Edit Backlog</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="content">
+                <div class="divider mt-n2"></div>
+                <form action="submit">
+                    <input type="hidden" id="backlogIdInput" name="backlogId" />
+                    <div class="input-style-2 input-required">
+                        <span class="input-style-1-active" style="top: 10px;">Description</span>
+                        <em>(required)</em>
+                        <textarea id="backlogDescription" class="form-control" placeholder=""></textarea>
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="input-style-1-active">Priority</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select class="form-control" id="editPriorities">
+                            <option value="ACHIEVED">Achieved</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="divider my-1"></div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <a href="#"
+                                class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s"><span>
+                                    <i class="fas fa-trash-alt fa-lg"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-9">
+                            <button type="submit"
+                                class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Save
+                                Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Edit backlog modal end -->
+
+        <!-- Create sprint modal start -->
+        <div id="create-sprint-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+            data-menu-height="auto">
+            <div class="menu-title">
+                <h1 class="font-800">Create Sprint</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="content">
+                <div class="divider mt-n2"></div>
+                <form action="create">
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight">Name</span>
+                        <em>(required)</em>
+                        <input class="form-control" type="name" placeholder="" />
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight">Select Start Date</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <input type="date" value="2020-10-10" />
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight">Select End Date</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <input type="date" value="1980-08-26" />
+                    </div>
+
+                    <div class="divider my-1"></div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit"
+                                class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Create
+                                Sprint</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Create sprint modal end -->
+
+        <!-- Create backlog modal start -->
+        <div id="create-backlog-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+            data-menu-height="auto">
+            <div class="menu-title">
+                <h1 class="font-800">Create Backlog</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="content">
+                <div class="divider mt-n2"></div>
+                <form action="/submit">
+                    <div class="input-style input-style-2 input-required">
+                        <span style="top: 10px;">Description</span>
+                        <em>(required)</em>
+                        <textarea class="form-control" placeholder=""></textarea>
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span>Priority</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="divider my-1"></div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit"
+                                class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Create
+                                Backlog</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Create backlog modal end -->
+
+        <!-- Main menu start -->
+        <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-width="280" data-menu-active="nav-welcome">
+            <div class="card rounded-0 bg-6" style="height:150px">
+                <div class="card-top">
+                    <a href="#" class="close-menu float-right mr-2 text-center mt-3 icon-40 notch-clear"><i
+                            class="fa fa-times color-white"></i></a>
+                </div>
+                <div class="card-bottom">
+                    <h1 class="color-white pl-3 mb-n1 font-28">Name Surname</h1>
+                    <p class="mb-2 pl-3 font-12 color-white opacity-50">Position</p>
+                </div>
+                <div class="card-overlay bg-gradient"></div>
+            </div>
+            <div class="mt-4"></div>
+            <h6 class="menu-divider">Library</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a id="nav-homepages" href="index.html">
+                    <i class="fa fa-home gradient-green color-white"></i>
+                    <span>Homepage</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-components" href="index-components.html">
+                    <i class="fa fa-cog gradient-blue color-white"></i>
+                    <span>Components</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-pages" href="index-pages.html">
+                    <i class="fa fa-file gradient-brown color-white"></i>
+                    <span>Pages</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-media" href="index-projects.html">
+                    <i class="fa fa-camera gradient-magenta color-white"></i>
+                    <span>Media</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-contact" href="#">
+                    <i class="fa fa-envelope gradient-teal color-white"></i>
+                    <span>Contact</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <h6 class="menu-divider mt-4">settings</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a href="#" data-menu="menu-colors">
+                    <i class="fa fa-brush gradient-highlight color-white"></i>
+                    <span>Highlights</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode">
+                    <i class="fa fa-moon gradient-dark color-white"></i>
+                    <span>Dark Mode</span>
+                    <div class="custom-control scale-switch ios-switch highlight-switch switch-s">
+                        <input type="checkbox" class="ios-input" id="switch-22">
+                        <label class="custom-control-label" for="switch-1"></label>
+                    </div>
+                </a>
+            </div>
+            <h6 class="menu-divider mt-4">Contacts</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a href="#">
+                    <img src="images/pictures/1s.jpg">
+                    <span>John Droid</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#">
+                    <img src="images/pictures/5s.jpg">
+                    <span>Gina Seed</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#">
+                    <img src="images/pictures/6s.jpg">
+                    <span>Jane Louder</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <h6 class="menu-divider font-10 mt-4">Made by Roman Tymochko
+                <span class="copyright-year"></span>
+            </h6>
+        </div>
+        <!-- Main menu end -->
+
+        <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-height="370">
+            <div class="menu-title">
+                <p class="color-highlight">Tap a link to</p>
+                <h1>Share</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-0"></div>
+            <div class="content mt-0">
+                <div class="list-group list-custom-small list-icon-0">
+                    <a href="#" class="shareToFacebook">
+                        <i class="fab fa-facebook-f font-12 bg-facebook color-white shadow-l rounded-s"></i>
+                        <span>Facebook</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToTwitter">
+                        <i class="fab fa-twitter font-12 bg-twitter color-white shadow-l rounded-s"></i>
+                        <span>Twitter</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToLinkedIn">
+                        <i class="fab fa-linkedin-in font-12 bg-linkedin color-white shadow-l rounded-s"></i>
+                        <span>LinkedIn</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToWhatsApp">
+                        <i class="fab fa-whatsapp font-12 bg-whatsapp color-white shadow-l rounded-s"></i>
+                        <span>WhatsApp</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToEmail border-0">
+                        <i class="fa fa-envelope font-12 bg-mail color-white shadow-l rounded-s"></i>
+                        <span>Email</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-height="480">
+            <div class="menu-title">
+                <p class="color-highlight font-600">Choose your Favorite</p>
+                <h1>Highlight</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-2"></div>
+            <div class="content mt-0 ml-0 mr-0">
+                <div class="row mb-0">
+                    <div class="col-6">
+                        <div class="highlight-changer list-group list-custom-small list-menu">
+                            <a href="#" class="menu-active" data-highlight-style="styles/highlights/highlight-blue.css">
+                                <i class="gradient-blue color-white"></i>
+                                <span>Blue</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-red.css">
+                                <i class="gradient-red color-white"></i>
+                                <span>Red</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-orange.css">
+                                <i class="gradient-orange color-white"></i>
+                                <span>Orange</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-green.css">
+                                <i class="gradient-green color-white"></i>
+                                <span>Green</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-yellow.css">
+                                <i class="gradient-yellow color-white"></i>
+                                <span>Yellow</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="highlight-changer list-group list-custom-small list-menu">
+                            <a href="#" data-highlight-style="styles/highlights/highlight-dark.css">
+                                <i class="gradient-dark color-white"></i>
+                                <span>Dark</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-gray.css">
+                                <i class="gradient-gray color-white"></i>
+                                <span>Gray</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-teal.css">
+                                <i class="gradient-teal color-white"></i>
+                                <span>Teal</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-magenta.css">
+                                <i class="gradient-magenta color-white"></i>
+                                <span>Plum</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-brown.css">
+                                <i class="gradient-brown color-white"></i>
+                                <span>Brown</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider divider-margins mt-2"></div>
+            <a href="#"
+                class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+            let activeTab = localStorage.getItem('activeTab');
+            console.log("Local storage: " + activeTab);
+            if (activeTab) {
+                $('#infoTab').removeAttr('data-tab-active');
+                $('#' + activeTab).attr('data-tab-active', '');;
+            } else {
+                $('#infoTab').attr('data-tab-active', '');
+            }
+        });
+
+        // Get active tab id
+        function getActiveId(aObj) {
+            $('#infoTab').removeAttr('data-tab-active');
+            $(aObj).attr('data-tab-active', '');
+            console.log('current active: ' + aObj.id);
+        }
+
+        // Write to local storage active tabs id
+        $('.tabs-medium > a').on('click', function (e) {
+            localStorage.setItem('activeTab', $(e.target).attr('id'));
+            console.log('write to storage: ' + $(e.target).attr('id'));
+        });
+
+
+        // Progress bar
+        let progressBar = document.getElementsByClassName('progress-bar');
+
+        Array.prototype.forEach.call(progressBar, function (el) {
+            // remove padding left
+            if (el.getAttribute('aria-valuenow') === '0') {
+                el.classList.remove("pl-3");
+            }
+
+            // remove click if 100%
+            else if (el.getAttribute('aria-valuenow') === '100') {
+                let trObj = $(el).closest('.row-id');
+                let button = $(trObj).find('.edit-button');
+                $(button).addClass('opacity-30');
+                $(button).removeAttr('data-menu');
+                $(button).removeAttr('onclick');
+            }
+        });
+
+        // Sprints numbers
+        let sprintNumber = document.getElementsByClassName('font-40 opacity-20 mb-n1 icon-80');
+        for (let i = 0; i < sprintNumber.length; i++) {
+            if (i < 10) {
+                $(sprintNumber[i]).text('0' + (i + 1));
+            } else if (i >= 10) {
+                $(sprintNumber[i]).text(i + 1);
+            }
+        }
+
+        function editSprintModal(btnObj) {
+            let trObj = btnObj.closest(".row-id");
+            let trId = $(trObj).attr('id');
+
+            console.log("item id:" + $(trObj).attr('id'));
+
+            let name = $(trObj).find('.sprint-name').text();
+
+            let sprintStart = $(trObj).find('.sprint-start').text();
+            let sprintEnd = $(trObj).find('.sprint-end').text();
+
+            $('#sprintIdInput').val(trId);
+            $('#editSprintNameInput').val(name);
+            $('#editStartDateInput').val(sprintStart);
+            $('#editEndDateInput').val(sprintEnd);
+        }
+
+        function editBacklogModal(btnObj) {
+            let trObj = btnObj.closest(".backlog-id");
+            let trId = $(trObj).attr('id');
+
+            console.log("item id:" + $(trObj).attr('id'));
+
+            let description = $(trObj).find('.backlog-description').text().trim();
+            let priority = $(trObj).find('.backlog-priority').text().match(/\d+/);
+
+            $('#backlogIdInput').val(trId);
+            $('#backlogDescription').val(description);
+            $('#editPriorities').val(priority);
+
+            console.log('descr: ' + description + ' ; prior: ' + priority);
+        }
+    </script>
+</body>

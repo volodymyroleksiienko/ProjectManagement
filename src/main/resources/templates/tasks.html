@@ -1,0 +1,586 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <title>Tasks</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+
+</head>
+
+<body class="theme-light">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <div id="page">
+        <div class="header header-fixed header-logo-center header-auto-show">
+            <a href="index.html" class="header-title">Tasks</a>
+            <a href="index.html" data-back-button class="header-icon header-icon-1"><i
+                    class="fas fa-chevron-left"></i></a>
+            <a href="#" data-menu="menu-main" class="header-icon header-icon-4"><i class="fas fa-bars"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-dark"><i
+                    class="fas fa-sun"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-light"><i
+                    class="fas fa-moon"></i></a>
+        </div>
+        <div class="page-title page-title-fixed">
+            <h1>Tasks</h1>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i
+                    class="fa fa-share-alt"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i
+                    class="fa fa-moon"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i
+                    class="fa fa-lightbulb color-yellow-dark"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-main"><i
+                    class="fa fa-bars"></i></a>
+        </div>
+        <div class="page-title-clear"></div>
+        <div>
+            <div class="card card-style bg-theme pb-0">
+                <div class="content">
+                    <div class="tab-controls tabs-round tab-animated tabs-medium tabs-rounded shadow-xl"
+                        data-tab-items="3" data-tab-active="bg-blue-dark color-white">
+                        <a href="#" id="openTasksTab" data-tab="tab-1 " onclick="getActiveId(this)">Open</a>
+                        <a href="#" id="inProcessTasksTab" data-tab="tab-2" onclick="getActiveId(this)">In Process</a>
+                        <a href="#" id="doneTasksTab" data-tab="tab-3" onclick="getActiveId(this)">Done</a>
+                    </div>
+                    <div class="clearfix mb-3"></div>
+                    <div class="tab-content" id="tab-1">
+                        <div class="content">
+                            <div class="row-id d-flex" id="45">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 0</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <a href="#" class="chip chip-s bg-gray-light">
+                                            <i class="far fa-clock bg-green-dark color-white"></i>
+                                            <strong class="color-black font-400">Waiting!</strong>
+                                        </a>
+                                        <!-- <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 100%" aria-valuenow="100"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                100% Complete
+                                            </div>
+                                        </div> -->
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider mb-2"></div>
+
+                            <div class="row-id d-flex" id="45">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 0</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <a href="#" class="chip chip-s bg-gray-light">
+                                            <i class="far fa-clock bg-green-dark color-white"></i>
+                                            <strong class="color-black font-400">Waiting!</strong>
+                                        </a>
+                                        <!-- <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 100%" aria-valuenow="100"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                100% Complete
+                                            </div>
+                                        </div> -->
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider mb-2"></div>
+
+                            <div class="row-id d-flex" id="45">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 0</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50"></h5>
+                                        </div>
+                                        <!-- <a href="#" class="chip chip-s bg-gray-light">
+                                            <i class="far fa-clock bg-green-dark color-white"></i>
+                                            <strong class="color-black font-400">Waiting!</strong>
+                                        </a> -->
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 20%" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                20% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider mt-3"></div>
+                        <a href="create_task.html"
+                            class="btn btn-full btn-m rounded-sm gradient-dark font-600 mb-2">Create New Task</a>
+                    </div>
+                    <div class="tab-content" id="tab-2">
+                        <div class="content">
+                            <div class="row-id d-flex mb-3" id="45">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 0</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 90%" aria-valuenow="90"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                90% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider mb-2"></div>
+
+                            <div class="row-id d-flex mb-3" id="45">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 1</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 20%" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                20% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider mb-2"></div>
+
+                            <div class="row-id d-flex mb-3" id="415">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 3</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <div class="progress rounded-l" style="height: 14px">
+                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                role="progressbar" style="width: 70%" aria-valuenow="70"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                70% Complete
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab-3">
+                        <div class="content">
+                            <div class="row-id d-flex" id="45">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 0</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <a href="#" class="chip chip-s bg-green-dark">
+                                            <i class="fa fa-check color-white bg-green-light"></i>
+                                            <span class="color-white">Complete!</span>
+                                        </a>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider mb-2"></div>
+                            <div class="row-id d-flex" id="45">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 0</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <a href="#" class="chip chip-s bg-green-dark">
+                                            <i class="fa fa-check color-white bg-green-light"></i>
+                                            <span class="color-white">Complete!</span>
+                                        </a>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="divider mb-2"></div>
+                            <div class="row-id d-flex" id="45">
+                                <div class="align-self-center" style="width: 60%;">
+                                    <a href="tasks.html">
+                                        <h5 class="sprint-name mb-0">Task name 0</h5>
+                                        <div class="w-100" style="display: inline-flex;">
+                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
+                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                                        </div>
+                                        <a href="#" class="chip chip-s bg-green-dark">
+                                            <i class="fa fa-check color-white bg-green-light"></i>
+                                            <span class="color-white">Complete!</span>
+                                        </a>
+                                    </a>
+                                </div>
+                                <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                    <h1 class="font-20">
+                                        <a href="#" data-menu="edit-sprint-modal"
+                                            onclick="editSprintModal(this)">
+                                            <i class="fas fa-pen color-highlight"></i>
+                                        </a>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main menu start -->
+        <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-width="280" data-menu-active="nav-welcome">
+            <div class="card rounded-0 bg-6" style="height:150px">
+                <div class="card-top">
+                    <a href="#" class="close-menu float-right mr-2 text-center mt-3 icon-40 notch-clear"><i
+                            class="fa fa-times color-white"></i></a>
+                </div>
+                <div class="card-bottom">
+                    <h1 class="color-white pl-3 mb-n1 font-28">Name Surname</h1>
+                    <p class="mb-2 pl-3 font-12 color-white opacity-50">Position</p>
+                </div>
+                <div class="card-overlay bg-gradient"></div>
+            </div>
+            <div class="mt-4"></div>
+            <h6 class="menu-divider">Library</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a id="nav-homepages" href="index.html">
+                    <i class="fa fa-home gradient-green color-white"></i>
+                    <span>Homepage</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-components" href="index-components.html">
+                    <i class="fa fa-cog gradient-blue color-white"></i>
+                    <span>Components</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-pages" href="index-pages.html">
+                    <i class="fa fa-file gradient-brown color-white"></i>
+                    <span>Pages</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-media" href="index-projects.html">
+                    <i class="fa fa-camera gradient-magenta color-white"></i>
+                    <span>Media</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-contact" href="#">
+                    <i class="fa fa-envelope gradient-teal color-white"></i>
+                    <span>Contact</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <h6 class="menu-divider mt-4">settings</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a href="#" data-menu="menu-colors">
+                    <i class="fa fa-brush gradient-highlight color-white"></i>
+                    <span>Highlights</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode">
+                    <i class="fa fa-moon gradient-dark color-white"></i>
+                    <span>Dark Mode</span>
+                    <div class="custom-control scale-switch ios-switch highlight-switch switch-s">
+                        <input type="checkbox" class="ios-input" id="switch-22">
+                        <label class="custom-control-label" for="switch-1"></label>
+                    </div>
+                </a>
+            </div>
+            <h6 class="menu-divider mt-4">Contacts</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a href="#">
+                    <img src="images/pictures/1s.jpg">
+                    <span>John Droid</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#">
+                    <img src="images/pictures/5s.jpg">
+                    <span>Gina Seed</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#">
+                    <img src="images/pictures/6s.jpg">
+                    <span>Jane Louder</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <h6 class="menu-divider font-10 mt-4">Made by Roman Tymochko
+                <span class="copyright-year"></span>
+            </h6>
+        </div>
+        <!-- Main menu end -->
+
+        <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-height="370">
+            <div class="menu-title">
+                <p class="color-highlight">Tap a link to</p>
+                <h1>Share</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-0"></div>
+            <div class="content mt-0">
+                <div class="list-group list-custom-small list-icon-0">
+                    <a href="#" class="shareToFacebook">
+                        <i class="fab fa-facebook-f font-12 bg-facebook color-white shadow-l rounded-s"></i>
+                        <span>Facebook</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToTwitter">
+                        <i class="fab fa-twitter font-12 bg-twitter color-white shadow-l rounded-s"></i>
+                        <span>Twitter</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToLinkedIn">
+                        <i class="fab fa-linkedin-in font-12 bg-linkedin color-white shadow-l rounded-s"></i>
+                        <span>LinkedIn</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToWhatsApp">
+                        <i class="fab fa-whatsapp font-12 bg-whatsapp color-white shadow-l rounded-s"></i>
+                        <span>WhatsApp</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToEmail border-0">
+                        <i class="fa fa-envelope font-12 bg-mail color-white shadow-l rounded-s"></i>
+                        <span>Email</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-height="480">
+            <div class="menu-title">
+                <p class="color-highlight font-600">Choose your Favorite</p>
+                <h1>Highlight</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-2"></div>
+            <div class="content mt-0 ml-0 mr-0">
+                <div class="row mb-0">
+                    <div class="col-6">
+                        <div class="highlight-changer list-group list-custom-small list-menu">
+                            <a href="#" class="menu-active" data-highlight-style="styles/highlights/highlight-blue.css">
+                                <i class="gradient-blue color-white"></i>
+                                <span>Blue</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-red.css">
+                                <i class="gradient-red color-white"></i>
+                                <span>Red</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-orange.css">
+                                <i class="gradient-orange color-white"></i>
+                                <span>Orange</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-green.css">
+                                <i class="gradient-green color-white"></i>
+                                <span>Green</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-yellow.css">
+                                <i class="gradient-yellow color-white"></i>
+                                <span>Yellow</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="highlight-changer list-group list-custom-small list-menu">
+                            <a href="#" data-highlight-style="styles/highlights/highlight-dark.css">
+                                <i class="gradient-dark color-white"></i>
+                                <span>Dark</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-gray.css">
+                                <i class="gradient-gray color-white"></i>
+                                <span>Gray</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-teal.css">
+                                <i class="gradient-teal color-white"></i>
+                                <span>Teal</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-magenta.css">
+                                <i class="gradient-magenta color-white"></i>
+                                <span>Plum</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-brown.css">
+                                <i class="gradient-brown color-white"></i>
+                                <span>Brown</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider divider-margins mt-2"></div>
+            <a href="#"
+                class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            let activeTab = localStorage.getItem('activeTaskTab');
+            console.log("Local storage: "+activeTab);
+            if(activeTab){
+                $('#openTasksTab').removeAttr('data-tab-active');
+                $('#'+activeTab).attr('data-tab-active', '');;
+            }else{
+                $('#openTasksTab').attr('data-tab-active', '');
+            }
+        });
+
+        // Get active tab id
+        function getActiveId(aObj){
+            $('#openTasksTab').removeAttr('data-tab-active');
+            $(aObj).attr('data-tab-active', '');
+            console.log('current active: '+aObj.id);
+        }
+
+        // Write to local storage active tabs id
+        $('.tabs-medium > a').on('click', function(e) {
+            localStorage.setItem('activeTaskTab', $(e.target).attr('id'));
+            console.log('write to storage: '+$(e.target).attr('id'));
+        });
+
+
+        // Progress bar
+        let progressBar = document.getElementsByClassName('progress-bar');
+
+        Array.prototype.forEach.call(progressBar, function (el) {
+            // remove padding left
+            if (el.getAttribute('aria-valuenow') === '0') {
+                el.classList.remove("pl-3");
+            }
+        });
+
+        function editSprintModal(btnObj) {
+            let trObj = btnObj.closest(".row-id");
+            let trId = $(trObj).attr('id');
+
+            console.log("item id:" + $(trObj).attr('id'));
+
+            let name = $(trObj).find('.sprint-name').text();
+
+            let sprintStart = $(trObj).find('.sprint-start').text();
+            let sprintEnd = $(trObj).find('.sprint-end').text();
+
+            $('#sprintIdInput').val(trId);
+            $('#editSprintNameInput').val(name);
+            $('#editStartDateInput').val(sprintStart);
+            $('#editEndDateInput').val(sprintEnd);
+        }
+
+        function editBacklogModal(btnObj) {
+            let trObj = btnObj.closest(".backlog-id");
+            let trId = $(trObj).attr('id');
+
+            console.log("item id:" + $(trObj).attr('id'));
+
+            let description = $(trObj).find('.backlog-description').text().trim();
+            let priority = $(trObj).find('.backlog-priority').text().match(/\d+/);
+
+            $('#backlogIdInput').val(trId);
+            $('#backlogDescription').val(description);
+            $('#editPriorities').val(priority);
+
+            console.log('descr: ' + description + ' ; prior: ' + priority);
+        }
+    </script>
+</body>
