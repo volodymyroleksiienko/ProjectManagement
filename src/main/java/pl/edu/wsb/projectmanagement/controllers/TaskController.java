@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.edu.wsb.projectmanagement.entity.Task;
 import pl.edu.wsb.projectmanagement.service.SprintService;
@@ -21,12 +22,18 @@ public class TaskController {
     }
 
     @GetMapping("/create/{sprintId}")
-    public String getTask(@PathVariable int sprintId, Task task){
-//        task.setSprint(sprintService.findById(sprintId));
-//        taskService.save(task);
+    public String createTask(@PathVariable int sprintId,Model model){
+        model.addAttribute("sprintId",sprintId);
         return "create_task";
-//        return "redirect:/sprint/info/"+sprintId;
     }
+
+    @PostMapping("/create/{sprintId}")
+    public String createTask(@PathVariable int sprintId, Task task){
+        task.setSprint(sprintService.findById(sprintId));
+        taskService.save(task);
+        return "redirect:/sprint/info/"+sprintId;
+    }
+
 
     @GetMapping("/info/{id}")
     public String getTask(@PathVariable int id, Model model){
