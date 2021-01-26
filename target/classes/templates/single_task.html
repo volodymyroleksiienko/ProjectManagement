@@ -1,0 +1,585 @@
+<!DOCTYPE HTML>
+<html class="wide wow-animation" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <title>Task</title>
+    <link rel="stylesheet" type="text/css" th:href="@{styles/bootstrap.css}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{fonts/css/fontawesome-all.min.css}">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{app/icons/icon-192x192.png}">
+
+</head>
+
+<body class="theme-light">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <div id="page">
+        <div class="header header-fixed header-logo-center header-auto-show">
+            <a href="index.html" class="header-title">Task</a>
+            <a href="index.html" data-back-button class="header-icon header-icon-1"><i
+                    class="fas fa-chevron-left"></i></a>
+            <a href="#" data-menu="menu-main" class="header-icon header-icon-4"><i class="fas fa-bars"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-dark"><i
+                    class="fas fa-sun"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-light"><i
+                    class="fas fa-moon"></i></a>
+        </div>
+        <div class="page-title page-title-fixed">
+            <h1>Task</h1>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i
+                    class="fa fa-share-alt"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i
+                    class="fa fa-moon"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i
+                    class="fa fa-lightbulb color-yellow-dark"></i></a>
+            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-main"><i
+                    class="fa fa-bars"></i></a>
+        </div>
+        <div class="page-title-clear"></div>
+
+        <div class="page-content">
+            <div class="card card-style">
+                <div class="content mb-0">
+                    <h4 th:text="${task.getName()}">Task Name</h4>
+
+                    <div class="content mb-0 mt-3">
+                        <div class="row mb-0">
+                            <div class="col-6 pr-1">
+                                <div class="card card-style mx-0 mb-4 p-3">
+                                    <h6 class="font-14">Created</h6>
+                                    <h3 class="color-green-dark mb-0" th:text="${task.getCreated()}">01-01-2021</h3>
+                                </div>
+                            </div>
+                            <div class="col-6 pl-1">
+                                <div class="card card-style mx-0 mb-4 p-3">
+                                    <h6 class="font-14">Deadline</h6>
+                                    <h3 class="color-red-dark mb-0" th:text="${task.getDeadline()}">05-01-2021</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="mb-2">Assigned person:</h6>
+                    <div class="user-slider owl-carousel">
+                        <div class="user-left">
+                            <div class="d-flex">
+                                <div class="align-self-center">
+                                    <img src="images/avatars/5s.png" class="bg-yellow-dark mr-3 rounded-circle shadow-l"
+                                        width="50" />
+                                </div>
+                                <div class="align-self-center">
+                                    <h5 class="mt-1 mb-0">Johnatan Unixer</h5>
+                                    <p class="font-10 mt-n1 color-blue-dark">
+                                        Executive Officer
+                                    </p>
+                                </div>
+                                <div class="ml-auto">
+                                    <span class="next-slide-user badge bg-blue-dark mt-2 p-2 font-8">TAP FOR MORE</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-right">
+                            <div class="d-flex">
+                                <div class="align-self-center">
+                                    <h5 class="mt-1 mb-0">Johnatan Doe</h5>
+                                    <p class="font-10 mt-n1 color-blue-dark">
+                                        Executive Officer
+                                    </p>
+                                </div>
+                                <div class="ml-auto align-self-center">
+                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone">
+                                        <i class="fa fa-phone"></i>
+                                    </a>
+                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-red-dark mr-2 ml-2">
+                                        <i class="fas fa-times "></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider mt-3"></div>
+                    <a href="#" data-menu="close-project-modal"
+                        class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
+                </div>
+            </div>
+
+            <div class="card card-style">
+                <div class="content mb-0">
+                    <h4>Subtasks</h4>
+                    <p>
+                        <i class="fa fa-lightbulb color-yellow-dark"></i>
+                        You should mark all subtasks from the list to have an possibility to complete the task.
+                    </p>
+                    <div class="todo-list list-group list-custom-small mr-2">
+                        <a href="#" style="width: 100%; text-align: justify;" th:each="item : ${task.getItemList()}">
+                            <i class="fas fa-check rounded-xl color-red2-dark font-12 font-12"></i>
+                            <span th:text="${item.getDescription()}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s</span>
+                            <div class="form-check icon-check">
+                                <input class="form-check-input" type="checkbox" th:value="${item.isStatus()}" th:id="'check'+${item.getId()}" />
+                                <i class="icon-check-1 far fa-square color-gray-dark font-16"></i>
+                                <i class="icon-check-2 far fa-check-square font-16 color-highlight"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <a href="#" data-menu="close-project-modal"
+                        class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Edit sprint modal start -->
+        <div id="edit-sprint-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+            data-menu-height="auto">
+            <div class="menu-title">
+                <h1 class="font-800">Edit Sprint</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="content">
+                <div class="divider mt-n2"></div>
+                <form action="submit">
+                    <input type="hidden" id="sprintIdInput" name="sprintId" />
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight input-style-1-active">Name</span>
+                        <em>(required)</em>
+                        <input id="editSprintNameInput" class="form-control" type="name" placeholder="" />
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight input-style-1-active">Select Start Date</span>
+                        <!-- <em class="mr-4">(required)</em> -->
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <input id="editStartDateInput" type="date" value="2020-10-10" />
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight input-style-1-active">Select End Date</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <input id="editEndDateInput" type="date" value="1980-08-26" />
+                    </div>
+
+                    <div class="divider my-1"></div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <a href="#"
+                                class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s"><span><i
+                                        class="fas fa-trash-alt fa-lg"></i></span></a>
+                        </div>
+                        <div class="col-9">
+                            <button type="submit"
+                                class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Save
+                                Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Edit sprint modal end -->
+
+        <!-- Edit backlog modal start -->
+        <div id="edit-backlog-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+            data-menu-height="auto">
+            <div class="menu-title">
+                <h1 class="font-800">Edit Backlog</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="content">
+                <div class="divider mt-n2"></div>
+                <form action="submit">
+                    <input type="hidden" id="backlogIdInput" name="backlogId" />
+                    <div class="input-style-2 input-required">
+                        <span class="input-style-1-active" style="top: 10px;">Description</span>
+                        <em>(required)</em>
+                        <textarea id="backlogDescription" class="form-control" placeholder=""></textarea>
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="input-style-1-active">Priority</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select class="form-control" id="editPriorities">
+                            <option value="ACHIEVED">Achieved</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="divider my-1"></div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <a href="#"
+                                class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s"><span>
+                                    <i class="fas fa-trash-alt fa-lg"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-9">
+                            <button type="submit"
+                                class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Save
+                                Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Edit backlog modal end -->
+
+        <!-- Create task modal start -->
+        <div id="create-task-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+            data-menu-height="auto">
+            <div class="menu-title">
+                <h1 class="font-800">Create Task</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="content">
+                <div class="divider mt-n2"></div>
+                <form action="/createtask">
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight">Name</span>
+                        <em>(required)</em>
+                        <input class="form-control" type="name" placeholder="" />
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span class="color-highlight">Select Due Date</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <input type="date" value="1980-08-26" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="input-style input-style-2 input-required">
+                                <span style="top: 10px;">Subtask</span>
+                                <!-- <em>(required)</em> -->
+                                <textarea class="form-control" placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <a href="#" data-menu="create-backlog-modal"
+                                class="btn btn-full gradient-dark font-12 btn-m font-600 rounded-s">
+                                <span>
+                                    <i class="fas fa-plus fa-lg"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="input-style input-style-2">
+                        <span>Assign Person</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select class="form-control">
+                            <option value="default" selected>
+                                Not Selected
+                            </option>
+                            <option value="email1">Name 1</option>
+                            <option value="email2">Name 2</option>
+                            <option value="email3">Name 3</option>
+                            <option value="email4">Name 4</option>
+                            <option value="email5">Name 5</option>
+                        </select>
+                    </div>
+
+                    <div class="divider my-1"></div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit"
+                                class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Create
+                                Task</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Create task modal end -->
+
+        <!-- Create backlog modal start -->
+        <div id="create-backlog-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+            data-menu-height="auto">
+            <div class="menu-title">
+                <h1 class="font-800">Create Backlog</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="content">
+                <div class="divider mt-n2"></div>
+                <form action="/submit">
+                    <div class="input-style input-style-2 input-required">
+                        <span style="top: 10px;">Description</span>
+                        <em>(required)</em>
+                        <textarea class="form-control" placeholder=""></textarea>
+                    </div>
+
+                    <div class="input-style input-style-2 input-required">
+                        <span>Priority</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="divider my-1"></div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit"
+                                class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Create
+                                Backlog</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Create backlog modal end -->
+
+        <!-- Main menu start -->
+        <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-width="280" data-menu-active="nav-welcome">
+            <div class="card rounded-0 bg-6" style="height:150px">
+                <div class="card-top">
+                    <a href="#" class="close-menu float-right mr-2 text-center mt-3 icon-40 notch-clear"><i
+                            class="fa fa-times color-white"></i></a>
+                </div>
+                <div class="card-bottom">
+                    <h1 class="color-white pl-3 mb-n1 font-28">Name Surname</h1>
+                    <p class="mb-2 pl-3 font-12 color-white opacity-50">Position</p>
+                </div>
+                <div class="card-overlay bg-gradient"></div>
+            </div>
+            <div class="mt-4"></div>
+            <h6 class="menu-divider">Library</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a id="nav-homepages" href="index.html">
+                    <i class="fa fa-home gradient-green color-white"></i>
+                    <span>Homepage</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-components" href="index-components.html">
+                    <i class="fa fa-cog gradient-blue color-white"></i>
+                    <span>Components</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-pages" href="index-pages.html">
+                    <i class="fa fa-file gradient-brown color-white"></i>
+                    <span>Pages</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-media" href="index-projects.html">
+                    <i class="fa fa-camera gradient-magenta color-white"></i>
+                    <span>Media</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a id="nav-contact" href="#">
+                    <i class="fa fa-envelope gradient-teal color-white"></i>
+                    <span>Contact</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <h6 class="menu-divider mt-4">settings</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a href="#" data-menu="menu-colors">
+                    <i class="fa fa-brush gradient-highlight color-white"></i>
+                    <span>Highlights</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode">
+                    <i class="fa fa-moon gradient-dark color-white"></i>
+                    <span>Dark Mode</span>
+                    <div class="custom-control scale-switch ios-switch highlight-switch switch-s">
+                        <input type="checkbox" class="ios-input" id="switch-22">
+                        <label class="custom-control-label" for="switch-1"></label>
+                    </div>
+                </a>
+            </div>
+            <h6 class="menu-divider mt-4">Contacts</h6>
+            <div class="list-group list-custom-small list-menu">
+                <a href="#">
+                    <img src="images/pictures/1s.jpg">
+                    <span>John Droid</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#">
+                    <img src="images/pictures/5s.jpg">
+                    <span>Gina Seed</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a href="#">
+                    <img src="images/pictures/6s.jpg">
+                    <span>Jane Louder</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            <h6 class="menu-divider font-10 mt-4">Made by Roman Tymochko
+                <span class="copyright-year"></span>
+            </h6>
+        </div>
+        <!-- Main menu end -->
+
+        <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-height="370">
+            <div class="menu-title">
+                <p class="color-highlight">Tap a link to</p>
+                <h1>Share</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-0"></div>
+            <div class="content mt-0">
+                <div class="list-group list-custom-small list-icon-0">
+                    <a href="#" class="shareToFacebook">
+                        <i class="fab fa-facebook-f font-12 bg-facebook color-white shadow-l rounded-s"></i>
+                        <span>Facebook</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToTwitter">
+                        <i class="fab fa-twitter font-12 bg-twitter color-white shadow-l rounded-s"></i>
+                        <span>Twitter</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToLinkedIn">
+                        <i class="fab fa-linkedin-in font-12 bg-linkedin color-white shadow-l rounded-s"></i>
+                        <span>LinkedIn</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToWhatsApp">
+                        <i class="fab fa-whatsapp font-12 bg-whatsapp color-white shadow-l rounded-s"></i>
+                        <span>WhatsApp</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                    <a href="#" class="shareToEmail border-0">
+                        <i class="fa fa-envelope font-12 bg-mail color-white shadow-l rounded-s"></i>
+                        <span>Email</span>
+                        <i class="fa fa-angle-right pr-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-height="480">
+            <div class="menu-title">
+                <p class="color-highlight font-600">Choose your Favorite</p>
+                <h1>Highlight</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-2"></div>
+            <div class="content mt-0 ml-0 mr-0">
+                <div class="row mb-0">
+                    <div class="col-6">
+                        <div class="highlight-changer list-group list-custom-small list-menu">
+                            <a href="#" class="menu-active" data-highlight-style="styles/highlights/highlight-blue.css">
+                                <i class="gradient-blue color-white"></i>
+                                <span>Blue</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-red.css">
+                                <i class="gradient-red color-white"></i>
+                                <span>Red</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-orange.css">
+                                <i class="gradient-orange color-white"></i>
+                                <span>Orange</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-green.css">
+                                <i class="gradient-green color-white"></i>
+                                <span>Green</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-yellow.css">
+                                <i class="gradient-yellow color-white"></i>
+                                <span>Yellow</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="highlight-changer list-group list-custom-small list-menu">
+                            <a href="#" data-highlight-style="styles/highlights/highlight-dark.css">
+                                <i class="gradient-dark color-white"></i>
+                                <span>Dark</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-gray.css">
+                                <i class="gradient-gray color-white"></i>
+                                <span>Gray</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-teal.css">
+                                <i class="gradient-teal color-white"></i>
+                                <span>Teal</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-magenta.css">
+                                <i class="gradient-magenta color-white"></i>
+                                <span>Plum</span>
+                            </a>
+                            <a href="#" data-highlight-style="styles/highlights/highlight-brown.css">
+                                <i class="gradient-brown color-white"></i>
+                                <span>Brown</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider divider-margins mt-2"></div>
+            <a href="#"
+                class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
+    <script>
+        function editSprintModal(btnObj) {
+            let trObj = btnObj.closest(".row-id");
+            let trId = $(trObj).attr('id');
+
+            console.log("item id:" + $(trObj).attr('id'));
+
+            let name = $(trObj).find('.sprint-name').text();
+
+            let sprintStart = $(trObj).find('.sprint-start').text();
+            let sprintEnd = $(trObj).find('.sprint-end').text();
+
+            $('#sprintIdInput').val(trId);
+            $('#editSprintNameInput').val(name);
+            $('#editStartDateInput').val(sprintStart);
+            $('#editEndDateInput').val(sprintEnd);
+        }
+
+        function editBacklogModal(btnObj) {
+            let trObj = btnObj.closest(".backlog-id");
+            let trId = $(trObj).attr('id');
+
+            console.log("item id:" + $(trObj).attr('id'));
+
+            let description = $(trObj).find('.backlog-description').text().trim();
+            let priority = $(trObj).find('.backlog-priority').text().match(/\d+/);
+
+            $('#backlogIdInput').val(trId);
+            $('#backlogDescription').val(description);
+            $('#editPriorities').val(priority);
+
+            console.log('descr: ' + description + ' ; prior: ' + priority);
+        }
+    </script>
+</body>
