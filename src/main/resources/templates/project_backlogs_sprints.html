@@ -389,7 +389,7 @@
 
                     <div class="row">
                         <div class="col-3">
-                            <a href="#"
+                            <a id="deleteItemLink" href="#"
                                 class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s"><span>
                                     <i class="fas fa-trash-alt fa-lg"></i>
                                 </span>
@@ -757,6 +757,7 @@
         function editBacklogModal(btnObj) {
             let trObj = btnObj.closest(".backlog-id");
             let trId = $(trObj).attr('id');
+            let projectId = $('body').attr('id');
 
             console.log("item id:" + $(trObj).attr('id'));
 
@@ -766,6 +767,7 @@
             $('#backlogIdInput').val(trId);
             $('#backlogDescription').val(description);
             $('#editPriorities').val(priority);
+            $('#deleteItemLink').attr('href','/backlogs/delete/'+projectId+'?'+trId);
 
             console.log('descr: ' + description + ' ; prior: ' + priority);
         }
