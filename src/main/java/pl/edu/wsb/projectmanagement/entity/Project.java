@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Project {
+public class Project implements Comparable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -30,4 +30,9 @@ public class Project {
 
     @OneToMany(mappedBy = "project",cascade = CascadeType.REMOVE)
     private List<Sprint> sprintsList;
+
+    @Override
+    public int compareTo(Object o) {
+        return id-((Project) o).getId();
+    }
 }
