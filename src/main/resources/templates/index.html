@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en">
-
+<html class="wide wow-animation" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -46,21 +48,22 @@
       <a href="#" data-menu="create-project-modal"
         class="card card-style btn btn-full btn-m rounded-sm gradient-dark font-600">Start New Project</a>
       <!-- Project item start -->
-      <div class="card card-style">
+      <div class="card card-style"  th:each="p : ${projects}">
         <div class="content mb-0">
           <div class="content mb-0 mt-3">
-            <div class="row-id d-flex mb-4" id="45">
+            <div class="row-id d-flex mb-4" th:id="${p.getId()}">
               <div class="align-self-center" style="width: 80%;">
-                <a href="project_backlogs_sprints.html">
-                  <h4 class="project-name mb-0">Project Name 0</h4>
-                  <h4 class="project-description d-none">descr</h4>
+                <a th:href="@{'/projects/info/'+${p.getId()}}">
+                  <h4 class="project-name mb-0" th:text="${p.getName()}">Project Name 0</h4>
+                  <h4 class="project-description d-none" th:text="${p.getDescription()}">descr</h4>
                   <div class="w-100" style="display: inline-flex;">
-                    <h5 class="project-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
-                    <h5 class="project-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
+                    <h5 class="project-start font-12 mb-2 opacity-30 w-50" th:text="${p.getStarted()}">2020-02-02</h5>
+                    <h5 class="project-end font-12 mb-2 opacity-30 w-50" th:text="${p.getDeadline()}">2020-05-01</h5>
                   </div>
                   <div class="progress rounded-l" style="height: 14px">
                     <div class="progress-bar bg-highlight text-left pl-3 color-white" role="progressbar"
-                      style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                         th:style="'width: ' + ${p.getProgress()} + ';'" th:aria-valuenow="${p.getProgress()}"
+                         aria-valuemin="0" aria-valuemax="100" th:text="${p.getProgress()}+'% Complete'">
                       100% Complete
                     </div>
                   </div>
@@ -84,8 +87,8 @@
                     <img src="images/avatars/5s.png" class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" />
                   </div>
                   <div class="align-self-center">
-                    <h5 class="mt-1 mb-0">Johnatan Unixer</h5>
-                    <p class="font-10 mt-n1 color-blue-dark">
+                    <h5 class="mt-1 mb-0" th:text="${p.getOwner()?.getFirstName()}+' '+${p.getOwner()?.getLastName()}">Johnatan Unixer</h5>
+                    <p class="font-10 mt-n1 color-blue-dark" th:text="${p.getOwner()?.getPosition()}">
                       Executive Officer
                     </p>
                   </div>
@@ -97,13 +100,13 @@
               <div class="user-right">
                 <div class="d-flex">
                   <div class="align-self-center">
-                    <h5 class="mt-1 mb-0">Johnatan Doe</h5>
-                    <p class="font-10 mt-n1 color-blue-dark">
+                    <h5 class="mt-1 mb-0" th:text="${p.getOwner()?.getFirstName()}+' '+${p.getOwner()?.getLastName()}">Johnatan Doe</h5>
+                    <p class="font-10 mt-n1 color-blue-dark" th:text="${p.getOwner()?.getPosition()}">
                       Executive Officer
                     </p>
                   </div>
                   <div class="ml-auto align-self-center">
-                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone">
+                    <a th:href="'tel: '+${p.getOwner()?.getPhoneNumber()}" class="icon icon-xs rounded-circle shadow-l bg-phone">
                       <i class="fa fa-phone"></i>
                     </a>
                   </div>
@@ -126,28 +129,28 @@
       </div>
       <div class="content">
         <div class="divider mt-n2"></div>
-        <form action="create">
+        <form action="/projects/create" method="post">
           <div class="input-style input-style-2 input-required">
             <span class="color-highlight">Name</span>
             <em>(required)</em>
-            <input class="form-control" type="name" placeholder="" />
+            <input class="form-control" type="name" placeholder="" name="name"/>
           </div>
 
           <div class="input-style input-style-2 input-required">
             <span class="color-highlight">Description</span>
-            <input class="form-control" type="name" placeholder="" />
+            <input class="form-control" type="name" placeholder="" name="description"/>
           </div>
 
           <div class="input-style input-style-2 input-required">
             <span class="color-highlight">Select Start Date</span>
             <em><i class="fa fa-angle-down"></i></em>
-            <input type="date" value="2020-10-10" />
+            <input type="date" value="2020-10-10" name="started"/>
           </div>
 
           <div class="input-style input-style-2 input-required">
             <span class="color-highlight">Select End Date</span>
             <em><i class="fa fa-angle-down"></i></em>
-            <input type="date" value="1980-08-26" />
+            <input type="date" value="1980-08-26" name="deadline"/>
           </div>
 
           <div class="divider my-1"></div>
@@ -172,30 +175,30 @@
       </div>
       <div class="content">
         <div class="divider mt-n2"></div>
-        <form action="submit">
-          <input type="hidden" id="projectIdInput" name="projectId" />
+        <form action="/projects/update" method="post">
+          <input type="hidden" id="projectIdInput" name="id" />
           <div class="input-style input-style-2 input-required">
             <span class="color-highlight input-style-1-active">Name</span>
             <em>(required)</em>
-            <input id="editProjectNameInput" class="form-control" type="name" placeholder="" />
+            <input id="editProjectNameInput" class="form-control" type="name" placeholder="" name="name"/>
           </div>
 
           <div class="input-style input-style-2 ">
             <span class="color-highlight input-style-1-active">Description</span>
-            <input id="editProjectDescriptionInput" class="form-control" type="name" placeholder="" />
+            <input id="editProjectDescriptionInput" class="form-control" type="name" placeholder="" name="description"/>
           </div>
 
           <div class="input-style input-style-2 input-required">
             <span class="color-highlight input-style-1-active">Select Start Date</span>
             <!-- <em class="mr-4">(required)</em> -->
             <em><i class="fa fa-angle-down"></i></em>
-            <input id="editStartDateInput" type="date" value="2020-10-10" />
+            <input id="editStartDateInput" type="date" value="2020-10-10" name="started"/>
           </div>
 
           <div class="input-style input-style-2 input-required">
             <span class="color-highlight input-style-1-active">Select End Date</span>
             <em><i class="fa fa-angle-down"></i></em>
-            <input id="editEndDateInput" type="date" value="1980-08-26" />
+            <input id="editEndDateInput" type="date" value="1980-08-26" name="deadline"/>
           </div>
 
           <div class="divider my-1"></div>

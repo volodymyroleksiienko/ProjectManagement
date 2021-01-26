@@ -2,10 +2,7 @@ package pl.edu.wsb.projectmanagement.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -15,4 +12,8 @@ public class Backlog {
     private int id;
 
     private String description;
+    private int priority;
+
+    @ManyToOne
+    private Project project;
 }
