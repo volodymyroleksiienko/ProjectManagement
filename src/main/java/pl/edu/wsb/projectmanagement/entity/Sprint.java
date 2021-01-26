@@ -14,9 +14,9 @@ public class Sprint {
     private int id;
 
     private String name;
-    private double progress;
-    private Date startDate;
-    private Date endDate;
+    private int progress;
+    private String startDate;
+    private String endDate;
 
     @ManyToOne
     private Project project;

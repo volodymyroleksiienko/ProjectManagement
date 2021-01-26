@@ -22,7 +22,16 @@ public class SprintServiceImpl implements SprintService {
 
     @Override
     public Sprint update(Sprint old) {
-        return sprintJPA.save(old);
+        if(old.getId()>0){
+            Sprint sprint =  sprintJPA.findById(old.getId()).orElse(null);
+            if (sprint!=null){
+                sprint.setName(old.getName());
+                sprint.setStartDate(old.getStartDate());
+                sprint.setEndDate(old.getEndDate());
+                return sprintJPA.save(old);
+            }
+        }
+        return null;
     }
 
     @Override
