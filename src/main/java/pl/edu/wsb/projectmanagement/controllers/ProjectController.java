@@ -36,7 +36,7 @@ public class ProjectController {
         return "redirect:/projects";
     }
 
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     public String deleteProject(int id){
         projectService.deleteByID(id);
         return "redirect:/projects";

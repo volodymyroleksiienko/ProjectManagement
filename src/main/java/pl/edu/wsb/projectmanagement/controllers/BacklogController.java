@@ -1,6 +1,7 @@
 package pl.edu.wsb.projectmanagement.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ public class BacklogController {
         return "redirect:/projects/info/"+projectId;
     }
 
-    @PostMapping("/delete/{projectId}")
+    @GetMapping("/delete/{projectId}")
     public String deleteBacklog(@PathVariable int projectId, int id){
         backlogService.deleteByID(id);
         return "redirect:/projects/info/"+projectId;
