@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html class="wide wow-animation" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Projects</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/bootstrap.css}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/fonts/css/fontawesome-all.min.css}">
+  <link rel="apple-touch-icon" sizes="180x180" th:href="@{/app/icons/icon-192x192.png}">
+
+</head>
+
+<body class="theme-light">
+  <div id="preloader">
+    <div class="spinner-border color-highlight" role="status"></div>
+  </div>
+  <div id="page">
+    <div class="header header-auto-show header-fixed header-logo-center">
+      <a href="index.html" class="header-title">Projects</a>
+      <a href="#" data-menu="menu-main" class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
+      <a href="#" data-toggle-theme class="header-icon header-icon-4 show-on-theme-dark"><i class="fas fa-sun"></i></a>
+      <a href="#" data-toggle-theme class="header-icon header-icon-4 show-on-theme-light"><i
+          class="fas fa-moon"></i></a>
+      <a href="#" data-menu="menu-share" class="header-icon header-icon-3"><i class="fas fa-share-alt"></i></a>
+    </div>
+    <div class="page-title page-title-fixed">
+      <h1>Projects</h1>
+      <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i
+          class="fa fa-share-alt"></i></a>
+      <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i
+          class="fa fa-moon"></i></a>
+      <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i
+          class="fa fa-lightbulb color-yellow-dark"></i></a>
+      <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-main"><i
+          class="fa fa-bars"></i></a>
+    </div>
+    <div class="page-title-clear"></div>
+
+    <div>
+      <a href="#" data-menu="create-project-modal"
+        class="card card-style btn btn-full btn-m rounded-sm gradient-dark font-600">Start New Project</a>
+      <!-- Project item start -->
+      <div class="card card-style"  th:each="p : ${projects}">
+        <div class="content mb-0">
+          <div class="content mb-0 mt-3">
+            <div class="row-id d-flex mb-4" th:id="${p.getId()}">
+              <div class="align-self-center" style="width: 80%;">
+                <a th:href="@{'/projects/info/'+${p.getId()}}">
+                  <h4 class="project-name mb-0" th:text="${p.getName()}">Project Name 0</h4>
+                  <h4 class="project-description d-none" th:text="${p.getDescription()}">descr</h4>
+                  <div class="w-100" style="display: inline-flex;">
+                    <h5 class="project-start font-12 mb-2 opacity-30 w-50" th:text="${p.getStarted()}">2020-02-02</h5>
+                    <h5 class="project-end font-12 mb-2 opacity-30 w-50" th:text="${p.getDeadline()}">2020-05-01</h5>
+                  </div>
+                  <div class="progress rounded-l" style="height: 14px">
+                    <div class="progress-bar bg-highlight text-left pl-3 color-white" role="progressbar"
+                         th:style="'width: ' + ${p.getProgress()} + ';'" th:aria-valuenow="${p.getProgress()}"
+                         aria-valuemin="0" aria-valuemax="100" th:text="${p.getProgress()}+'% Complete'">
+                      100% Complete
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="align-self-center ml-auto">
+                <h1 class="font-20">
+                  <a href="#" class="edit-button" data-menu="edit-project-modal" onclick="editProjectModal(this)">
+                    <i class="fas fa-pen color-highlight"></i>
+                  </a>
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="content mb-3 mt-3">
+            <h6 class="mb-2">Owner:</h6>
+            <div class="user-slider owl-carousel">
+              <div class="user-left">
+                <div class="d-flex">
+                  <div class="align-self-center">
+                    <img src="images/avatars/5s.png" class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" />
+                  </div>
+                  <div class="align-self-center">
+                    <h5 class="mt-1 mb-0" th:text="${p.getOwner()?.getFirstName()}+' '+${p.getOwner()?.getLastName()}">Johnatan Unixer</h5>
+                    <p class="font-10 mt-n1 color-blue-dark" th:text="${p.getOwner()?.getPosition()}">
+                      Executive Officer
+                    </p>
+                  </div>
+                  <div class="ml-auto">
+                    <span class="next-slide-user badge bg-blue-dark mt-2 p-2 font-8">TAP FOR MORE</span>
+                  </div>
+                </div>
+              </div>
+              <div class="user-right">
+                <div class="d-flex">
+                  <div class="align-self-center">
+                    <h5 class="mt-1 mb-0" th:text="${p.getOwner()?.getFirstName()}+' '+${p.getOwner()?.getLastName()}">Johnatan Doe</h5>
+                    <p class="font-10 mt-n1 color-blue-dark" th:text="${p.getOwner()?.getPosition()}">
+                      Executive Officer
+                    </p>
+                  </div>
+                  <div class="ml-auto align-self-center">
+                    <a th:href="'tel: '+${p.getOwner()?.getPhoneNumber()}" class="icon icon-xs rounded-circle shadow-l bg-phone">
+                      <i class="fa fa-phone"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Project item end -->
+    </div>
+
+
+    <!-- Create project modal start -->
+    <div id="create-project-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+      data-menu-height="auto">
+      <div class="menu-title">
+        <h1 class="font-800">Start New Project</h1>
+        <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+      </div>
+      <div class="content">
+        <div class="divider mt-n2"></div>
+        <form action="/projects/create" method="post">
+          <div class="input-style input-style-2 input-required">
+            <span class="color-highlight">Name</span>
+            <em>(required)</em>
+            <input class="form-control" type="name" placeholder="" name="name"/>
+          </div>
+
+          <div class="input-style input-style-2 input-required">
+            <span class="color-highlight">Description</span>
+            <input class="form-control" type="name" placeholder="" name="description"/>
+          </div>
+
+          <div class="input-style input-style-2 input-required">
+            <span class="color-highlight">Select Start Date</span>
+            <em><i class="fa fa-angle-down"></i></em>
+            <input type="date" value="2020-10-10" name="started"/>
+          </div>
+
+          <div class="input-style input-style-2 input-required">
+            <span class="color-highlight">Select End Date</span>
+            <em><i class="fa fa-angle-down"></i></em>
+            <input type="date" value="1980-08-26" name="deadline"/>
+          </div>
+
+          <div class="divider my-1"></div>
+
+          <div class="row">
+            <div class="col-12">
+              <button type="submit" class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Start
+                Project</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Create project modal end -->
+
+    <!-- Edit project modal start -->
+    <div id="edit-project-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
+      data-menu-height="auto">
+      <div class="menu-title">
+        <h1 class="font-800">Edit Project</h1>
+        <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+      </div>
+      <div class="content">
+        <div class="divider mt-n2"></div>
+        <form action="/projects/update" method="post">
+          <input type="hidden" id="projectIdInput" name="id" />
+          <div class="input-style input-style-2 input-required">
+            <span class="color-highlight input-style-1-active">Name</span>
+            <em>(required)</em>
+            <input id="editProjectNameInput" class="form-control" type="name" placeholder="" name="name"/>
+          </div>
+
+          <div class="input-style input-style-2 ">
+            <span class="color-highlight input-style-1-active">Description</span>
+            <input id="editProjectDescriptionInput" class="form-control" type="name" placeholder="" name="description"/>
+          </div>
+
+          <div class="input-style input-style-2 input-required">
+            <span class="color-highlight input-style-1-active">Select Start Date</span>
+            <!-- <em class="mr-4">(required)</em> -->
+            <em><i class="fa fa-angle-down"></i></em>
+            <input id="editStartDateInput" type="date" value="2020-10-10" name="started"/>
+          </div>
+
+          <div class="input-style input-style-2 input-required">
+            <span class="color-highlight input-style-1-active">Select End Date</span>
+            <em><i class="fa fa-angle-down"></i></em>
+            <input id="editEndDateInput" type="date" value="1980-08-26" name="deadline"/>
+          </div>
+
+          <div class="divider my-1"></div>
+
+          <div class="row">
+            <div class="col-3">
+              <a href="#" class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s"><span><i
+                    class="fas fa-trash-alt fa-lg"></i></span></a>
+            </div>
+            <div class="col-9">
+              <button type="submit" class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Save
+                Changes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Edit project modal end -->
+
+    <!-- Main menu start -->
+    <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-width="280" data-menu-active="nav-welcome">
+      <div class="card rounded-0 bg-6" style="height: 150px">
+        <div class="card-top">
+          <a href="#" class="close-menu float-right mr-2 text-center mt-3 icon-40 notch-clear"><i
+              class="fa fa-times color-white"></i></a>
+        </div>
+        <div class="card-bottom">
+          <h1 class="color-white pl-3 mb-n1 font-28">Name Surname</h1>
+          <p class="mb-2 pl-3 font-12 color-white opacity-50">Position</p>
+        </div>
+        <div class="card-overlay bg-gradient"></div>
+      </div>
+      <div class="mt-4"></div>
+      <h6 class="menu-divider">Library</h6>
+      <div class="list-group list-custom-small list-menu">
+        <a id="nav-homepages" href="index.html">
+          <i class="fa fa-home gradient-green color-white"></i>
+          <span>Homepage</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a id="nav-components" href="index-components.html">
+          <i class="fa fa-cog gradient-blue color-white"></i>
+          <span>Components</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a id="nav-pages" href="index-pages.html">
+          <i class="fa fa-file gradient-brown color-white"></i>
+          <span>Pages</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a id="nav-media" href="index-projects.html">
+          <i class="fa fa-camera gradient-magenta color-white"></i>
+          <span>Media</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a id="nav-contact" href="#">
+          <i class="fa fa-envelope gradient-teal color-white"></i>
+          <span>Contact</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+      <h6 class="menu-divider mt-4">settings</h6>
+      <div class="list-group list-custom-small list-menu">
+        <a href="#" data-menu="menu-colors">
+          <i class="fa fa-brush gradient-highlight color-white"></i>
+          <span>Highlights</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode">
+          <i class="fa fa-moon gradient-dark color-white"></i>
+          <span>Dark Mode</span>
+          <div class="custom-control scale-switch ios-switch highlight-switch switch-s">
+            <input type="checkbox" class="ios-input" id="switch-22" />
+            <label class="custom-control-label" for="switch-1"></label>
+          </div>
+        </a>
+      </div>
+      <h6 class="menu-divider mt-4">Contacts</h6>
+      <div class="list-group list-custom-small list-menu">
+        <a href="#">
+          <img src="images/pictures/1s.jpg" />
+          <span>John Droid</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="#">
+          <img src="images/pictures/5s.jpg" />
+          <span>Gina Seed</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="#">
+          <img src="images/pictures/6s.jpg" />
+          <span>Jane Louder</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+      <h6 class="menu-divider font-10 mt-4">
+        Made with <i class="fa fa-heart color-red-dark pl-1 pr-1"></i> by
+        Enabled in
+        <span class="copyright-year"></span>
+      </h6>
+    </div>
+    <!-- Main menu end -->
+
+    <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-height="370">
+      <div class="menu-title">
+        <p class="color-highlight">Tap a link to</p>
+        <h1>Share</h1>
+        <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+      </div>
+      <div class="divider divider-margins mt-3 mb-0"></div>
+      <div class="content mt-0">
+        <div class="list-group list-custom-small list-icon-0">
+          <a href="#" class="shareToFacebook">
+            <i class="fab fa-facebook-f font-12 bg-facebook color-white shadow-l rounded-s"></i>
+            <span>Facebook</span>
+            <i class="fa fa-angle-right pr-1"></i>
+          </a>
+          <a href="#" class="shareToTwitter">
+            <i class="fab fa-twitter font-12 bg-twitter color-white shadow-l rounded-s"></i>
+            <span>Twitter</span>
+            <i class="fa fa-angle-right pr-1"></i>
+          </a>
+          <a href="#" class="shareToLinkedIn">
+            <i class="fab fa-linkedin-in font-12 bg-linkedin color-white shadow-l rounded-s"></i>
+            <span>LinkedIn</span>
+            <i class="fa fa-angle-right pr-1"></i>
+          </a>
+          <a href="#" class="shareToWhatsApp">
+            <i class="fab fa-whatsapp font-12 bg-whatsapp color-white shadow-l rounded-s"></i>
+            <span>WhatsApp</span>
+            <i class="fa fa-angle-right pr-1"></i>
+          </a>
+          <a href="#" class="shareToEmail border-0">
+            <i class="fa fa-envelope font-12 bg-mail color-white shadow-l rounded-s"></i>
+            <span>Email</span>
+            <i class="fa fa-angle-right pr-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-height="480">
+      <div class="menu-title">
+        <p class="color-highlight font-600">Choose your Favorite</p>
+        <h1>Highlight</h1>
+        <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+      </div>
+      <div class="divider divider-margins mt-3 mb-2"></div>
+      <div class="content mt-0 ml-0 mr-0">
+        <div class="row mb-0">
+          <div class="col-6">
+            <div class="highlight-changer list-group list-custom-small list-menu">
+              <a href="#" class="menu-active" data-highlight-style="styles/highlights/highlight-blue.css">
+                <i class="gradient-blue color-white"></i>
+                <span>Blue</span>
+              </a>
+              <a href="#" data-highlight-style="styles/highlights/highlight-red.css">
+                <i class="gradient-red color-white"></i>
+                <span>Red</span>
+              </a>
+              <a href="#" data-highlight-style="styles/highlights/highlight-orange.css">
+                <i class="gradient-orange color-white"></i>
+                <span>Orange</span>
+              </a>
+              <a href="#" data-highlight-style="styles/highlights/highlight-green.css">
+                <i class="gradient-green color-white"></i>
+                <span>Green</span>
+              </a>
+              <a href="#" data-highlight-style="styles/highlights/highlight-yellow.css">
+                <i class="gradient-yellow color-white"></i>
+                <span>Yellow</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="highlight-changer list-group list-custom-small list-menu">
+              <a href="#" data-highlight-style="styles/highlights/highlight-dark.css">
+                <i class="gradient-dark color-white"></i>
+                <span>Dark</span>
+              </a>
+              <a href="#" data-highlight-style="styles/highlights/highlight-gray.css">
+                <i class="gradient-gray color-white"></i>
+                <span>Gray</span>
+              </a>
+              <a href="#" data-highlight-style="styles/highlights/highlight-teal.css">
+                <i class="gradient-teal color-white"></i>
+                <span>Teal</span>
+              </a>
+              <a href="#" data-highlight-style="styles/highlights/highlight-magenta.css">
+                <i class="gradient-magenta color-white"></i>
+                <span>Plum</span>
+              </a>
+              <a href="#" data-highlight-style="styles/highlights/highlight-brown.css">
+                <i class="gradient-brown color-white"></i>
+                <span>Brown</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="divider divider-margins mt-2"></div>
+      <a href="#"
+        class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
+    </div>
+  </div>
+  <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
+  <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
+
+  <script>
+    // Progress bar
+    let progressBar = document.getElementsByClassName('progress-bar');
+
+    Array.prototype.forEach.call(progressBar, function (el) {
+      // remove padding left
+      if (el.getAttribute('aria-valuenow') === '0') {
+        el.classList.remove("pl-3");
+      }
+    })
+
+    function editProjectModal(btnObj) {
+      let trObj = btnObj.closest(".row-id");
+      let trId = $(trObj).attr('id');
+
+      console.log("item id:" + $(trObj).attr('id'));
+
+      let name = $(trObj).find('.project-name').text();
+      let description = $(trObj).find('.project-description').text();
+      let sprintStart = $(trObj).find('.project-start').text();
+      let sprintEnd = $(trObj).find('.project-end').text();
+
+      $('#projectIdInput').val(trId);
+      $('#editProjectNameInput').val(name);
+      $('#editProjectDescriptionInput').val(description);
+      $('#editStartDateInput').val(sprintStart);
+      $('#editEndDateInput').val(sprintEnd);
+      $('#deleteItemLink').attr('href','/projects/delete?id='+trId);
+    }
+  </script>
+</body>
+
+</html>
