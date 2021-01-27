@@ -15,7 +15,6 @@
     <artifactId>ProjectManagement</artifactId>
     <version>1.0</version>
     <name>projectmanagement</name>
-    <packaging>war</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
