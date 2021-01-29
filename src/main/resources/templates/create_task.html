@@ -63,13 +63,13 @@
                         <div class="input-style input-style-2 input-required">
                             <span class="color-highlight">Name</span>
                             <em>(required)</em>
-                            <input class="form-control" type="name" placeholder="" />
+                            <input class="form-control" type="name" placeholder="" name="name"/>
                         </div>
 
                         <div class="input-style input-style-2 input-required">
                             <span class="color-highlight">Select Due Date</span>
                             <em><i class="fa fa-angle-down"></i></em>
-                            <input type="date" value="1980-08-26" />
+                            <input type="date" value="1980-08-26" name="deadline"/>
                         </div>
 
                         <div class="row mb-0">
@@ -77,7 +77,7 @@
                                 <div class="input-style input-style-2 input-required">
                                     <span>Subtask</span>
                                     <!-- <em>(required)</em> -->
-                                    <textarea id="subtaskDescription" class="form-control" placeholder=""></textarea>
+                                    <textarea id="subtaskDescription" class="form-control" placeholder="" name="description"></textarea>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -97,13 +97,9 @@
                         <div class="input-style input-style-2">
                             <span>Assign Person</span>
                             <em><i class="fa fa-angle-down"></i></em>
-                            <select class="form-control">
-                                <option value="default" selected>Not Selected</option>
-                                <option value="email1">Name 1</option>
-                                <option value="email2">Name 2</option>
-                                <option value="email3">Name 3</option>
-                                <option value="email4">Name 4</option>
-                                <option value="email5">Name 5</option>
+                            <select class="form-control" name="assignee">
+                                <option value="0" selected>Not Selected</option>
+                                <option th:value="${u.getId()}" th:each="u :${users}" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Name</option>
                             </select>
                         </div>
 
@@ -307,35 +303,36 @@
     <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
-    <script type="text/javascript">
-        let tempId = document.getElementsByClassName("subtask-list-item").length;
-        console.log("temp: " + tempId);
+        <script type="text/javascript">
+            let tempId = document.getElementsByClassName("subtask-list-item").length;
+            console.log("temp: " + tempId);
 
-        $("#createSubtaskItem" ).on( "click", function() {
-            let subTaskItem = $('#subtaskDescription').val();
-            console.log('item: ' + subTaskItem);
+            $("#createSubtaskItem" ).on( "click", function() {
+                let subTaskItem = $('#subtaskDescription').val();
+                console.log('item: ' + subTaskItem);
 
-            tempId = tempId + 1;
-            console.log("temp_n: " + tempId);
+                tempId = tempId + 1;
+                console.log("temp_n: " + tempId);
 
-            if (subTaskItem !== '') {
-                $("#subtasksList").append('<li id="' + tempId +
-                    '" class="d-flex subtask-list-item" style="margin-bottom: 1rem;"><i class="fa fa-check color-green-dark align-self-center"></i><p class="subtask-description mb-0 align-self-center">' +
-                    subTaskItem +
-                    '</p><button type="button" onclick="deleteSubtaskModal(this)" class="edit-subtask-a ml-auto pl-1 align-self-center" style="width: 10%; border: none; background: transparent"><i class="fas fa-trash-alt fa-lg color-highlight"></i></button></li>'
-                );
+                if (subTaskItem !== '') {
+                    $("#subtasksList").append('<li id="' + tempId +
+                        '" class="d-flex subtask-list-item" style="margin-bottom: 1rem;"><i class="fa fa-check color-green-dark align-self-center"></i><p class="subtask-description mb-0 align-self-center">' +
+                        subTaskItem +
+                        '</p><button type="button" onclick="deleteSubtaskModal(this)" class="edit-subtask-a ml-auto pl-1 align-self-center" style="width: 10%; border: none; background: transparent"><i class="fas fa-trash-alt fa-lg color-highlight"></i></button></li>'
+                    );
 
-                document.getElementById(tempId).getElementsByTagName('button')[0].setAttribute('data-menu',
-                    'edit-subtask-modal');
+                    document.getElementById(tempId).getElementsByTagName('button')[0].setAttribute('data-menu',
+                        'edit-subtask-modal');
 
-                $('#subtaskDescription').val('');
-                $('#subtaskDescription').focusout();
-                console.log('added');
+                    $('#subtaskDescription').val('');
+                    $('#subtaskDescription').focusout();
+                    console.log('added');
+                }
+            });
+
+            function deleteSubtaskModal(btnObj) {
+                let trObj = $(btnObj).parent().remove();
             }
-        });
-
-        function deleteSubtaskModal(btnObj) {
-            let trObj = $(btnObj).parent().remove();
-        }
-    </script>
+        </script>
 </body>
+</html>
