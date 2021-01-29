@@ -2,10 +2,7 @@ package pl.edu.wsb.projectmanagement.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.edu.wsb.projectmanagement.entity.Sprint;
 import pl.edu.wsb.projectmanagement.entity.Task;
 import pl.edu.wsb.projectmanagement.entity.User;
@@ -40,10 +37,12 @@ public class TaskController {
         return "create_task";
     }
 
+    @ResponseBody
     @PostMapping("/create/{sprintId}")
-    public String createTask(@PathVariable int sprintId, Task task){
+    public String createTask(@PathVariable int sprintId, Task task,@RequestParam("subTasks") String[] subTasks, int assignee){
         task.setSprint(sprintService.findById(sprintId));
-        taskService.save(task);
+        task.setAssignee(userService.findById(assignee));
+        taskService.save(task,subTasks);
         return "redirect:/sprint/info/"+sprintId;
     }
 
@@ -53,5 +52,6 @@ public class TaskController {
         model.addAttribute("task",taskService.findById(id));
         return "single_task";
     }
+
 
 }

@@ -3,6 +3,8 @@ package pl.edu.wsb.projectmanagement.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -14,12 +16,11 @@ public class Task {
     private int id;
 
     private String name;
-    private String description;
     private double progress;
     @ManyToOne
     private User assignee;
-    private Date created;
-    private Date deadline;
+    private String created = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE);
+    private String deadline;
 
     @OneToMany(mappedBy = "task",cascade = CascadeType.ALL)
     private List<TaskItem> itemList;
@@ -28,5 +29,5 @@ public class Task {
     private Sprint sprint;
 
     @Enumerated(EnumType.STRING)
-    private TaskStatus taskStatus;
+    private TaskStatus taskStatus=TaskStatus.OPEN;
 }

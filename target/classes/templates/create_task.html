@@ -60,7 +60,7 @@
                             description.</li>
                     </ol>
                     <form id="createTaskForm">
-                        <input type="hidden" id="createTaskSprintId">
+                        <input type="hidden" id="createTaskSprintId" th:value="${sprintId}">
                         <div class="input-style input-style-2 input-required">
                             <span class="color-highlight">Name</span>
                             <em>(required)</em>
@@ -340,13 +340,8 @@
                 let taskName =   $('#createTaskName').val();
                 let dueDate =    $('#createTaskDueDate').val();
                 let assignee =   $('#assigneeList').val();
-                // let subTasks =   $('#subtasksList>li');
                 var subTasks = document.getElementsByClassName('subtask-description');
                 let arr =[];
-
-                // for (let i = 0; i<subTasks.length;i++){
-                //     arr[i] = $('subTasks')[i].;
-                // }
 
                 Array.prototype.forEach.call(subTasks, function (el) {
                     console.log(el)
@@ -359,25 +354,25 @@
                 if (taskName !== "" && dueDate !== "" ) {
                     $.ajax({
                         method: "post",
-                        url: "/",
+                        url: "/task/create/"+sprintId,
                         contextType: "application/json",
                         data: {
                             sprintId: sprintId,
-                            taskName: taskName,
-                            dueDate: dueDate,
+                            name: taskName,
+                            deadline: dueDate,
                             assignee: assignee,
                             subTasks: arr
                         },
                         traditional: true,
                         success: function (obj) {
-                            alert("Запись успешно добавлена!");
+                            alert("Success!");
                         },
                         error: function () {
-                            alert("Заполните все поля!");
+                            alert("Error!");
                         }
                     });
                 } else {
-                    alert("Заполните все поля!");
+                    alert("Fill in all fields!");
                 }
             }
         </script>
