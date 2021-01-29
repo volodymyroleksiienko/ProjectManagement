@@ -26,7 +26,9 @@ public class TaskServiceImpl implements TaskService {
     public Task save(Task task, String[] subTasks) {
         List<TaskItem> taskItems = new ArrayList<>();
         for (String item:subTasks) {
-            taskItems.add(new TaskItem(item,false));
+            TaskItem taskItem = new TaskItem(item,false);
+            taskItem.setTask(task);
+            taskItems.add(taskItem);
         }
         task.setItemList(taskItems);
         return save(task);
