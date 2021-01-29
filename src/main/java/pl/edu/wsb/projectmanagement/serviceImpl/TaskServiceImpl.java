@@ -3,6 +3,7 @@ package pl.edu.wsb.projectmanagement.serviceImpl;
 import org.springframework.stereotype.Service;
 import pl.edu.wsb.projectmanagement.entity.Task;
 import pl.edu.wsb.projectmanagement.entity.TaskItem;
+import pl.edu.wsb.projectmanagement.entity.TaskStatus;
 import pl.edu.wsb.projectmanagement.jpa.TaskJPA;
 import pl.edu.wsb.projectmanagement.service.TaskService;
 
@@ -42,6 +43,11 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task findById(int id) {
         return taskJPA.findById(id).orElse(new Task());
+    }
+
+    @Override
+    public List<Task> findByTaskStatus(TaskStatus status) {
+        return taskJPA.findByTaskStatus(status);
     }
 
     @Override

@@ -47,6 +47,23 @@ public class TaskController {
     }
 
 
+    @GetMapping("/update/{taskId}")
+    public String updateTask(@PathVariable int taskId,Model model){
+        Task task = taskService.findById(taskId);
+        Sprint sprint = sprintService.findById(task.getSprint().getId());
+        Set<User> colab = new TreeSet<>(sprint.getProject().getTeamList());
+        colab.add(sprint.getProject().getOwner());
+        model.addAttribute("task",task);
+        model.addAttribute("users",colab);
+        return "edit_task";
+    }
+
+    @PostMapping("/update/{taskId}")
+    public String updateTask(@PathVariable int taskId,Task task){
+        taskService.update(task);
+        return "redirect:/sprint/info/"+taskService.findById(taskId).getSprint().getId();
+    }
+
     @GetMapping("/info/{id}")
     public String getTask(@PathVariable int id, Model model){
         model.addAttribute("task",taskService.findById(id));
