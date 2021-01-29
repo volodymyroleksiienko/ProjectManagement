@@ -83,8 +83,7 @@
                                     </div>
                                     <div class="align-self-center ml-auto" style="display: inline-flex;">
                                         <h1 class="font-20">
-                                            <a href="#" data-menu="edit-sprint-modal"
-                                               onclick="editSprintModal(this)">
+                                            <a th:href="/task/update/{t.}">
                                                 <i class="fas fa-pen color-highlight"></i>
                                             </a>
                                         </h1>
@@ -449,8 +448,6 @@
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
     <script>
-
-
         $(document).ready(function(){
             let activeTab = localStorage.getItem('activeTaskTab');
             console.log("Local storage: "+activeTab);
@@ -485,39 +482,6 @@
                 el.classList.remove("pl-3");
             }
         });
-
-        function editSprintModal(btnObj) {
-            let trObj = btnObj.closest(".row-id");
-            let trId = $(trObj).attr('id');
-
-            console.log("item id:" + $(trObj).attr('id'));
-
-            let name = $(trObj).find('.sprint-name').text();
-
-            let sprintStart = $(trObj).find('.sprint-start').text();
-            let sprintEnd = $(trObj).find('.sprint-end').text();
-
-            $('#sprintIdInput').val(trId);
-            $('#editSprintNameInput').val(name);
-            $('#editStartDateInput').val(sprintStart);
-            $('#editEndDateInput').val(sprintEnd);
-        }
-
-        function editBacklogModal(btnObj) {
-            let trObj = btnObj.closest(".backlog-id");
-            let trId = $(trObj).attr('id');
-
-            console.log("item id:" + $(trObj).attr('id'));
-
-            let description = $(trObj).find('.backlog-description').text().trim();
-            let priority = $(trObj).find('.backlog-priority').text().match(/\d+/);
-
-            $('#backlogIdInput').val(trId);
-            $('#backlogDescription').val(description);
-            $('#editPriorities').val(priority);
-
-            console.log('descr: ' + description + ' ; prior: ' + priority);
-        }
     </script>
 </body>
 
