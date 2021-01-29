@@ -59,17 +59,18 @@
                         <li>Create additional check list for the task or just leave what should be done in task's
                             description.</li>
                     </ol>
-                    <form action="/createtask">
+                    <form id="createTaskForm">
+                        <input type="hidden" id="createTaskSprintId">
                         <div class="input-style input-style-2 input-required">
                             <span class="color-highlight">Name</span>
                             <em>(required)</em>
-                            <input class="form-control" type="name" placeholder="" name="name"/>
+                            <input class="form-control" id="createTaskName" type="name" placeholder="" name="name"/>
                         </div>
 
                         <div class="input-style input-style-2 input-required">
                             <span class="color-highlight">Select Due Date</span>
                             <em><i class="fa fa-angle-down"></i></em>
-                            <input type="date" value="1980-08-26" name="deadline"/>
+                            <input type="date" value="1980-08-26" id="createTaskDueDate" name="deadline"/>
                         </div>
 
                         <div class="row mb-0">
@@ -97,7 +98,7 @@
                         <div class="input-style input-style-2">
                             <span>Assign Person</span>
                             <em><i class="fa fa-angle-down"></i></em>
-                            <select class="form-control" name="assignee">
+                            <select class="form-control" name="assignee" id="assigneeList">
                                 <option value="0" selected>Not Selected</option>
                                 <option th:value="${u.getId()}" th:each="u :${users}" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Name</option>
                             </select>
@@ -107,7 +108,7 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Create Task</button>
+                                <button type="button" onclick="sendAjaxToCreateTask()" class="btn btn-full gradient-blue font-12 btn-m font-600 mt-3 rounded-s w-100">Create Task</button>
                             </div>
                         </div>
                     </form>
@@ -303,7 +304,6 @@
     <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
-    <div data-role="page">
         <script type="text/javascript">
             let tempId = document.getElementsByClassName("subtask-list-item").length;
             console.log("temp: " + tempId);
@@ -334,7 +334,52 @@
             function deleteSubtaskModal(btnObj) {
                 let trObj = $(btnObj).parent().remove();
             }
+
+            function sendAjaxToCreateTask(){
+                let sprintId =   $('#createTaskSprintId').val();
+                let taskName =   $('#createTaskName').val();
+                let dueDate =    $('#createTaskDueDate').val();
+                let assignee =   $('#assigneeList').val();
+                // let subTasks =   $('#subtasksList>li');
+                var subTasks = document.getElementsByClassName('subtask-description');
+                let arr =[];
+
+                // for (let i = 0; i<subTasks.length;i++){
+                //     arr[i] = $('subTasks')[i].;
+                // }
+
+                Array.prototype.forEach.call(subTasks, function (el) {
+                    console.log(el)
+                    arr.push(el.innerHTML);
+                });
+
+                console.log(arr);
+
+
+                if (taskName !== "" && dueDate !== "" ) {
+                    $.ajax({
+                        method: "post",
+                        url: "/",
+                        contextType: "application/json",
+                        data: {
+                            sprintId: sprintId,
+                            taskName: taskName,
+                            dueDate: dueDate,
+                            assignee: assignee,
+                            subTasks: arr
+                        },
+                        traditional: true,
+                        success: function (obj) {
+                            alert("Запись успешно добавлена!");
+                        },
+                        error: function () {
+                            alert("Заполните все поля!");
+                        }
+                    });
+                } else {
+                    alert("Заполните все поля!");
+                }
+            }
         </script>
-    </div>
 </body>
 </html>
