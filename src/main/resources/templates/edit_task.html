@@ -59,26 +59,26 @@
                     <li>Create additional check list for the task or just leave what should be done in task's
                         description.</li>
                 </ol>
-                <form id="editTaskForm">
-                    <input type="hidden" id="editTaskSprintId">
+                <form id="editTaskForm" th:action="@{|/task/update/${task.getId()}|}" method="post">
+                    <input type="hidden" id="editTaskSprintId" name="id" th:value="${task.getId()}">
+                    <input type="hidden"  name="sprint.id" th:value="${task.getSprint().getId()}">
                     <div class="input-style input-style-2 input-required">
                         <span class="color-highlight">Name</span>
                         <em>(required)</em>
-                        <input class="form-control" id="editTaskName" type="name" placeholder="" name="name"/>
+                        <input th:value="${task.getName()}" class="form-control" id="editTaskName" type="name" placeholder="" name="name"/>
                     </div>
 
                     <div class="input-style input-style-2 input-required">
                         <span class="color-highlight">Select Due Date</span>
                         <em><i class="fa fa-angle-down"></i></em>
-                        <input type="date" id="editTaskDueDate" name="deadline"/>
+                        <input type="date" th:value="${task.getDeadline()}"id="editTaskDueDate" name="deadline"/>
                     </div>
 
 
-                    <ul id="subtasksList" class="icon-list content mt-0 ml-3 mb-3">
-                    <!-- list of subtasks -->
-                        <li>
+                    <ul id="subtasksList" class="icon-list content mt-0 ml-3 mb-3" >
+                        <li th:each="sub: ${task.getItemList()}" class="d-flex">
                             <i class="fa fa-check color-green-dark align-self-center"></i>
-                            <p class="subtask-description mb-0 align-self-center">23454rf</p>
+                            <p class="subtask-description mb-0 align-self-center" th:text="${sub.getDescription()}">23454rf</p>
                         </li>
                     </ul>
 
@@ -86,9 +86,9 @@
                     <div class="input-style input-style-2">
                         <span>Assign Person</span>
                         <em><i class="fa fa-angle-down"></i></em>
-                        <select class="form-control" name="assignee" id="assigneeList">
-                            <option value="0" selected>Not Selected</option>
-                            <option th:value="${u.getId()}" th:each="u :${users}" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Name</option>
+                        <select class="form-control" name="assignee.id" id="assigneeList">
+                            <option value="0">Not Selected</option>
+                            <option th:selected="${task.getAssignee().getId()==u.getId()}" th:value="${u.getId()}" th:each="u :${users}" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Name</option>
                         </select>
                     </div>
 
@@ -96,9 +96,9 @@
                         <span>Task Status</span>
                         <em><i class="fa fa-angle-down"></i></em>
                         <select class="form-control" name="taskStatus">
-                            <option value="OPEN">Open</option>
-                            <option value="IN_PROCESS">In Process</option>
-                            <option value="DONE">Done</option>
+                            <option value="OPEN" th:selected="${task.getTaskStatus().name().equals('OPEN')}">Open</option>
+                            <option value="IN_PROCESS" th:selected="${task.getTaskStatus().name().equals('IN_PROCESS')}">In Process</option>
+                            <option value="DONE" th:selected="${task.getTaskStatus().name().equals('DONE')}">Done</option>
                         </select>
                     </div>
 

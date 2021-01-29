@@ -83,8 +83,7 @@
                                     </div>
                                     <div class="align-self-center ml-auto" style="display: inline-flex;">
                                         <h1 class="font-20">
-                                            <a href="#" data-menu="edit-sprint-modal"
-                                               onclick="editSprintModal(this)">
+                                            <a th:href="@{|/task/update/${t.getId()}|}">
                                                 <i class="fas fa-pen color-highlight"></i>
                                             </a>
                                         </h1>
@@ -98,162 +97,64 @@
                     </div>
                     <div class="tab-content" id="tab-2">
                         <div class="content">
-                            <div class="row-id d-flex mb-3" id="45">
-                                <div class="align-self-center" style="width: 60%;">
-                                    <a href="tasks.html">
-                                        <h5 class="sprint-name mb-0">Task name 0</h5>
-                                        <div class="w-100" style="display: inline-flex;">
-                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
-                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
-                                        </div>
-                                        <div class="progress rounded-l" style="height: 14px">
-                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
-                                                role="progressbar" style="width: 90%" aria-valuenow="90"
-                                                aria-valuemin="0" aria-valuemax="100">
-                                                90% Complete
+                            <div th:each="t:${inProcessTasks}">
+                                <div class="row-id d-flex mb-3" th:id="${t.getId()}">
+                                    <div class="align-self-center" style="width: 60%;">
+                                        <a href="tasks.html">
+                                            <h5 class="sprint-name mb-0" th:text="${t.getName()}">Task name 0</h5>
+                                            <div class="w-100" style="display: inline-flex;">
+                                                <h5 class="sprint-start font-12 mb-2 opacity-30 w-50" th:text="${t.getCreated()}">2020-02-02</h5>
+                                                <h5 class="sprint-end font-12 mb-2 opacity-30 w-50" th:text="${t.getDeadline()}">2020-05-01</h5>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="align-self-center ml-auto" style="display: inline-flex;">
-                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
-                                    <h1 class="font-20">
-                                        <a href="#">
-                                            <i class="fas fa-pen color-highlight"></i>
-                                        </a>
-                                    </h1>
-                                </div>
-                            </div>
-                            <div class="divider mb-2"></div>
-
-                            <div class="row-id d-flex mb-3" id="45">
-                                <div class="align-self-center" style="width: 60%;">
-                                    <a href="tasks.html">
-                                        <h5 class="sprint-name mb-0">Task name 1</h5>
-                                        <div class="w-100" style="display: inline-flex;">
-                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
-                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
-                                        </div>
-                                        <div class="progress rounded-l" style="height: 14px">
-                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
-                                                role="progressbar" style="width: 20%" aria-valuenow="20"
-                                                aria-valuemin="0" aria-valuemax="100">
-                                                20% Complete
+                                            <div class="progress rounded-l" style="height: 14px">
+                                                <div class="progress-bar bg-highlight text-left pl-3 color-white"
+                                                     role="progressbar" th:style="'width:'+${t.getProgress()}+'%'" th:aria-valuenow="${t.getProgress()}"
+                                                     aria-valuemin="0" aria-valuemax="100" th:text="${t.getProgress()}+'% Complete'">
+                                                    90% Complete
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="align-self-center ml-auto" style="display: inline-flex;">
-                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
-                                    <h1 class="font-20">
-                                        <a href="#">
-                                            <i class="fas fa-pen color-highlight"></i>
                                         </a>
-                                    </h1>
+                                    </div>
+                                    <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                        <img th:src="@{|/user/getUserImg/${t?.getAssignee()?.getId()}|}" th:data-src="@{|/user/getUserImg/${t?.getAssignee()?.getId()}|}" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                        <h1 class="font-20">
+                                            <a href="#">
+                                                <i class="fas fa-pen color-highlight"></i>
+                                            </a>
+                                        </h1>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="divider mb-2"></div>
-
-                            <div class="row-id d-flex mb-3" id="415">
-                                <div class="align-self-center" style="width: 60%;">
-                                    <a href="tasks.html">
-                                        <h5 class="sprint-name mb-0">Task name 3</h5>
-                                        <div class="w-100" style="display: inline-flex;">
-                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
-                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
-                                        </div>
-                                        <div class="progress rounded-l" style="height: 14px">
-                                            <div class="progress-bar bg-highlight text-left pl-3 color-white"
-                                                role="progressbar" style="width: 70%" aria-valuenow="70"
-                                                aria-valuemin="0" aria-valuemax="100">
-                                                70% Complete
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="align-self-center ml-auto" style="display: inline-flex;">
-                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
-                                    <h1 class="font-20">
-                                        <a href="#">
-                                            <i class="fas fa-pen color-highlight"></i>
-                                        </a>
-                                    </h1>
-                                </div>
+                                <div class="divider mb-2"></div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-content" id="tab-3">
                         <div class="content">
-                            <div class="row-id d-flex" id="45">
-                                <div class="align-self-center" style="width: 60%;">
-                                    <a href="tasks.html">
-                                        <h5 class="sprint-name mb-0">Task name 0</h5>
-                                        <div class="w-100" style="display: inline-flex;">
-                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
-                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
-                                        </div>
-                                        <a href="#" class="chip chip-s bg-green-dark">
-                                            <i class="fa fa-check color-white bg-green-light"></i>
-                                            <span class="color-white">Complete!</span>
+                            <div th:each="t:${doneTasks}">
+                                <div class="row-id d-flex" th:id="${t.getId()}">
+                                    <div class="align-self-center" style="width: 60%;">
+                                        <a href="tasks.html">
+                                            <h5 class="sprint-name mb-0" th:text="${t.getName()}">Task name 0</h5>
+                                            <div class="w-100" style="display: inline-flex;">
+                                                <h5 class="sprint-start font-12 mb-2 opacity-30 w-50" th:text="${t.getCreated()}">2020-02-02</h5>
+                                                <h5 class="sprint-end font-12 mb-2 opacity-30 w-50" th:text="${t.getDeadline()}">2020-05-01</h5>
+                                            </div>
+                                            <a href="#" class="chip chip-s bg-green-dark">
+                                                <i class="fa fa-check color-white bg-green-light"></i>
+                                                <span class="color-white">Complete!</span>
+                                            </a>
                                         </a>
-                                    </a>
+                                    </div>
+                                    <div class="align-self-center ml-auto" style="display: inline-flex;">
+                                        <img th:src="@{|/user/getUserImg/${t?.getAssignee()?.getId()}|}" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                        <h1 class="font-20">
+                                            <a href="#" >
+                                                <i class="fas fa-pen color-highlight"></i>
+                                            </a>
+                                        </h1>
+                                    </div>
                                 </div>
-                                <div class="align-self-center ml-auto" style="display: inline-flex;">
-                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
-                                    <h1 class="font-20">
-                                        <a href="#" >
-                                            <i class="fas fa-pen color-highlight"></i>
-                                        </a>
-                                    </h1>
-                                </div>
-                            </div>
-                            <div class="divider mb-2"></div>
-                            <div class="row-id d-flex" id="45">
-                                <div class="align-self-center" style="width: 60%;">
-                                    <a href="tasks.html">
-                                        <h5 class="sprint-name mb-0">Task name 0</h5>
-                                        <div class="w-100" style="display: inline-flex;">
-                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
-                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
-                                        </div>
-                                        <a href="#" class="chip chip-s bg-green-dark">
-                                            <i class="fa fa-check color-white bg-green-light"></i>
-                                            <span class="color-white">Complete!</span>
-                                        </a>
-                                    </a>
-                                </div>
-                                <div class="align-self-center ml-auto" style="display: inline-flex;">
-                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
-                                    <h1 class="font-20">
-                                        <a href="#">
-                                            <i class="fas fa-pen color-highlight"></i>
-                                        </a>
-                                    </h1>
-                                </div>
-                            </div>
-                            <div class="divider mb-2"></div>
-                            <div class="row-id d-flex" id="45">
-                                <div class="align-self-center" style="width: 60%;">
-                                    <a href="tasks.html">
-                                        <h5 class="sprint-name mb-0">Task name 0</h5>
-                                        <div class="w-100" style="display: inline-flex;">
-                                            <h5 class="sprint-start font-12 mb-2 opacity-30 w-50">2020-02-02</h5>
-                                            <h5 class="sprint-end font-12 mb-2 opacity-30 w-50">2020-05-01</h5>
-                                        </div>
-                                        <a href="#" class="chip chip-s bg-green-dark">
-                                            <i class="fa fa-check color-white bg-green-light"></i>
-                                            <span class="color-white">Complete!</span>
-                                        </a>
-                                    </a>
-                                </div>
-                                <div class="align-self-center ml-auto" style="display: inline-flex;">
-                                    <img src="images/avatars/1s.png" data-src="images/avatars/1s.png" width="40" class="rounded-circle preload-img" style="margin-right: 2rem;">
-                                    <h1 class="font-20">
-                                        <a href="#">
-                                            <i class="fas fa-pen color-highlight"></i>
-                                        </a>
-                                    </h1>
-                                </div>
+                                <div class="divider mb-2"></div>
                             </div>
                         </div>
                     </div>
@@ -449,8 +350,6 @@
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
     <script>
-
-
         $(document).ready(function(){
             let activeTab = localStorage.getItem('activeTaskTab');
             console.log("Local storage: "+activeTab);
@@ -485,39 +384,6 @@
                 el.classList.remove("pl-3");
             }
         });
-
-        function editSprintModal(btnObj) {
-            let trObj = btnObj.closest(".row-id");
-            let trId = $(trObj).attr('id');
-
-            console.log("item id:" + $(trObj).attr('id'));
-
-            let name = $(trObj).find('.sprint-name').text();
-
-            let sprintStart = $(trObj).find('.sprint-start').text();
-            let sprintEnd = $(trObj).find('.sprint-end').text();
-
-            $('#sprintIdInput').val(trId);
-            $('#editSprintNameInput').val(name);
-            $('#editStartDateInput').val(sprintStart);
-            $('#editEndDateInput').val(sprintEnd);
-        }
-
-        function editBacklogModal(btnObj) {
-            let trObj = btnObj.closest(".backlog-id");
-            let trId = $(trObj).attr('id');
-
-            console.log("item id:" + $(trObj).attr('id'));
-
-            let description = $(trObj).find('.backlog-description').text().trim();
-            let priority = $(trObj).find('.backlog-priority').text().match(/\d+/);
-
-            $('#backlogIdInput').val(trId);
-            $('#backlogDescription').val(description);
-            $('#editPriorities').val(priority);
-
-            console.log('descr: ' + description + ' ; prior: ' + priority);
-        }
     </script>
 </body>
 
