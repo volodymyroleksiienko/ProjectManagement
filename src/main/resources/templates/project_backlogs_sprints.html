@@ -62,11 +62,11 @@
                         <div>
                             <div class="card card-style bg-11 mt-3" data-card-height="160">
                                 <div class="card-bottom pl-3 pb-3">
-                                    <h1 class="font-17 color-white mb-n3">Test Project</h1>
+                                    <h1 class="font-17 color-white mb-n3" th:text="${project.getName()}"></h1>
                                     <h4 class="font-13 color-white mb-2 opacity-50">
                                         project name
                                     </h4>
-                                    <h2 class="font-16 font-weight-normal color-white">Lorem ipsum dolor sit amet</h2>
+                                    <h2 class="font-16 font-weight-normal color-white" th:text="${project?.getDescription()}"></h2>
                                 </div>
                                 <div class="card-overlay bg-black opacity-80"></div>
                             </div>
@@ -80,10 +80,8 @@
                                                     class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" />
                                             </div>
                                             <div class="align-self-center">
-                                                <h5 class="mt-1 mb-0">Johnatan Unixer</h5>
-                                                <p class="font-10 mt-n1 color-blue-dark">
-                                                    Executive Officer
-                                                </p>
+                                                <h5 class="mt-1 mb-0" th:text="${project.getOwner()?.getFirstName()}+' '+${project.getOwner()?.getLastName()}"></h5>
+                                                <p class="font-10 mt-n1 color-blue-dark" th:text="${project.getOwner()?.getPosition()}"></p>
                                             </div>
                                             <div class="ml-auto">
                                                 <span class="next-slide-user badge bg-blue-dark mt-2 p-2 font-8">TAP FOR
@@ -94,13 +92,11 @@
                                     <div class="user-right">
                                         <div class="d-flex">
                                             <div class="align-self-center">
-                                                <h5 class="mt-1 mb-0">Johnatan Doe</h5>
-                                                <p class="font-10 mt-n1 color-blue-dark">
-                                                    Executive Officer
-                                                </p>
+                                                <h5 class="mt-1 mb-0" th:text="${project.getOwner()?.getFirstName()}+' '+${project.getOwner()?.getLastName()}"></h5>
+                                                <p class="font-10 mt-n1 color-blue-dark" th:text="${project.getOwner()?.getPosition()}"></p>
                                             </div>
                                             <div class="ml-auto align-self-center">
-                                                <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone">
+                                                <a th:href="'tel: '+${project.getOwner()?.getPhoneNumber()}" class="icon icon-xs rounded-circle shadow-l bg-phone">
                                                     <i class="fa fa-phone"></i>
                                                 </a>
                                             </div>
@@ -111,26 +107,27 @@
                                 <div class="row mb-0">
                                     <div class="col-6 pr-1">
                                         <div class="card card-style mx-0 mb-2 p-3">
-                                            <h6 class="font-14" th:text="${project.getStarted()}">Start</h6>
-                                            <h3 class="color-green-dark mb-0">01-01-2021</h3>
+                                            <h6 class="font-14">Start</h6>
+                                            <h3 class="color-green-dark mb-0" th:text="${project.getStarted()}"></h3>
                                         </div>
                                     </div>
                                     <div class="col-6 pl-1">
                                         <div class="card card-style mx-0 mb-2 p-3">
-                                            <h6 class="font-14" th:text="${project.getDeadline()}">Deadline</h6>
-                                            <h3 class="color-red-dark mb-0">01-03-2021</h3>
+                                            <h6 class="font-14">Deadline</h6>
+                                            <h3 class="color-red-dark mb-0" th:text="${project.getDeadline()}"></h3>
                                         </div>
                                     </div>
                                     <div class="col-6 pr-1">
                                         <div class="card card-style mx-0 p-3">
                                             <h6 class="font-14">Co-workers</h6>
-                                            <h3 class="color-brown-dark mb-0 text-center" th:text="${project.getTeamList().size()}">8</h3>
+                                            <h3 class="color-brown-dark mb-0 text-center" th:text="${project.getTeamList().size()}"></h3>
                                         </div>
                                     </div>
                                     <div class="col-6 pl-1">
                                         <div class="card card-style mx-0 p-3">
                                             <h6 class="font-14">Sprint</h6>
-                                            <h3 class="color-blue-dark mb-0 text-center" th:text="${project.getSprintsList().size()}">5</h3>
+                                            <!--           SPRINT ACTIVE !COUNT             -->
+                                            <h3 class="color-blue-dark mb-0 text-center" th:text="${project.getSprintsList().size()}"></h3>
                                         </div>
                                     </div>
                                 </div>

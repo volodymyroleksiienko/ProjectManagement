@@ -15,7 +15,7 @@
     rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/fonts/css/fontawesome-all.min.css}">
   <link rel="apple-touch-icon" sizes="180x180" th:href="@{/app/icons/icon-192x192.png}">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body class="theme-light">
@@ -87,10 +87,8 @@
                     <img src="images/avatars/5s.png" class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" />
                   </div>
                   <div class="align-self-center">
-                    <h5 class="mt-1 mb-0" th:text="${p.getOwner()?.getFirstName()}+' '+${p.getOwner()?.getLastName()}">Johnatan Unixer</h5>
-                    <p class="font-10 mt-n1 color-blue-dark" th:text="${p.getOwner()?.getPosition()}">
-                      Executive Officer
-                    </p>
+                    <h5 class="mt-1 mb-0" th:text="${p.getOwner()?.getFirstName()}+' '+${p.getOwner()?.getLastName()}"></h5>
+                    <p class="font-10 mt-n1 color-blue-dark" th:text="${p.getOwner()?.getPosition()}"></p>
                   </div>
                   <div class="ml-auto">
                     <span class="next-slide-user badge bg-blue-dark mt-2 p-2 font-8">TAP FOR MORE</span>
@@ -404,10 +402,9 @@
         class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
     </div>
   </div>
-  <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
+<!--  <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>-->
   <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
-
   <script>
     // Progress bar
     let progressBar = document.getElementsByClassName('progress-bar');
@@ -438,6 +435,7 @@
       $('#deleteItemLink').attr('href','/projects/delete?id='+trId);
     }
   </script>
+
 </body>
 
 </html>
