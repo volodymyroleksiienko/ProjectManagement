@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "usr")
-public class User {
+public class User implements Comparable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -40,4 +40,9 @@ public class User {
 
     @ManyToMany
     private List<Project> collaborators;
+
+    @Override
+    public int compareTo(Object o) {
+        return id-((User)o).getId();
+    }
 }
