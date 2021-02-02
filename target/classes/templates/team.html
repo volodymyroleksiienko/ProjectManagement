@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en">
-
+<html class="wide wow-animation" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -8,12 +10,13 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
     <title>Team</title>
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" th:href="@{../../styles/bootstrap.css}">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{../../fonts/css/fontawesome-all.min.css}">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{app/icons/icon-192x192.png}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -44,162 +47,78 @@
         </div>
         <div class="page-title-clear"></div>
         <div class="page-content">
+<!--            ALERTS              -->
+            <div class="alert mr-3 ml-3 rounded-s bg-yellow-dark" role="alert" th:if="${fail}" >
+                <span class="alert-icon color-white"
+                ><i class="fa fa-exclamation-triangle font-18"></i></span>
+                <h4 class="color-white font-">Info</h4>
+                <strong class="alert-icon-text color-white"
+                >Invitation has been send.</strong>
+                <button
+                        type="button"
+                        class="close color-white opacity-60 font-16"
+                        data-dismiss="alert"
+                        aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="alert mr-3 ml-3 rounded-s bg-green-dark" role="alert" th:if="${success}">
+                <span class="alert-icon color-white"
+                ><i class="fa fa-check font-18"></i></span>
+                <h4 class="color-white">Success</h4>
+                <strong class="alert-icon-text color-white">New team member was added.</strong>
+                <button
+                        type="button"
+                        class="close color-white opacity-60 font-16"
+                        data-dismiss="alert"
+                        aria-label="Close">
+                    &times;
+                </button>
+            </div>
+<!--            ALERTS              -->
             <!-- CONTENT -->
             <div class="card card-style">
                 <div class="content">
-                    <div class="user-slider owl-carousel">
-                        <div class="user-left">
-                            <div class="d-flex">
-                                <div>
-                                    <img src="images/avatars/1s.png" class="mr-3 rounded-circle shadow-l bg-red-dark"
-                                        width="50" />
+                    <div th:each="u : ${project.getTeamList()}">
+                        <div class="user-slider owl-carousel">
+                            <div class="user-left">
+                                <div class="d-flex">
+                                    <div>
+                                        <img th:src="@{|user/getUserImg/${u.getId()}|}" class="bg-red-dark mr-3 rounded-circle shadow-l"
+                                             width="50" />
+                                    </div>
+                                    <div>
+                                        <h5 class="mt-1 mb-0" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Vincent Mobi</h5>
+                                        <p class="font-10 mt-n1 color-gray-dark" th:text="${u.getPosition()}">
+                                            Back End Developer
+                                        </p>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <span class="next-slide-user badge bg-blue-dark mt-2 p-2 font-8">TAP FOR MORE</span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h5 class="mt-1 mb-0">Johnatan Doe</h5>
-                                    <p class="font-10 mt-n1 color-red-dark">
-                                        Executive Officer
-                                    </p>
-                                </div>
-                                <div class="ml-auto">
-                                    <span class="next-slide-user badge bg-red-dark mt-2 p-2 font-8">TAP FOR MORE</span>
+                            </div>
+                            <div class="user-right">
+                                <div class="d-flex">
+                                    <div>
+                                        <h5 class="mt-1 mb-0" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Vincent Mobi</h5>
+                                        <p class="font-10 mt-n1 color-gray-dark" th:text="${u.getPosition()}">
+                                            Back End Developer
+                                        </p>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone"><i
+                                                class="fa fa-phone"></i></a>
+                                        <a href="#" class="icon icon-xs rounded-circle shadow-l bg-facebook mr-2 ml-2"><i
+                                                class="fab fa-facebook-f"></i></a>
+                                        <a href="#" class="icon icon-xs rounded-circle shadow-l bg-twitter"><i
+                                                class="fab fa-twitter"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="user-right">
-                            <div class="d-flex">
-                                <div>
-                                    <h5 class="mt-1 mb-0">Johnatan Doe</h5>
-                                    <p class="font-10 mt-n1 color-red-dark">
-                                        Executive Officer
-                                    </p>
-                                </div>
-                                <div class="ml-auto">
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone"><i
-                                            class="fa fa-phone"></i></a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-facebook mr-2 ml-2"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-twitter"><i
-                                            class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="divider mt-3"></div>
                     </div>
-                    <div class="divider mt-3"></div>
-                    <div class="user-slider owl-carousel">
-                        <div class="user-left">
-                            <div class="d-flex">
-                                <div>
-                                    <img src="images/avatars/2s.png" class="bg-green-dark mr-3 rounded-circle shadow-l"
-                                        width="50" />
-                                </div>
-                                <div>
-                                    <h5 class="mt-1 mb-0">Alexander Mac</h5>
-                                    <p class="font-10 mt-n1 color-green-dark">
-                                        Support Team Manager
-                                    </p>
-                                </div>
-                                <div class="ml-auto">
-                                    <span class="next-slide-user badge bg-green-dark mt-2 p-2 font-8">TAP FOR
-                                        MORE</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="user-right">
-                            <div class="d-flex">
-                                <div>
-                                    <h5 class="mt-1 mb-0">Alexander Mac</h5>
-                                    <p class="font-10 mt-n1 color-green-dark">
-                                        Support Team Manager
-                                    </p>
-                                </div>
-                                <div class="ml-auto">
-                                    <a href="tel:1111111111" class="icon icon-xs rounded-circle shadow-l bg-phone"><i
-                                            class="fa fa-phone"></i></a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-facebook mr-2 ml-2"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-twitter"><i
-                                            class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider mt-3"></div>
-                    <div class="user-slider owl-carousel">
-                        <div class="user-left">
-                            <div class="d-flex">
-                                <div>
-                                    <img src="images/avatars/5s.png" class="bg-yellow-dark mr-3 rounded-circle shadow-l"
-                                        width="50" />
-                                </div>
-                                <div>
-                                    <h5 class="mt-1 mb-0">Johnatan Unixer</h5>
-                                    <p class="font-10 mt-n1 color-blue-dark">
-                                        Executive Officer
-                                    </p>
-                                </div>
-                                <div class="ml-auto">
-                                    <span class="next-slide-user badge bg-blue-dark mt-2 p-2 font-8">TAP FOR MORE</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="user-right">
-                            <div class="d-flex">
-                                <div>
-                                    <h5 class="mt-1 mb-0">Johnatan Doe</h5>
-                                    <p class="font-10 mt-n1 color-blue-dark">
-                                        Executive Officer
-                                    </p>
-                                </div>
-                                <div class="ml-auto">
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone"><i
-                                            class="fa fa-phone"></i></a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-facebook mr-2 ml-2"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-twitter"><i
-                                            class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider mt-3"></div>
-                    <div class="user-slider owl-carousel">
-                        <div class="user-left">
-                            <div class="d-flex">
-                                <div>
-                                    <img src="images/avatars/7s.png" class="bg-red-dark mr-3 rounded-circle shadow-l"
-                                        width="50" />
-                                </div>
-                                <div>
-                                    <h5 class="mt-1 mb-0">Vincent Mobi</h5>
-                                    <p class="font-10 mt-n1 color-gray-dark">
-                                        Back End Developer
-                                    </p>
-                                </div>
-                                <div class="ml-auto">
-                                    <span class="next-slide-user badge bg-blue-dark mt-2 p-2 font-8">TAP FOR MORE</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="user-right">
-                            <div class="d-flex">
-                                <div>
-                                    <h5 class="mt-1 mb-0">Vincent Mobi</h5>
-                                    <p class="font-10 mt-n1 color-gray-dark">
-                                        Back End Developer
-                                    </p>
-                                </div>
-                                <div class="ml-auto">
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone"><i
-                                            class="fa fa-phone"></i></a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-facebook mr-2 ml-2"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-twitter"><i
-                                            class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider mt-3"></div>
                     <a href="#" data-menu="invite-team-member-modal" class="btn btn-full btn-m rounded-sm gradient-dark font-600">Invite New Member</a>
                 </div>
             </div>
@@ -214,11 +133,11 @@
                 </div>
                 <div class="content">
                     <div class="divider mt-n2"></div>
-                    <form action="create">
+                    <form th:action="@{|/team/add/${project.getId()}|}" method="post">
                         <div class="input-style input-style-2 input-required">
                             <span class="color-highlight">Email</span>
                             <em>(required)</em>
-                            <input class="form-control" type="email" placeholder="" />
+                            <input class="form-control" type="email" placeholder="" name="email"/>
                         </div>
     
                         <div class="divider my-1"></div>
@@ -419,9 +338,8 @@
                 class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
         </div>
     </div>
-    <script type="text/javascript" src="scripts/jquery.js"></script>
-    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
 </body>
 
 </html>

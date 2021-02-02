@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -40,7 +41,7 @@ public class User implements Comparable{
     private Role role = Role.USER;
 
     @OneToMany(mappedBy = "owner",cascade = CascadeType.REMOVE)
-    private List<Project> projectList;
+    private Set<Project> projectList;
 
     @OneToMany(mappedBy = "assignee")
     private List<Task> tasks;

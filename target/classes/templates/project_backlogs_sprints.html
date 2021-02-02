@@ -21,6 +21,7 @@
 </head>
 
 <body class="theme-light" th:id="${project.getId()}">
+<body class="theme-light" th:id="${project.getId()}">
     <div id="preloader">
         <div class="spinner-border color-highlight" role="status"></div>
     </div>
@@ -204,7 +205,7 @@
                             <div class="card card-style">
                                 <div class="content">
                                     <h5 class="font-14 opacity-50">
-                                        Co-workers<a href="team.html" class="float-right color-highlight">View All</a>
+                                        Co-workers<a th:href="@{|/team/${project.getId()}|}" class="float-right color-highlight">View All</a>
                                     </h5>
                                     <div class="divider mb-3"></div>
                                     <div class="list-group list-custom-large">

@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -23,7 +24,7 @@ public class Project implements Comparable{
     private User owner;
 
     @ManyToMany(mappedBy = "collaborators")
-    private List<User> teamList;
+    private Set<User> teamList;
 
     @OneToMany(mappedBy = "project",cascade = CascadeType.REMOVE)
     private List<Backlog> backlogsList;
