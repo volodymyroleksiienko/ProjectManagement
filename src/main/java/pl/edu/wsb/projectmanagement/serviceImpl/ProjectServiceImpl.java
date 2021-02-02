@@ -29,7 +29,7 @@ public class ProjectServiceImpl implements ProjectService {
                 project.setDescription(old.getDescription());
                 project.setStarted(old.getStarted());
                 project.setDeadline(old.getDeadline());
-                return projectJPA.save(old);
+                return projectJPA.save(project);
             }
         }
         return null;
