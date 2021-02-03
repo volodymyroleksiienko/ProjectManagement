@@ -35,8 +35,6 @@
         </div>
         <div class="page-title page-title-fixed">
             <h1>Create Task</h1>
-            <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i
-                    class="fa fa-share-alt"></i></a>
             <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i
                     class="fa fa-moon"></i></a>
             <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i
@@ -64,20 +62,19 @@
                         <div class="input-style input-style-2 input-required">
                             <span class="color-highlight">Name</span>
                             <em>(required)</em>
-                            <input class="form-control" id="createTaskName" type="name" placeholder="" name="name"/>
+                            <input class="form-control" id="createTaskName" required="required" type="name" placeholder="" name="name"/>
                         </div>
 
                         <div class="input-style input-style-2 input-required">
                             <span class="color-highlight">Select Due Date</span>
                             <em><i class="fa fa-angle-down"></i></em>
-                            <input type="date" value="1980-08-26" id="createTaskDueDate" name="deadline"/>
+                            <input type="date" id="createTaskDueDate" required="required" name="deadline"/>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-9">
                                 <div class="input-style input-style-2 input-required">
                                     <span>Subtask</span>
-                                    <!-- <em>(required)</em> -->
                                     <textarea id="subtaskDescription" class="form-control" placeholder="" name="description"></textarea>
                                 </div>
                             </div>
@@ -199,43 +196,21 @@
         </div>
         <!-- Main menu end -->
 
-        <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-height="370">
-            <div class="menu-title">
-                <p class="color-highlight">Tap a link to</p>
-                <h1>Share</h1>
-                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>
+        <!--   Notification     -->
+        <div id="notification-4" data-dismiss="notification-4" data-delay="30000" data-autohide="true"
+             class="notification bg-dark-dark shadow-xl">
+            <div class="toast-header bg-dark-dark">
+                <strong class="mr-auto color-white">Success</strong>
+                <small class="text-muted">just now</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span class="color-white" aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="divider divider-margins mt-3 mb-0"></div>
-            <div class="content mt-0">
-                <div class="list-group list-custom-small list-icon-0">
-                    <a href="#" class="shareToFacebook">
-                        <i class="fab fa-facebook-f font-12 bg-facebook color-white shadow-l rounded-s"></i>
-                        <span>Facebook</span>
-                        <i class="fa fa-angle-right pr-1"></i>
-                    </a>
-                    <a href="#" class="shareToTwitter">
-                        <i class="fab fa-twitter font-12 bg-twitter color-white shadow-l rounded-s"></i>
-                        <span>Twitter</span>
-                        <i class="fa fa-angle-right pr-1"></i>
-                    </a>
-                    <a href="#" class="shareToLinkedIn">
-                        <i class="fab fa-linkedin-in font-12 bg-linkedin color-white shadow-l rounded-s"></i>
-                        <span>LinkedIn</span>
-                        <i class="fa fa-angle-right pr-1"></i>
-                    </a>
-                    <a href="#" class="shareToWhatsApp">
-                        <i class="fab fa-whatsapp font-12 bg-whatsapp color-white shadow-l rounded-s"></i>
-                        <span>WhatsApp</span>
-                        <i class="fa fa-angle-right pr-1"></i>
-                    </a>
-                    <a href="#" class="shareToEmail border-0">
-                        <i class="fa fa-envelope font-12 bg-mail color-white shadow-l rounded-s"></i>
-                        <span>Email</span>
-                        <i class="fa fa-angle-right pr-1"></i>
-                    </a>
-                </div>
+            <div class="toast-body color-white" id="createTaskAlert">
+                <!--       JS generated text         -->
             </div>
         </div>
+
 
         <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-height="480">
             <div class="menu-title">
@@ -365,7 +340,10 @@
                         },
                         traditional: true,
                         success: function (obj) {
-                            alert("Success!");
+                            console.log("Success!");
+                            $('#createTaskAlert').text('You have successfully created task "'+taskName+'"!');
+                            $('#notification-4').toast('show');
+                            setTimeout(function(){ window.location.href = "/sprint/info/"+sprintId; }, 1700);
                         },
                         error: function () {
                             alert("Error!");
