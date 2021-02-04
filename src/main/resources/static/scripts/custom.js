@@ -710,9 +710,9 @@ var _0x3d60 = [
     "",
     "",
     "",
-  // "serviceWorker",
-  // "/products/appkit/_service-worker.js",
-  // "/products/appkit/",
+  "serviceWorker",
+  "/products/appkit/_service-worker.js",
+  "/products/appkit/",
   "register",
 ];
 $(window)[_0x3d60[8]](_0x3d60[0], function () {
@@ -785,10 +785,10 @@ $(window)[_0x3d60[8]](_0x3d60[0], function () {
               !1
             );
           }),
-          // _0x3d60[34] == localStorage[_0x3d60[56]](_0x3d60[33]) &&
+          _0x3d60[34] == localStorage[_0x3d60[56]](_0x3d60[33]) &&
             (_0xdc4bx1[_0x3d60[50]](_0x3d60[49], !0),
             $(_0x3d60[20])[_0x3d60[30]](_0x3d60[29])[_0x3d60[6]](_0x3d60[28])),
-          // _0x3d60[36] == localStorage[_0x3d60[56]](_0x3d60[33]) &&
+          _0x3d60[36] == localStorage[_0x3d60[56]](_0x3d60[33]) &&
             (_0xdc4bx1[_0x3d60[50]](_0x3d60[49], !1),
             $(_0x3d60[20])[_0x3d60[30]](_0x3d60[28])[_0x3d60[6]](_0x3d60[29])),
           $(_0x3d60[20])[_0x3d60[48]](_0x3d60[47]) && _0xdc4bx4(),
@@ -808,11 +808,11 @@ $(window)[_0x3d60[8]](_0x3d60[0], function () {
           ($(_0x3d60[60])[_0x3d60[15]] ||
             ($(_0x3d60[62])[_0x3d60[18]](_0x3d60[61]),
             $(_0x3d60[64])[_0x3d60[18]](_0x3d60[63])))
-          // ,
-        // localStorage[_0x3d60[35]](
-        //   _0x3d60[65] + window[_0x3d60[67]][_0x3d60[66]],
-        //   _0x3d60[68]
-        // )
+          ,
+        localStorage[_0x3d60[35]](
+          _0x3d60[65] + window[_0x3d60[67]][_0x3d60[66]],
+          _0x3d60[68]
+        )
           ,
         ($[_0x3d60[70]][_0x3d60[69]] = function (_0xdc4bx1) {
           (_0xdc4bx1 = _0xdc4bx1 || !1),
@@ -2667,7 +2667,7 @@ $(window)[_0x3d60[8]](_0x3d60[0], function () {
                 _0xdc4bx1[_0x3d60[88]](_0xdc4bx2),
                 setTimeout(_0xdc4bx4, 0),
                 $(_0x3d60[7])[_0x3d60[30]](_0x3d60[5]);
-              // location.reload();
+              location.reload();
               console.log('onReady');
             },
           },
