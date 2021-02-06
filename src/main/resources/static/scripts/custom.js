@@ -89,7 +89,7 @@ var _0x3d60 = [
   "getFullYear",
   "html",
   ".back-to-top-badge, .back-to-top-icon",
-  "preventDefault",
+  "",
   "animate",
   "html, body, .page-content",
   ".back-to-top, [data-back-to-top], .back-to-top-badge, .back-to-top-icon",
