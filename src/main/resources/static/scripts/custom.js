@@ -2324,7 +2324,7 @@ $(window)[_0x3d60[8]](_0x3d60[0], function () {
           _0xdc4bx3b = '';
               // localStorage[_0x3d60[56]](_0x3d60[611]);
         // _0xdc4bx3a - _0xdc4bx3b > _0xdc4bx3 &&
-          localStorage[_0x3d60[80]](_0x3d60[612]),
+        //   localStorage[_0x3d60[80]](_0x3d60[612]),
           $(_0x3d60[616])[_0x3d60[8]](_0x3d60[10], function () {
             // console[_0x3d60[163]](_0x3d60[613]),
             //   localStorage[_0x3d60[35]](_0x3d60[612], _0x3d60[614]),
