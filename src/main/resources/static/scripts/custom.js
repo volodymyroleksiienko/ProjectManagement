@@ -8,7 +8,7 @@ var _0x3d60 = [
   "addClass",
   "#preloader",
   "on",
-  "",
+  "use strict",
   "click",
   "#",
   "href",
