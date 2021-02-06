@@ -2323,15 +2323,15 @@ $(window)[_0x3d60[8]](_0x3d60[0], function () {
           // _0xdc4bx3a = Math[_0x3d60[324]](_0xdc4bx39 / 864e5),
           _0xdc4bx3b = '';
               // localStorage[_0x3d60[56]](_0x3d60[611]);
-        _0xdc4bx3a - _0xdc4bx3b > _0xdc4bx3 &&
+        // _0xdc4bx3a - _0xdc4bx3b > _0xdc4bx3 &&
           localStorage[_0x3d60[80]](_0x3d60[612]),
           $(_0x3d60[616])[_0x3d60[8]](_0x3d60[10], function () {
-            console[_0x3d60[163]](_0x3d60[613]),
-              localStorage[_0x3d60[35]](_0x3d60[612], _0x3d60[614]),
-              $(_0x3d60[20])
-                [_0x3d60[53]](_0x3d60[615])
-                [_0x3d60[30]](_0x3d60[238]),
-              localStorage[_0x3d60[35]](_0x3d60[611], _0xdc4bx3a);
+            // console[_0x3d60[163]](_0x3d60[613]),
+            //   localStorage[_0x3d60[35]](_0x3d60[612], _0x3d60[614]),
+            //   $(_0x3d60[20])
+            //     [_0x3d60[53]](_0x3d60[615])
+            //     [_0x3d60[30]](_0x3d60[238]),
+            //   localStorage[_0x3d60[35]](_0x3d60[611], _0xdc4bx3a);
           });
         var _0xdc4bx3c = {
             Android: function () {
