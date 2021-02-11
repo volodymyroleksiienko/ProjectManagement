@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div id="menu-main" class="menu menu-box-left rounded-0" data-menu-width="280" data-menu-active="nav-welcome"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+     xmlns:th="http://www.thymeleaf.org">
+    <div class="card rounded-0" style="height: 150px" th:style="'background-image: url(/user/getUserImg/'+${user.getId()}+');'">
+        <div class="card-top">
+            <a href="#" class="close-menu float-right mr-2 text-center mt-3 icon-40 notch-clear"><i
+                    class="fa fa-times color-white"></i></a>
+        </div>
+        <div class="card-bottom">
+            <h1 class="color-white pl-3 mb-n1 font-28" th:text="${user.getFirstName()}+' '+${user.getLastName()}">Name Surname</h1>
+            <p class="mb-2 pl-3 font-12 color-white opacity-50" th:text="${user.getPosition()}">Position</p>
+        </div>
+        <div class="card-overlay bg-gradient"></div>
+    </div>
+    <div class="mt-4"></div>
+    <h6 class="menu-divider">Library</h6>
+    <div class="list-group list-custom-small list-menu">
+        <a id="nav-components" href="user/profile">
+            <i class="fas fa-user gradient-blue color-white"></i>
+            <span>Profile</span>
+            <i class="fa fa-angle-right"></i>
+        </a>
+        <a id="nav-homepages" href="/projects">
+            <i class="fa fa-home gradient-green color-white"></i>
+            <span>Homepage</span>
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+    <h6 class="menu-divider mt-4">settings</h6>
+    <div class="list-group list-custom-small list-menu">
+        <a href="#" data-menu="menu-colors">
+            <i class="fa fa-brush gradient-highlight color-white"></i>
+            <span>Highlights</span>
+            <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode">
+            <i class="fa fa-moon gradient-dark color-white"></i>
+            <span>Dark Mode</span>
+            <div class="custom-control scale-switch ios-switch highlight-switch switch-s">
+                <input type="checkbox" class="ios-input" id="switch-22" />
+                <label class="custom-control-label" for="switch-22"></label>
+            </div>
+        </a>
+    </div>
+    <div class="list-group list-custom-small list-menu" style="position: fixed; bottom: 0.5rem">
+        <a id="nav-logout" href="/logout">
+            <i class="fas fa-sign-out-alt gradient-red color-white"></i>
+            <span>Log out</span>
+        </a>
+    </div>
+</div>

@@ -13,6 +13,8 @@ import pl.edu.wsb.projectmanagement.entity.User;
 import pl.edu.wsb.projectmanagement.service.ProjectService;
 import pl.edu.wsb.projectmanagement.service.UserService;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/team")
 public class TeamController {
@@ -27,7 +29,9 @@ public class TeamController {
     }
 
     @GetMapping("/{id}")
-    public String getTeamOfProject(@PathVariable int id,boolean fail,boolean success, Model model){
+    public String getTeamOfProject(@PathVariable int id, boolean fail, boolean success, Model model, Principal principal){
+        User user = userService.getByUsername(principal.getName());
+        model.addAttribute("user",user);
         model.addAttribute("project",projectService.findById(id));
         model.addAttribute("success",success);
         model.addAttribute("fail",fail);

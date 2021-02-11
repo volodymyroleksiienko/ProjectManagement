@@ -1,5 +1,6 @@
 package pl.edu.wsb.projectmanagement.controllers;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,26 +9,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.edu.wsb.projectmanagement.entity.Sprint;
 import pl.edu.wsb.projectmanagement.entity.TaskStatus;
+import pl.edu.wsb.projectmanagement.entity.User;
 import pl.edu.wsb.projectmanagement.service.ProjectService;
 import pl.edu.wsb.projectmanagement.service.SprintService;
 import pl.edu.wsb.projectmanagement.service.TaskService;
+import pl.edu.wsb.projectmanagement.service.UserService;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/sprint")
+@AllArgsConstructor
 public class SprintController {
 
     private SprintService sprintService;
     private ProjectService projectService;
     private TaskService taskService;
+    private UserService userService;
 
-    public SprintController(SprintService sprintService, ProjectService projectService, TaskService taskService) {
-        this.sprintService = sprintService;
-        this.projectService = projectService;
-        this.taskService = taskService;
-    }
+
 
     @GetMapping("/info/{id}")
-    public String getSprintInfo(@PathVariable int id, Model model){
+    public String getSprintInfo(@PathVariable int id, Model model, Principal principal){
+        User user = userService.getByUsername(principal.getName());
+        model.addAttribute("user",user);
         model.addAttribute("sprint",sprintService.findById(id));
         model.addAttribute("openTasks",taskService.findByTaskStatusAndAndSprintId(TaskStatus.OPEN,id));
         model.addAttribute("inProcessTasks",taskService.findByTaskStatusAndAndSprintId(TaskStatus.IN_PROCESS,id));

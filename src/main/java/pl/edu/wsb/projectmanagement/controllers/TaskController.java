@@ -10,6 +10,7 @@ import pl.edu.wsb.projectmanagement.service.SprintService;
 import pl.edu.wsb.projectmanagement.service.TaskService;
 import pl.edu.wsb.projectmanagement.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -28,7 +29,9 @@ public class TaskController {
     }
 
     @GetMapping("/create/{sprintId}")
-    public String createTask(@PathVariable int sprintId,Model model){
+    public String createTask(@PathVariable int sprintId, Model model, Principal principal){
+        User user = userService.getByUsername(principal.getName());
+        model.addAttribute("user",user);
         Sprint sprint = sprintService.findById(sprintId);
         Set<User> colab = new TreeSet<>(sprint.getProject().getTeamList());
         colab.add(sprint.getProject().getOwner());
@@ -48,7 +51,9 @@ public class TaskController {
 
 
     @GetMapping("/update/{taskId}")
-    public String updateTask(@PathVariable int taskId,Model model){
+    public String updateTask(@PathVariable int taskId,Model model,Principal principal){
+        User user = userService.getByUsername(principal.getName());
+        model.addAttribute("user",user);
         Task task = taskService.findById(taskId);
         Sprint sprint = sprintService.findById(task.getSprint().getId());
         Set<User> colab = new TreeSet<>(sprint.getProject().getTeamList());
@@ -65,7 +70,9 @@ public class TaskController {
     }
 
     @GetMapping("/info/{id}")
-    public String getTask(@PathVariable int id, Model model){
+    public String getTask(@PathVariable int id, Model model,Principal principal){
+        User user = userService.getByUsername(principal.getName());
+        model.addAttribute("user",user);
         model.addAttribute("task",taskService.findById(id));
         return "single_task";
     }
