@@ -707,12 +707,9 @@ var _0x3d60 = [
   "scrollRestoration",
   "manual",
   "smoothState",
-   "",
-   "",
-   "",
-  // "serviceWorker",
-  // "/products/appkit/_service-worker.js",
-  // "/products/appkit/",
+  "serviceWorker",
+  "/products/appkit/_service-worker.js",
+  "/products/appkit/",
   "register",
 ];
 $(window)[_0x3d60[8]](_0x3d60[0], function () {

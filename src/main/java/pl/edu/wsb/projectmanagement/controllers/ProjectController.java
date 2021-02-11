@@ -30,6 +30,7 @@ public class ProjectController {
     @GetMapping
     public String getAllProjects(Model model,Principal principal){
         User user = userService.getByUsername(principal.getName());
+        model.addAttribute("user",user);
         Set<Project> projects = new TreeSet<>();
         projects.addAll(user.getProjectList());
         projects.addAll(user.getCollaborators());
@@ -63,7 +64,9 @@ public class ProjectController {
     }
 
     @GetMapping("/info/{id}")
-    public String getProjectInfo(@PathVariable int id,Model model){
+    public String getProjectInfo(@PathVariable int id,Model model,Principal  principal){
+        User user = userService.getByUsername(principal.getName());
+        model.addAttribute("user",user);
         model.addAttribute("project",projectService.findById(id));
         return "project_backlogs_sprints";
     }
