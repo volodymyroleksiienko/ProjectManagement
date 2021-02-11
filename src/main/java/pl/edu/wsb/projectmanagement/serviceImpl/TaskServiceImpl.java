@@ -46,9 +46,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> findByTaskStatus(TaskStatus status) {
-        return taskJPA.findByTaskStatus(status);
+    public List<Task> findByTaskStatusAndAndSprintId(TaskStatus status, int sprintId) {
+        return taskJPA.findByTaskStatusAndAndSprintId(status,sprintId);
     }
+
+
 
     @Override
     public List<Task> findAll() {

@@ -7,5 +7,5 @@ import pl.edu.wsb.projectmanagement.entity.TaskStatus;
 import java.util.List;
 
 public interface TaskJPA extends JpaRepository<Task,Integer> {
-    List<Task> findByTaskStatus(TaskStatus status);
+    List<Task> findByTaskStatusAndAndSprintId(TaskStatus status,int sprintId);
 }

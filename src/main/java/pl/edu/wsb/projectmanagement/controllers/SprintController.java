@@ -29,9 +29,9 @@ public class SprintController {
     @GetMapping("/info/{id}")
     public String getSprintInfo(@PathVariable int id, Model model){
         model.addAttribute("sprint",sprintService.findById(id));
-        model.addAttribute("openTasks",taskService.findByTaskStatus(TaskStatus.OPEN));
-        model.addAttribute("inProcessTasks",taskService.findByTaskStatus(TaskStatus.IN_PROCESS));
-        model.addAttribute("doneTasks",taskService.findByTaskStatus(TaskStatus.DONE));
+        model.addAttribute("openTasks",taskService.findByTaskStatusAndAndSprintId(TaskStatus.OPEN,id));
+        model.addAttribute("inProcessTasks",taskService.findByTaskStatusAndAndSprintId(TaskStatus.IN_PROCESS,id));
+        model.addAttribute("doneTasks",taskService.findByTaskStatusAndAndSprintId(TaskStatus.DONE,id));
         return "tasks";
     }
 

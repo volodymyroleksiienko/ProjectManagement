@@ -10,7 +10,7 @@ public interface TaskService {
     Task save(Task task,String[] subTasks);
     Task update(Task old);
     Task findById(int id);
-    List<Task> findByTaskStatus(TaskStatus status);
+    List<Task> findByTaskStatusAndAndSprintId(TaskStatus status,int sprintId);
     List<Task> findAll();
     void deleteByID(int id);
 }
