@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.edu.wsb.projectmanagement.entity.Project;
 import pl.edu.wsb.projectmanagement.entity.Sprint;
 import pl.edu.wsb.projectmanagement.entity.TaskStatus;
 import pl.edu.wsb.projectmanagement.entity.User;
@@ -43,20 +44,24 @@ public class SprintController {
     @PostMapping("/create/{projectId}")
     public String createBacklog(@PathVariable int projectId, Sprint sprint){
         sprint.setProject(projectService.findById(projectId));
-        sprintService.save(sprint);
+        sprint = sprintService.save(sprint);
+        projectService.countProgress(sprint.getProject());
         return "redirect:/projects/info/"+projectId;
     }
 
     @PostMapping("/update/{projectId}")
     public String updateBacklog(@PathVariable int projectId, Sprint sprint){
         sprint.setProject(projectService.findById(projectId));
-        sprintService.update(sprint);
+        sprint = sprintService.update(sprint);
+        projectService.countProgress(sprint.getProject());
         return "redirect:/projects/info/"+projectId;
     }
 
     @GetMapping("/delete/{projectId}")
     public String deleteBacklog(@PathVariable int projectId, int id){
+        Project project = sprintService.findById(id).getProject();
         sprintService.deleteByID(id);
+        projectService.countProgress(project);
         return "redirect:/projects/info/"+projectId;
     }
 }
