@@ -16,7 +16,20 @@ public class Task {
     private int id;
 
     private String name;
-    private double progress;
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", progress=" + progress +
+                ", assignee=" + assignee +
+                ", created='" + created + '\'' +
+                ", deadline='" + deadline + '\'' +
+                '}';
+    }
+
+    private int progress;
     @ManyToOne
     private User assignee;
     private String created = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE);

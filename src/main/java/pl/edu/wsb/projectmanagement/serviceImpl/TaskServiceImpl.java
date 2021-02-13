@@ -37,7 +37,23 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task update(Task old) {
-        return taskJPA.save(old);
+        Task taskDB = findById(old.getId());
+        taskDB.setName(old.getName());
+        taskDB.setAssignee(old.getAssignee());
+        taskDB.setSprint(old.getSprint());
+        taskDB.setProgress(old.getProgress());
+        return taskJPA.save(taskDB);
+    }
+
+    @Override
+    public Task countProgress(Task task) {
+        int count  =0;
+        for(TaskItem taskItem :task.getItemList()){
+            if(taskItem.isStatus()) count++;
+        }
+        task.setProgress(count/task.getItemList().size()*100);
+        save(task);
+        return task;
     }
 
     @Override
