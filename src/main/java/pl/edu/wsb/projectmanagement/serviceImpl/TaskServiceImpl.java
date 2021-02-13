@@ -20,16 +20,17 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task save(Task task) {
-        if(task.getAssignee().getId()==0){
+        if(task.getAssignee().getId()<=0){
             task.setAssignee(null);
-        }else {
-            task.setTaskStatus(TaskStatus.IN_PROCESS);
         }
         return taskJPA.save(task);
     }
 
     @Override
     public Task save(Task task, String[] subTasks) {
+        if (task.getAssignee().getId()>0) {
+            task.setTaskStatus(TaskStatus.IN_PROCESS);
+        }
         List<TaskItem> taskItems = new ArrayList<>();
         if (subTasks!=null) {
             for (String item : subTasks) {
