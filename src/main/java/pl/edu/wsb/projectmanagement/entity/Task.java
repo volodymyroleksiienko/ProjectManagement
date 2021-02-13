@@ -38,7 +38,7 @@ public class Task {
     @OneToMany(mappedBy = "task",cascade = CascadeType.ALL)
     private List<TaskItem> itemList;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Sprint sprint;
 
     @Enumerated(EnumType.STRING)

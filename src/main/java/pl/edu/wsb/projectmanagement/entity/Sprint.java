@@ -18,9 +18,21 @@ public class Sprint {
     private String startDate;
     private String endDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Project project;
 
     @OneToMany(mappedBy = "sprint",cascade = CascadeType.REMOVE)
     private List<Task> taskList;
+
+    @Override
+    public String toString() {
+        return "Sprint{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", progress=" + progress +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", project=" + project +
+                '}';
+    }
 }

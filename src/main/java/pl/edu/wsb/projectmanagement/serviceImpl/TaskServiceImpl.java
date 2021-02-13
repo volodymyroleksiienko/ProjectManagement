@@ -39,8 +39,8 @@ public class TaskServiceImpl implements TaskService {
     public Task update(Task old) {
         Task taskDB = findById(old.getId());
         taskDB.setName(old.getName());
-        taskDB.setAssignee(old.getAssignee());
-        taskDB.setSprint(old.getSprint());
+        taskDB.getAssignee().setId(old.getAssignee().getId());
+        taskDB.getSprint().setId(old.getSprint().getId());
         taskDB.setProgress(old.getProgress());
         return taskJPA.save(taskDB);
     }

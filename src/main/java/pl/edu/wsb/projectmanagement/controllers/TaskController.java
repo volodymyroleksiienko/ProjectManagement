@@ -65,9 +65,11 @@ public class TaskController {
 
     @PostMapping("/update/{taskId}")
     public String updateTask(@PathVariable int taskId,Task task){
-        task = taskService.update(task);
-        projectService.countProgress(task.getSprint().getProject());
-        return "redirect:/sprint/info/"+taskService.findById(taskId).getSprint().getId();
+        task.setId(taskId);
+        taskService.update(task);
+        Task taskDB = taskService.findById(taskId);
+        projectService.countProgress(taskDB.getSprint().getProject());
+        return "redirect:/sprint/info/"+taskDB.getSprint().getId();
     }
 
     @GetMapping("/info/{id}")
