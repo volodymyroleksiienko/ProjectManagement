@@ -22,6 +22,8 @@ public class TaskServiceImpl implements TaskService {
     public Task save(Task task) {
         if(task.getAssignee().getId()==0){
             task.setAssignee(null);
+        }else {
+            task.setTaskStatus(TaskStatus.IN_PROCESS);
         }
         return taskJPA.save(task);
     }
