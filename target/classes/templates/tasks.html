@@ -61,7 +61,7 @@
                             <div th:each="t:${openTasks}">
                                 <div class="row-id d-flex" th:id="${t.getId()}" >
                                     <div class="align-self-center" style="width: 60%;">
-                                        <a href="tasks.html">
+                                        <a th:href="@{|/task/info/${t.getId()}|}">
                                             <h5 class="sprint-name mb-0" th:text="${t.getName()}">Task name 0</h5>
                                             <div class="w-100" style="display: inline-flex;">
                                                 <h5 class="sprint-start font-12 mb-2 opacity-30 w-50" th:text="${t.getCreated()}">2020-02-02</h5>
@@ -99,7 +99,7 @@
                             <div th:each="t:${inProcessTasks}">
                                 <div class="row-id d-flex mb-3" th:id="${t.getId()}">
                                     <div class="align-self-center" style="width: 60%;">
-                                        <a href="tasks.html">
+                                        <a th:href="@{|/task/info/${t.getId()}|}">
                                             <h5 class="sprint-name mb-0" th:text="${t.getName()}">Task name 0</h5>
                                             <div class="w-100" style="display: inline-flex;">
                                                 <h5 class="sprint-start font-12 mb-2 opacity-30 w-50" th:text="${t.getCreated()}">2020-02-02</h5>
@@ -132,7 +132,7 @@
                             <div th:each="t:${doneTasks}">
                                 <div class="row-id d-flex" th:id="${t.getId()}">
                                     <div class="align-self-center" style="width: 60%;">
-                                        <a href="tasks.html">
+                                        <a th:href="@{|/task/info/${t.getId()}|}">
                                             <h5 class="sprint-name mb-0" th:text="${t.getName()}">Task name 0</h5>
                                             <div class="w-100" style="display: inline-flex;">
                                                 <h5 class="sprint-start font-12 mb-2 opacity-30 w-50" th:text="${t.getCreated()}">2020-02-02</h5>

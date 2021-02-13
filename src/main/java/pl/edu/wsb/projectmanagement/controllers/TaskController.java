@@ -13,7 +13,6 @@ import pl.edu.wsb.projectmanagement.service.TaskService;
 import pl.edu.wsb.projectmanagement.service.UserService;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
