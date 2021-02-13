@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.wsb.projectmanagement.entity.Project;
 import pl.edu.wsb.projectmanagement.entity.Sprint;
 import pl.edu.wsb.projectmanagement.entity.Task;
 import pl.edu.wsb.projectmanagement.entity.User;
@@ -79,5 +80,11 @@ public class TaskController {
         return "single_task";
     }
 
-
+    @GetMapping("/delete/{sprintId}")
+    public String deleteBacklog(@PathVariable int sprintId, int id){
+        Project project = sprintService.findById(sprintId).getProject();
+        taskService.deleteByID(id);
+        projectService.countProgress(project);
+        return "redirect:/sprint/info/"+sprintId;
+    }
 }

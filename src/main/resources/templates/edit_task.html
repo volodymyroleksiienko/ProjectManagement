@@ -88,7 +88,7 @@
                         <em><i class="fa fa-angle-down"></i></em>
                         <select class="form-control" name="assignee.id" id="assigneeList">
                             <option value="0">Not Selected</option>
-                            <option th:selected="${task.getAssignee().getId()==u.getId()}" th:value="${u.getId()}" th:each="u :${users}" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Name</option>
+                            <option th:selected="${task?.getAssignee()?.getId()==u?.getId()}" th:value="${u.getId()}" th:each="u :${users}" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Name</option>
                         </select>
                     </div>
 
@@ -106,7 +106,7 @@
 
                     <div class="row">
                         <div class="col-3">
-                            <a href="#"
+                            <a th:href="@{'/task/delete/'+${task.getSprint().getId()}+'?id='+${task.getId()}|}"
                                class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s"><span><i
                                     class="fas fa-trash-alt fa-lg"></i></span></a>
                         </div>
