@@ -39,14 +39,16 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Project countProgress(Project project) {
+        if(project== null) return null;
         int count = 0;
         for(Sprint sprint: project.getSprintsList()){
             sprint = sprintService.countProgress(sprint);
             if(sprint.getProgress()==100) count++;
         }
-        project.setProgress(count/project.getSprintsList().size()*100);
-        save(project);
-        System.out.println(project.getProgress());
+        if(count!=0) {
+            project.setProgress((int) ( count / (double) project.getSprintsList().size() * 100));
+            save(project);
+        }
         return project;
     }
 

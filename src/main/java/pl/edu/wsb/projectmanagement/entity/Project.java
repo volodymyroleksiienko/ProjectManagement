@@ -53,4 +53,17 @@ public class Project implements Comparable{
     public int hashCode() {
         return Objects.hash(name, description, started, deadline);
     }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", started='" + started + '\'' +
+                ", deadline='" + deadline + '\'' +
+                ", progress=" + progress +
+                ", owner=" + owner +
+                '}';
+    }
 }
