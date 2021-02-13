@@ -16,7 +16,7 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{../../fonts/css/fontawesome-all.min.css}">
     <link rel="apple-touch-icon" sizes="180x180" th:href="@{../../app/icons/icon-192x192.png}">
-
+    <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
 </head>
 
 <body class="theme-light">
@@ -73,12 +73,12 @@
                         <div class="user-left">
                             <div class="d-flex">
                                 <div class="align-self-center">
-                                    <img src="images/avatars/5s.png" class="bg-yellow-dark mr-3 rounded-circle shadow-l"
+                                    <img th:src="'/user/getUserImg/'+${task.getAssignee()?.getId()}" class="bg-yellow-dark mr-3 rounded-circle shadow-l"
                                         width="50" />
                                 </div>
                                 <div class="align-self-center">
-                                    <h5 class="mt-1 mb-0">Johnatan Unixer</h5>
-                                    <p class="font-10 mt-n1 color-blue-dark">
+                                    <h5 class="mt-1 mb-0" th:text="${task.getAssignee()?.getFirstName()}+' '+${task.getAssignee()?.getLastName()}">Johnatan Unixer</h5>
+                                    <p class="font-10 mt-n1 color-blue-dark"  th:text="${task.getAssignee()?.getPosition()}">
                                         Executive Officer
                                     </p>
                                 </div>
@@ -90,8 +90,8 @@
                         <div class="user-right">
                             <div class="d-flex">
                                 <div class="align-self-center">
-                                    <h5 class="mt-1 mb-0">Johnatan Doe</h5>
-                                    <p class="font-10 mt-n1 color-blue-dark">
+                                    <h5 class="mt-1 mb-0" th:text="${task.getAssignee()?.getFirstName()}+' '+${task.getAssignee()?.getLastName()}">Johnatan Doe</h5>
+                                    <p class="font-10 mt-n1 color-blue-dark" th:text="${task.getAssignee()?.getPosition()}">
                                         Executive Officer
                                     </p>
                                 </div>
@@ -107,12 +107,12 @@
                         </div>
                     </div>
                     <div class="divider mt-3"></div>
-                    <a href="#" data-menu="close-project-modal"
+                    <a href="#" data-menu="close-project-modal" th:if="${task.getItemList().size()==0}"
                         class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
                 </div>
             </div>
 
-            <div class="card card-style">
+            <div class="card card-style" th:if="${task.getItemList().size()>0}">
                 <div class="content mb-0">
                     <h4>Subtasks</h4>
                     <p>
