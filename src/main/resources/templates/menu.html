@@ -2,7 +2,7 @@
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
      xmlns:th="http://www.thymeleaf.org">
-    <div class="card rounded-0" style="height: 150px" th:style="'background-image: url(/user/getUserImg/'+${user.getId()}+');'">
+    <div class="card rounded-0" th:style="'background-image: url(/user/getUserImg/'+${user.getId()}+'); height: 250px'">
         <div class="card-top">
             <a href="#" class="close-menu float-right mr-2 text-center mt-3 icon-40 notch-clear"><i
                     class="fa fa-times color-white"></i></a>
@@ -29,11 +29,6 @@
     </div>
     <h6 class="menu-divider mt-4">settings</h6>
     <div class="list-group list-custom-small list-menu">
-        <a href="#" data-menu="menu-colors">
-            <i class="fa fa-brush gradient-highlight color-white"></i>
-            <span>Highlights</span>
-            <i class="fa fa-angle-right"></i>
-        </a>
         <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode">
             <i class="fa fa-moon gradient-dark color-white"></i>
             <span>Dark Mode</span>

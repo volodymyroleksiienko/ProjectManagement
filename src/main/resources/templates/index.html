@@ -81,7 +81,7 @@
               <div class="user-left">
                 <div class="d-flex">
                   <div class="align-self-center">
-                    <img src="/images/avatars/5s.png" class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" />
+                    <img th:src="'/user/getUserImg/'+${user.getId()}" class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" height="50" />
                   </div>
                   <div class="align-self-center">
                     <h5 class="mt-1 mb-0" th:text="${p.getOwner()?.getFirstName()}+' '+${p.getOwner()?.getLastName()}"></h5>

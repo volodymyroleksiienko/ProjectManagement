@@ -9,11 +9,12 @@
     content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>Profile</title>
   <link rel="stylesheet" type="text/css" th:href="@{/styles/bootstrap.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/highlights/highlight-blue.css}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet">
   <link rel="stylesheet" type="text/css" th:href="@{/fonts/css/fontawesome-all.min.css}">
   <link rel="apple-touch-icon" sizes="180x180" th:href="@{/app/icons/icon-192x192.png}">
-
+  <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
 </head>
 
 <body class="theme-light">
@@ -27,12 +28,9 @@
       <a href="#" data-toggle-theme class="header-icon header-icon-4 show-on-theme-dark"><i class="fas fa-sun"></i></a>
       <a href="#" data-toggle-theme class="header-icon header-icon-4 show-on-theme-light"><i
           class="fas fa-moon"></i></a>
-      <a href="#" data-menu="menu-share" class="header-icon header-icon-3"><i class="fas fa-share-alt"></i></a>
     </div>
     <div class="page-title page-title-fixed">
       <h1>Profile</h1>
-      <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i
-          class="fa fa-share-alt"></i></a>
       <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i
           class="fa fa-moon"></i></a>
       <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i
@@ -50,7 +48,7 @@
                     Project manager
                 </h1>
             </div>
-            <div class="card-overlay bg-gradient"></div>
+            <div class="card-overlay"></div>
         </div>
         <div class="card card-style">
             <div class="content mt-3 mb-2">
@@ -182,7 +180,6 @@
         class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>
     </div>
   </div>
-  <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>
   <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
   <script>

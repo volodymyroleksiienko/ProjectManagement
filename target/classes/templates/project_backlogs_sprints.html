@@ -74,8 +74,7 @@
                                     <div class="user-left">
                                         <div class="d-flex">
                                             <div class="align-self-center">
-                                                <img src="images/avatars/5s.png"
-                                                    class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" />
+                                                <img th:src="'/user/getUserImg/'+${user.getId()}" class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" height="50"/>
                                             </div>
                                             <div class="align-self-center">
                                                 <h5 class="mt-1 mb-0" th:text="${project.getOwner()?.getFirstName()}+' '+${project.getOwner()?.getLastName()}"></h5>
@@ -559,7 +558,6 @@
 <!--                class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>-->
 <!--        </div>-->
     </div>
-<!--    <script type="text/javascript" th:src="@{../../scripts/jquery.js}"></script>-->
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
     <script>
