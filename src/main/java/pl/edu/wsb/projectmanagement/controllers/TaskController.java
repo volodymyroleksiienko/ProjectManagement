@@ -41,7 +41,7 @@ public class TaskController {
 
     @ResponseBody
     @PostMapping("/create/{sprintId}")
-    public String createTask(@PathVariable int sprintId, Task task,@RequestParam("subTasks") String[] subTasks, int assignee){
+    public String createTask(@PathVariable int sprintId, Task task,String[] subTasks, int assignee){
         task.setSprint(sprintService.findById(sprintId));
         task.setAssignee(userService.findById(assignee));
         task = taskService.save(task,subTasks);
