@@ -67,7 +67,7 @@
                             </div>
                         </div>
                     </div>
-                    <h6 class="mb-2">Assigned person:</h6>
+                    <h6 class="mb-2" th:if="${task.getAssignee()!=null}">Assigned person:</h6>
                     <div class="user-slider owl-carousel">
                         <div class="user-left">
                             <div class="d-flex">
@@ -95,10 +95,10 @@
                                     </p>
                                 </div>
                                 <div class="ml-auto align-self-center">
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone">
+                                    <a th:href="'tel:'+${task.getAssignee()?.getPhoneNumber()}" class="icon icon-xs rounded-circle shadow-l bg-phone">
                                         <i class="fa fa-phone"></i>
                                     </a>
-                                    <a href="#" class="icon icon-xs rounded-circle shadow-l bg-red-dark mr-2 ml-2">
+                                    <a th:href="@{||}" class="icon icon-xs rounded-circle shadow-l bg-red-dark mr-2 ml-2">
                                         <i class="fas fa-times "></i>
                                     </a>
                                 </div>

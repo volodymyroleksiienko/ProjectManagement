@@ -63,6 +63,12 @@ public class TaskController {
         return "edit_task";
     }
 
+    @GetMapping("/update/deleteAssign/{taskId}")
+    public String deleteAssign(@PathVariable int taskId){
+       taskService.deleteAssigneeByID(taskId);
+        return "redirect:/update/"+taskId;
+    }
+
     @PostMapping("/update/{taskId}")
     public String updateTask(@PathVariable int taskId,Task task){
         task.setId(taskId);

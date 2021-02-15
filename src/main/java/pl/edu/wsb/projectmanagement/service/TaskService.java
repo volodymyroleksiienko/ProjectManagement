@@ -14,4 +14,5 @@ public interface TaskService {
     List<Task> findByTaskStatusAndAndSprintId(TaskStatus status,int sprintId);
     List<Task> findAll();
     void deleteByID(int id);
+    void deleteAssigneeByID(int id);
 }
