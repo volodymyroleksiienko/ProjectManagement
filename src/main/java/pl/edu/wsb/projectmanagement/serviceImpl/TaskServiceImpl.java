@@ -22,17 +22,17 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task save(Task task) {
-        if(task.getAssignee().getId()<=0){
+        if (task.getAssignee()!=null && userService.findById(task.getAssignee().getId())!=null) {
+            task.setTaskStatus(TaskStatus.IN_PROCESS);
+        }else{
             task.setAssignee(null);
+            task.setTaskStatus(TaskStatus.OPEN);
         }
         return taskJPA.save(task);
     }
 
     @Override
     public Task save(Task task, String[] subTasks) {
-        if (task.getAssignee().getId()>0) {
-            task.setTaskStatus(TaskStatus.IN_PROCESS);
-        }
         List<TaskItem> taskItems = new ArrayList<>();
         if (subTasks!=null) {
             for (String item : subTasks) {
@@ -54,7 +54,7 @@ public class TaskServiceImpl implements TaskService {
         }taskDB.getSprint().setId(old.getSprint().getId());
         taskDB.setTaskStatus(old.getTaskStatus());
         taskDB.setProgress(old.getProgress());
-        return taskJPA.save(taskDB);
+        return save(taskDB);
     }
 
     @Override

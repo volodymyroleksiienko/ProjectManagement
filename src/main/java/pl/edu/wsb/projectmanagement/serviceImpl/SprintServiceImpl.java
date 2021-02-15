@@ -39,9 +39,11 @@ public class SprintServiceImpl implements SprintService {
     public Sprint countProgress(Sprint sprint) {
         int count = 0;
         System.out.println(sprint.getTaskList());
-        for(Task task: sprint.getTaskList()){
-            task = taskService.countProgress(task);
-            if(task.getProgress()==100) count++;
+        if(sprint.getTaskList()!=null) {
+            for (Task task : sprint.getTaskList()) {
+                task = taskService.countProgress(task);
+                if (task.getProgress() == 100) count++;
+            }
         }
         if(count!=0) {
             int progress =(int) ( count / (double)sprint.getTaskList().size()*100);

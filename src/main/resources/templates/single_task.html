@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <h6 class="mb-2" th:if="${task.getAssignee()!=null}">Assigned person:</h6>
-                    <div class="user-slider owl-carousel">
+                    <div class="user-slider owl-carousel" th:if="${task.getAssignee()!=null}">
                         <div class="user-left">
                             <div class="d-flex">
                                 <div class="align-self-center">
@@ -98,14 +98,14 @@
                                     <a th:href="'tel:'+${task.getAssignee()?.getPhoneNumber()}" class="icon icon-xs rounded-circle shadow-l bg-phone">
                                         <i class="fa fa-phone"></i>
                                     </a>
-                                    <a th:href="@{||}" class="icon icon-xs rounded-circle shadow-l bg-red-dark mr-2 ml-2">
+                                    <a th:href="@{|/task/update/deleteAssign/${task.getId()}|}" class="icon icon-xs rounded-circle shadow-l bg-red-dark mr-2 ml-2">
                                         <i class="fas fa-times "></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="divider mt-3"></div>
+                    <div class="divider mt-3" th:if="${task.getAssignee()!=null}"></div>
                     <a href="#" data-menu="close-project-modal" th:if="${task.getItemList().size()==0}"
                         class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
                 </div>
