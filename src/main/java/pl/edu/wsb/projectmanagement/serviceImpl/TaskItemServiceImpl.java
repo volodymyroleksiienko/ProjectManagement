@@ -36,6 +36,15 @@ public class TaskItemServiceImpl implements TaskItemService {
     }
 
     @Override
+    public void setStatus(int id, boolean status) {
+        TaskItem taskItem = findById(id);
+        if(taskItem!=null){
+            taskItem.setStatus(status);
+            save(taskItem);
+        }
+    }
+
+    @Override
     public void deleteByID(int id) {
         taskItemJPA.deleteById(id);
     }

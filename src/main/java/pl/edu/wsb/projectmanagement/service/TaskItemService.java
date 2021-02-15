@@ -9,5 +9,6 @@ public interface TaskItemService {
     TaskItem update(TaskItem old);
     TaskItem findById(int id);
     List<TaskItem> findAll();
+    void setStatus(int id, boolean status);
     void deleteByID(int id);
 }

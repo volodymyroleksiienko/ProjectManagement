@@ -4,14 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.wsb.projectmanagement.entity.Project;
-import pl.edu.wsb.projectmanagement.entity.Sprint;
-import pl.edu.wsb.projectmanagement.entity.Task;
-import pl.edu.wsb.projectmanagement.entity.User;
-import pl.edu.wsb.projectmanagement.service.ProjectService;
-import pl.edu.wsb.projectmanagement.service.SprintService;
-import pl.edu.wsb.projectmanagement.service.TaskService;
-import pl.edu.wsb.projectmanagement.service.UserService;
+import pl.edu.wsb.projectmanagement.entity.*;
+import pl.edu.wsb.projectmanagement.service.*;
 
 import java.security.Principal;
 import java.util.Set;
@@ -22,6 +16,7 @@ import java.util.TreeSet;
 @AllArgsConstructor
 public class TaskController {
     private TaskService taskService;
+    private TaskItemService taskItemService;
     private SprintService sprintService;
     private UserService userService;
     private ProjectService projectService;
@@ -66,7 +61,7 @@ public class TaskController {
     @GetMapping("/update/deleteAssign/{taskId}")
     public String deleteAssign(@PathVariable int taskId){
        taskService.deleteAssigneeByID(taskId);
-        return "redirect:/task/update/"+taskId;
+        return "redirect:/task/info/"+taskId;
     }
 
     @PostMapping("/update/{taskId}")
@@ -86,11 +81,25 @@ public class TaskController {
         return "single_task";
     }
 
+    @GetMapping("/done/{id}")
+    public String getTask(@PathVariable int id){
+        Task task = taskService.findById(id);
+        task.setTaskStatus(TaskStatus.DONE);
+        taskService.save(task);
+        return "redirect:/sprint/info/"+task.getSprint().getId();
+    }
+
     @GetMapping("/delete/{sprintId}")
     public String deleteBacklog(@PathVariable int sprintId, int id){
         Project project = sprintService.findById(sprintId).getProject();
         taskService.deleteByID(id);
         projectService.countProgress(project);
         return "redirect:/sprint/info/"+sprintId;
+    }
+
+    @ResponseBody
+    @PostMapping("/taskItemSetStatus")
+    public void taskItemSetStatus(int id, boolean status){
+        taskItemService.setStatus(id,status);
     }
 }

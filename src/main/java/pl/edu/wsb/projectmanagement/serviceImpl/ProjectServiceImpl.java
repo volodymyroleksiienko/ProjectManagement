@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import pl.edu.wsb.projectmanagement.entity.Project;
 import pl.edu.wsb.projectmanagement.entity.Sprint;
 import pl.edu.wsb.projectmanagement.entity.Task;
+import pl.edu.wsb.projectmanagement.entity.User;
 import pl.edu.wsb.projectmanagement.jpa.ProjectJPA;
 import pl.edu.wsb.projectmanagement.service.ProjectService;
 import pl.edu.wsb.projectmanagement.service.SprintService;
+import pl.edu.wsb.projectmanagement.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService {
     private ProjectJPA  projectJPA;
     private SprintService sprintService;
+    private UserService userService;
 
     @Override
     public Project save(Project project) {
@@ -90,6 +93,11 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void deleteByID(int id) {
+        Project project = findById(id);
+        User user =  project.getOwner();
+        user.getCollaborators().remove(project);
+        user.getProjectList().remove(project);
+        userService.save(user);
         projectJPA.deleteById(id);
     }
 }

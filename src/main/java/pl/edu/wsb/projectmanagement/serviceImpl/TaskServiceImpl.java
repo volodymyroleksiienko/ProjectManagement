@@ -22,7 +22,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task save(Task task) {
-        if (task.getAssignee()!=null && userService.findById(task.getAssignee().getId())!=null) {
+        if (task.getAssignee()!=null && task.getAssignee().getId()>0 && userService.findById(task.getAssignee().getId())!=null ) {
             task.setTaskStatus(TaskStatus.IN_PROCESS);
         }else{
             task.setAssignee(null);
