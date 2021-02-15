@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="divider mt-3" th:if="${task.getAssignee()!=null}"></div>
-                    <a href="#" data-menu="close-project-modal" th:if="${task.getItemList().size()==0}"
+                    <a th:href="@{'/task/done?id='+${task.getId()}}" data-menu="close-project-modal" th:if="${task.getItemList().size()==0}"
                         class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
                 </div>
             </div>
@@ -124,14 +124,14 @@
                             <span th:text="${item.getDescription()}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                                 has been the industry's standard dummy text ever since the 1500s</span>
                             <div class="form-check icon-check">
-                                <input class="form-check-input" type="checkbox" th:value="${item.isStatus()}" th:id="'check'+${item.getId()}" />
+                                <input class="form-check-input" type="checkbox" th:checked="${item.isStatus()}" th:id="'check'+${item.getId()}" />
                                 <i class="icon-check-1 far fa-square color-gray-dark font-16"></i>
                                 <i class="icon-check-2 far fa-check-square font-16 color-highlight"></i>
                             </div>
                         </a>
                     </div>
 
-                    <a href="#" data-menu="close-project-modal"
+                    <a th:href="@{'/task/done?id='+${task.getId()}}" data-menu="close-project-modal"
                         class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
                 </div>
             </div>
