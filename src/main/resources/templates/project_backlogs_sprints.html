@@ -269,7 +269,7 @@
                                 </div>
                                 <div class="align-self-center ml-auto">
                                     <h1 class="font-20">
-                                        <a th:href="#" class="edit-button" data-menu="edit-sprint-modal"
+                                        <a href="#" class="edit-button" data-menu="edit-sprint-modal"
                                             onclick="editSprintModal(this)">
                                             <i class="fas fa-pen color-highlight"></i>
                                         </a>
@@ -322,7 +322,7 @@
 
                     <div class="row">
                         <div class="col-3">
-                            <a th:href="@{'/sprint/delete/'+${spr.getProject().getId()}+'?id='+${spr.getId()}}" class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s">
+                            <a id="deleteSprintItemLink" href="#" class="btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s">
                                 <span>
                                     <i class="fas fa-trash-alt fa-lg"></i>
                                 </span>
@@ -549,6 +549,7 @@
         function editSprintModal(btnObj) {
             let trObj = btnObj.closest(".row-id");
             let trId = $(trObj).attr('id');
+            let projectId = $('body').attr('id');
 
             console.log("item id:" + $(trObj).attr('id'));
 
@@ -561,6 +562,7 @@
             $('#editSprintNameInput').val(name);
             $('#editStartDateInput').val(sprintStart);
             $('#editEndDateInput').val(sprintEnd);
+            $('#deleteSprintItemLink').attr('href','/sprint/delete/'+projectId+'?id='+trId);
         }
 
         function editBacklogModal(btnObj) {
@@ -581,23 +583,6 @@
             console.log('descr: ' + description + ' ; prior: ' + priority);
         }
 
-        function editSprintModal(btnObj) {
-            let trObj = btnObj.closest(".backlog-id");
-            let trId = $(trObj).attr('id');
-            let projectId = $('body').attr('id');
-
-            console.log("item id:" + $(trObj).attr('id'));
-
-            let description = $(trObj).find('.backlog-description').text().trim();
-            let priority = $(trObj).find('.backlog-priority').text().match(/\d+/);
-
-            $('#backlogIdInput').val(trId);
-            $('#backlogDescription').val(description);
-            $('#editPriorities').val(priority);
-            $('#deleteItemLink').attr('href','/backlogs/delete/'+projectId+'?id='+trId);
-
-            console.log('descr: ' + description + ' ; prior: ' + priority);
-        }
         ///////////////////////////////////////////////
         // function loadScript(src) {
         //     let script = document.createElement('script');
