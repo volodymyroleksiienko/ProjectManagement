@@ -269,7 +269,7 @@
                                 </div>
                                 <div class="align-self-center ml-auto">
                                     <h1 class="font-20">
-                                        <a th:href="@{'/sprint/delete/'+${spr.getProject().getId()}+'?id='+${spr.getId()}}" class="edit-button" data-menu="edit-sprint-modal"
+                                        <a th:href="#" class="edit-button" data-menu="edit-sprint-modal"
                                             onclick="editSprintModal(this)">
                                             <i class="fas fa-pen color-highlight"></i>
                                         </a>
@@ -322,9 +322,11 @@
 
                     <div class="row">
                         <div class="col-3">
-                            <a href="#"
-                                class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s"><span><i
-                                        class="fas fa-trash-alt fa-lg"></i></span></a>
+                            <a th:href="@{'/sprint/delete/'+${spr.getProject().getId()}+'?id='+${spr.getId()}}" class="close-menu btn btn-full gradient-dark font-12 btn-m font-600 mt-3 rounded-s">
+                                <span>
+                                    <i class="fas fa-trash-alt fa-lg"></i>
+                                </span>
+                            </a>
                         </div>
                         <div class="col-9">
                             <button type="submit"
@@ -485,70 +487,6 @@
         <!-- Main menu start -->
         <div th:replace="menu"></div>
         <!-- Main menu end -->
-
-<!--        <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-height="480">-->
-<!--            <div class="menu-title">-->
-<!--                <p class="color-highlight font-600">Choose your Favorite</p>-->
-<!--                <h1>Highlight</h1>-->
-<!--                <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>-->
-<!--            </div>-->
-<!--            <div class="divider divider-margins mt-3 mb-2"></div>-->
-<!--            <div class="content mt-0 ml-0 mr-0">-->
-<!--                <div class="row mb-0">-->
-<!--                    <div class="col-6">-->
-<!--                        <div class="highlight-changer list-group list-custom-small list-menu">-->
-<!--                            <a href="#" class="menu-active" data-highlight-style="styles/highlights/highlight-blue.css">-->
-<!--                                <i class="gradient-blue color-white"></i>-->
-<!--                                <span>Blue</span>-->
-<!--                            </a>-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-red.css">-->
-<!--                                <i class="gradient-red color-white"></i>-->
-<!--                                <span>Red</span>-->
-<!--                            </a>-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-orange.css">-->
-<!--                                <i class="gradient-orange color-white"></i>-->
-<!--                                <span>Orange</span>-->
-<!--                            </a>-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-green.css">-->
-<!--                                <i class="gradient-green color-white"></i>-->
-<!--                                <span>Green</span>-->
-<!--                            </a>-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-yellow.css">-->
-<!--                                <i class="gradient-yellow color-white"></i>-->
-<!--                                <span>Yellow</span>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-6">-->
-<!--                        <div class="highlight-changer list-group list-custom-small list-menu">-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-dark.css">-->
-<!--                                <i class="gradient-dark color-white"></i>-->
-<!--                                <span>Dark</span>-->
-<!--                            </a>-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-gray.css">-->
-<!--                                <i class="gradient-gray color-white"></i>-->
-<!--                                <span>Gray</span>-->
-<!--                            </a>-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-teal.css">-->
-<!--                                <i class="gradient-teal color-white"></i>-->
-<!--                                <span>Teal</span>-->
-<!--                            </a>-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-magenta.css">-->
-<!--                                <i class="gradient-magenta color-white"></i>-->
-<!--                                <span>Plum</span>-->
-<!--                            </a>-->
-<!--                            <a href="#" data-highlight-style="styles/highlights/highlight-brown.css">-->
-<!--                                <i class="gradient-brown color-white"></i>-->
-<!--                                <span>Brown</span>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="divider divider-margins mt-2"></div>-->
-<!--            <a href="#"-->
-<!--                class="close-menu btn btn-margins btn-m font-13 rounded-s shadow-xl btn-full gradient-highlight border-0 font-700 text-uppercase">Awesome</a>-->
-<!--        </div>-->
     </div>
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" language="JavaScript" th:src="@{../../scripts/custom.js}"></script>
@@ -638,7 +576,25 @@
             $('#backlogIdInput').val(trId);
             $('#backlogDescription').val(description);
             $('#editPriorities').val(priority);
-            $('#deleteItemLink').attr('href','/backlogs/delete/'+projectId+'?'+trId);
+            $('#deleteItemLink').attr('href','/backlog/delete/'+projectId+'?id='+trId);
+
+            console.log('descr: ' + description + ' ; prior: ' + priority);
+        }
+
+        function editSprintModal(btnObj) {
+            let trObj = btnObj.closest(".backlog-id");
+            let trId = $(trObj).attr('id');
+            let projectId = $('body').attr('id');
+
+            console.log("item id:" + $(trObj).attr('id'));
+
+            let description = $(trObj).find('.backlog-description').text().trim();
+            let priority = $(trObj).find('.backlog-priority').text().match(/\d+/);
+
+            $('#backlogIdInput').val(trId);
+            $('#backlogDescription').val(description);
+            $('#editPriorities').val(priority);
+            $('#deleteItemLink').attr('href','/backlogs/delete/'+projectId+'?id='+trId);
 
             console.log('descr: ' + description + ' ; prior: ' + priority);
         }
