@@ -151,7 +151,7 @@
                                             </div>
                                             <div class="card-bottom text-center">
                                                 <div class="content pb-1">
-                                                    <h1 class="mb-n1" th:text="${project.getProgress()}">24.55%</h1>
+                                                    <h1 class="mb-n1" th:text="${project.getProgress()}+'%'">24.55%</h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,31 +168,31 @@
                                                 <div class="divider mb-3"></div>
                                                 <div class="mb-4">
                                                     <h5>
-                                                        Open<span class="opacity-30 float-right">30%</span>
+                                                        Open<span class="opacity-30 float-right" th:text="${openProgress}+'%'">30%</span>
                                                     </h5>
                                                     <div class="progress" style="height: 8px">
                                                         <div class="progress-bar border-0 bg-yellow-dark text-left pl-2"
-                                                            role="progressbar" style="width: 30%" aria-valuenow="30"
+                                                            role="progressbar" th:style="'width: '+${openProgress}+'%'" th:aria-valuenow="${openProgress}"
                                                             aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                                 <div class="mb-4">
                                                     <h5>
-                                                        In process<span class="opacity-30 float-right">70%</span>
+                                                        In process<span class="opacity-30 float-right" th:text="${inProcessProgress}+'%'">70%</span>
                                                     </h5>
                                                     <div class="progress" style="height: 8px">
                                                         <div class="progress-bar border-0 bg-blue-dark text-left pl-2"
-                                                            role="progressbar" style="width: 70%" aria-valuenow="70"
+                                                            role="progressbar" th:style="'width: '+${inProcessProgress}+'%'" th:aria-valuenow="${inProcessProgress}"
                                                             aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <h5>
-                                                        Done<span class="opacity-30 float-right">40%</span>
+                                                        Done<span class="opacity-30 float-right" th:text="${doneProgress}+'%'">40%</span>
                                                     </h5>
                                                     <div class="progress" style="height: 8px">
                                                         <div class="progress-bar border-0 bg-green-dark text-left pl-2"
-                                                            role="progressbar" style="width: 40%" aria-valuenow="40"
+                                                            role="progressbar" th:style="'width: '+${doneProgress}+'%'" th:aria-valuenow="${doneProgress}"
                                                             aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
