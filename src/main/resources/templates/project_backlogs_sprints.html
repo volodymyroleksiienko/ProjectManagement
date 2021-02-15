@@ -559,7 +559,7 @@
 <!--        </div>-->
     </div>
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{../../scripts/custom.js}" defer></script>
+    <script async type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
 <!--    <script type="text/javascript" src="/scripts/custom.js" defer></script>-->
     <script>
         $(document).ready(function () {
@@ -650,6 +650,14 @@
 
             console.log('descr: ' + description + ' ; prior: ' + priority);
         }
+        ///////////////////////////////////////////////
+        // function loadScript(src) {
+        //     let script = document.createElement('script');
+        //     script.src = src;
+        //     script.async = false;
+        //     document.body.append(script);
+        // }
+        // loadScript("/scripts/custom.js");
     </script>
 </body>
 

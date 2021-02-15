@@ -242,7 +242,7 @@ var _0x3d60 = [
   "highlight-style",
   "AppKit-Highlight",
   "#highlight",
-  '<link rel="stylesheet" id="highlight" type="text/css" />',
+  "",
   "[data-highlight-style]",
   'a[data-highlight-style="',
   "now",
@@ -720,7 +720,7 @@ $(window)[_0x3d60[8]](_0x3d60[0], function () {
       $(_0x3d60[7])[_0x3d60[6]](_0x3d60[5]);
 }),
     $(document)[_0x3d60[554]](function () {
-      _0x3d60[9];
+      // _0x3d60[9];
       var _0xdc4bx1 = !0,
           _0xdc4bx2 = !0,
           _0xdc4bx3 = 1;
@@ -2663,7 +2663,7 @@ $(window)[_0x3d60[8]](_0x3d60[0], function () {
                       _0xdc4bx1[_0x3d60[88]](_0xdc4bx2),
                       setTimeout(_0xdc4bx4, 0),
                       $(_0x3d60[7])[_0x3d60[30]](_0x3d60[5]);
-                  location.reload();
+                  // location.reload();
                 },
               },
               onAfter: function (_0xdc4bx1, _0xdc4bx2) {
@@ -2679,9 +2679,7 @@ $(window)[_0x3d60[8]](_0x3d60[0], function () {
                 [_0x3d60[134]](_0x3d60[707])
                 [_0x3d60[648]]();
           }),
-      !0 === _0xdc4bx1 &&
-      _0x3d60[708] in navigator &&
-      window[_0x3d60[285]](_0x3d60[0], function () {
+      !0 === _0xdc4bx1 && _0x3d60[708] in navigator && window[_0x3d60[285]](_0x3d60[0], function () {
         navigator[_0x3d60[708]][_0x3d60[711]](_0x3d60[709], {
           scope: _0x3d60[710],
         });
