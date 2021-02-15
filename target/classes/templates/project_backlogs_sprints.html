@@ -208,20 +208,9 @@
                                     </h5>
                                     <div class="divider mb-3"></div>
                                     <div class="list-group list-custom-large">
-                                        <a href="#">
-                                            <img src="images/avatars/1s.png" />
-                                            <span>Jane</span>
-                                            <strong>Company Founder</strong>
-                                            <i class="fas fa-phone color-highlight"></i>
-                                        </a>
-                                        <a href="#">
-                                            <img src="images/avatars/2s.png" />
-                                            <span>Jack</span>
-                                            <strong>Group Manager</strong>
-                                            <i class="fas fa-phone color-highlight"></i>
-                                        </a>
-                                        <a href="#" th:each="colab : ${project.getTeamList()}">
-                                            <img src="images/avatars/8s.png"/>
+                                        <a th:href="'tel: '+${colab.getPhoneNumber()}" th:each="colab, count : ${project.getTeamList()}"
+                                        th:if="${count.count<4}">
+                                            <img th:src="@{'/user/getUserImg/'+${colab.getId()}}"/>
                                             <span th:text="${colab.getFirstName()}+' '+${colab.getLastName()}">Dora</span>
                                             <strong th:text="${colab.getPosition()}">Support Staff Manager</strong>
                                             <i class="fas fa-phone color-highlight"></i>

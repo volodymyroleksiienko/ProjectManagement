@@ -12,6 +12,7 @@ import pl.edu.wsb.projectmanagement.service.ProjectService;
 import pl.edu.wsb.projectmanagement.service.UserService;
 
 import java.security.Principal;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -45,7 +46,12 @@ public class ProjectController {
             User user = userService.getByUsername(username);
             System.out.println(user.getUsername());
             project.setOwner(user);
+            Set<User> users = new HashSet<>();
+            users.add(user);
+            project.setTeamList(users);
             projectService.save(project);
+            user.getCollaborators().add(project);
+            userService.save(user);
         }
         return "redirect:/projects";
     }
