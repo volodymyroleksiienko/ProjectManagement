@@ -86,6 +86,7 @@ public class TaskController {
         Task task = taskService.findById(id);
         task.setTaskStatus(TaskStatus.DONE);
         taskService.save(task);
+        projectService.countProgress(task.getSprint().getProject());
         return "redirect:/sprint/info/"+task.getSprint().getId();
     }
 
@@ -101,6 +102,7 @@ public class TaskController {
     @PostMapping("/taskItemSetStatus")
     public void taskItemSetStatus(int id, boolean status){
         taskItemService.setStatus(id,status);
-        projectService.countProgress(taskItemService.findById(id).getTask().getSprint().getProject());
+        Project project  = taskItemService.findById(id).getTask().getSprint().getProject();
+        projectService.countProgress(project);
     }
 }
