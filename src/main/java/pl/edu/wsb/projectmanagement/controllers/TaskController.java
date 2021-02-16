@@ -101,5 +101,6 @@ public class TaskController {
     @PostMapping("/taskItemSetStatus")
     public void taskItemSetStatus(int id, boolean status){
         taskItemService.setStatus(id,status);
+        projectService.countProgress(taskItemService.findById(id).getTask().getSprint().getProject());
     }
 }
