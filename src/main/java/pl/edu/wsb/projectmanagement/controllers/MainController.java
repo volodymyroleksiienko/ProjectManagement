@@ -1,6 +1,7 @@
 package pl.edu.wsb.projectmanagement.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.edu.wsb.projectmanagement.entity.User;
@@ -20,7 +21,10 @@ public class MainController {
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login(boolean error, Model model){
+        if(error) {
+            model.addAttribute("error", "Incorrect data!");
+        }
         return "login";
     }
 

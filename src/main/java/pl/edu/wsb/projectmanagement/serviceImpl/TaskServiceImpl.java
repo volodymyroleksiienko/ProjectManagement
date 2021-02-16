@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import pl.edu.wsb.projectmanagement.entity.Task;
 import pl.edu.wsb.projectmanagement.entity.TaskItem;
 import pl.edu.wsb.projectmanagement.entity.TaskStatus;
-import pl.edu.wsb.projectmanagement.entity.User;
 import pl.edu.wsb.projectmanagement.jpa.TaskJPA;
 import pl.edu.wsb.projectmanagement.service.TaskService;
 import pl.edu.wsb.projectmanagement.service.UserService;
@@ -81,7 +80,6 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> findByTaskStatusAndAndSprintId(TaskStatus status, int sprintId) {
         return taskJPA.findByTaskStatusAndAndSprintId(status,sprintId);
     }
-
 
 
     @Override

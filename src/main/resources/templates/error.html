@@ -25,12 +25,16 @@
         <div class="card card-style bg-17" data-card-height="cover-card">
             <div class="card-top text-center">
                 <h1 class="color-white text-center font-22 pt-4 mb-0">
-                    Page Not Found
+                    Something is wrong!
                 </h1>
-                <h1 class="color-white font-40">404 Error</h1>
+                <h1 class="color-white font-40" th:text="${status} +' Error'">404 Error</h1>
             </div>
             <div class="card-bottom text-center">
-                <p class="color-white font-15 opacity-70 px-4">
+                <p class="color-white font-15 opacity-70 px-4" th:text="${error}">
+                    Sorry, the page you're looking for is not here. We suggest
+                    checking out the homepage. It's awesome.
+                </p>
+                <p class="color-white font-15 opacity-70 px-4" th:text="${message}">
                     Sorry, the page you're looking for is not here. We suggest
                     checking out the homepage. It's awesome.
                 </p>
