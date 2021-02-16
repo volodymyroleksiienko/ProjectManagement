@@ -21,11 +21,15 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task save(Task task) {
-        if (task.getAssignee()!=null && task.getAssignee().getId()>0 && userService.findById(task.getAssignee().getId())!=null ) {
+        if (task.getTaskStatus()!=TaskStatus.DONE){
+            if(task.getAssignee()!=null
+                && task.getAssignee().getId()>0
+                && userService.findById(task.getAssignee().getId())!=null) {
             task.setTaskStatus(TaskStatus.IN_PROCESS);
-        }else{
-            task.setAssignee(null);
-            task.setTaskStatus(TaskStatus.OPEN);
+            }else{
+                task.setAssignee(null);
+                task.setTaskStatus(TaskStatus.OPEN);
+            }
         }
         return taskJPA.save(task);
     }
@@ -50,7 +54,8 @@ public class TaskServiceImpl implements TaskService {
         taskDB.setName(old.getName());
         if(old.getAssignee().getId()>0) {
             taskDB.setAssignee(userService.findById((old.getAssignee().getId())));
-        }taskDB.getSprint().setId(old.getSprint().getId());
+        }
+        taskDB.getSprint().setId(old.getSprint().getId());
         taskDB.setTaskStatus(old.getTaskStatus());
         taskDB.setProgress(old.getProgress());
         return save(taskDB);

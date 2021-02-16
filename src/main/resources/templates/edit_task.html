@@ -93,7 +93,7 @@
                         <span>Change Sprint</span>
                         <em><i class="fa fa-angle-down"></i></em>
                         <select class="form-control" name="sprint.id" id="sprintsList">
-                            <option th:selected="${task?.getAssignee()?.getId()==u?.getId()}" th:value="${u.getId()}" th:each="u :${users}" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Name</option>
+                            <option th:selected="${task?.getSprint()?.getId()==sp?.getId()}" th:value="${sp.getId()}" th:each="sp :${task.getSprint().getTaskList()}" th:text="${sp.getName()}">Name</option>
                         </select>
                     </div>
 
