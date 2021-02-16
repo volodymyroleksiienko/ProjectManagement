@@ -81,7 +81,7 @@ public class TaskController {
         return "single_task";
     }
 
-    @GetMapping("/done/{id}")
+    @GetMapping("/done{id}")
     public String getTask(@PathVariable int id){
         Task task = taskService.findById(id);
         task.setTaskStatus(TaskStatus.DONE);
