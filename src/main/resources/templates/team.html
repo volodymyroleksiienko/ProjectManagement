@@ -104,12 +104,12 @@
                                         </p>
                                     </div>
                                     <div class="ml-auto">
-                                        <a href="#" class="icon icon-xs rounded-circle shadow-l bg-phone"><i
-                                                class="fa fa-phone"></i></a>
-                                        <a href="#" class="icon icon-xs rounded-circle shadow-l bg-facebook mr-2 ml-2"><i
-                                                class="fab fa-facebook-f"></i></a>
-                                        <a href="#" class="icon icon-xs rounded-circle shadow-l bg-twitter"><i
-                                                class="fab fa-twitter"></i></a>
+                                        <a th:href="'tel:'+${u?.getPhoneNumber()}" class="icon icon-xs rounded-circle shadow-l bg-phone">
+                                            <i class="fa fa-phone"></i>
+                                        </a>
+                                        <a th:href="@{|/team/delete/${project.getId()}/${u.getId()}|}" class="icon icon-xs rounded-circle shadow-l bg-red-dark mr-2 ml-2">
+                                            <i class="fas fa-times "></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
