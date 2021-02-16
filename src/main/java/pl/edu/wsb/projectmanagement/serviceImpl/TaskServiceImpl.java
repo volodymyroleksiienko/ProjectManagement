@@ -82,6 +82,9 @@ public class TaskServiceImpl implements TaskService {
         if(count>0) {
             task.setProgress((int)(count / (float)task.getItemList().size() * 100));
         }
+        if(count==0){
+            task.setProgress(0);
+        }
         if(task.getTaskStatus()==TaskStatus.DONE){
             task.setProgress(100);
         }

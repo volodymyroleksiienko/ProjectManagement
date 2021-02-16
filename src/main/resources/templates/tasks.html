@@ -66,17 +66,17 @@
                                                 <h5 class="sprint-start font-12 mb-2 opacity-30 w-50" th:text="${t.getCreated()}">2020-02-02</h5>
                                                 <h5 class="sprint-end font-12 mb-2 opacity-30 w-50" th:text="${t.getDeadline()}">2020-05-01</h5>
                                             </div>
-                                            <a href="#" class="chip chip-s bg-gray-light">
+                                            <a th:if="${t.getProgress()==0}" href="#" class="chip chip-s bg-gray-light">
                                                 <i class="far fa-clock bg-green-dark color-white"></i>
                                                 <strong class="color-black font-400">Waiting!</strong>
                                             </a>
-                                            <!-- <div class="progress rounded-l" style="height: 14px">
+                                           <div class="progress rounded-l" style="height: 14px" th:if="${t.getAssignee()==null && t.getProgress()>0}">
                                                 <div class="progress-bar bg-highlight text-left pl-3 color-white"
-                                                    role="progressbar" style="width: 100%" aria-valuenow="100"
-                                                    aria-valuemin="0" aria-valuemax="100">
+                                                    role="progressbar" th:style="'width:'+${t.getProgress()}+'%'" th:aria-valuenow="${t.getProgress()}"
+                                                    aria-valuemin="0" aria-valuemax="100" th:text="${t.getProgress()}+'% Complete'">
                                                     100% Complete
                                                 </div>
-                                            </div> -->
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="align-self-center ml-auto" style="display: inline-flex;">
