@@ -11,6 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 import pl.edu.wsb.projectmanagement.entity.User;
 import pl.edu.wsb.projectmanagement.service.UserService;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.security.Principal;
 
 @Controller
@@ -65,10 +69,14 @@ public class UserController {
 
 
     @GetMapping("/getUserImg/{userId}")
-    public ResponseEntity<ByteArrayResource> getImgByProductId(@PathVariable int userId){
+    public ResponseEntity<ByteArrayResource> getImgByProductId(@PathVariable int userId) throws IOException {
         User doc = userService.findById(userId);
         if(doc.getPicture()==null){
-            return null;
+            File file = new File(System.getProperty("user.dir")+"/src/main/resources/static/images/avatars/5s.png");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType("image/png"))
+                    .header(HttpHeaders.CONTENT_DISPOSITION,"attachment:filename=\"avatar.png\"")
+                    .body(new ByteArrayResource(Files.readAllBytes(file.toPath())));
         }
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(doc.getPictureType()))
