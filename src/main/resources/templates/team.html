@@ -82,7 +82,7 @@
                                 <div class="d-flex">
                                     <div>
                                         <img th:src="@{|/user/getUserImg/${u.getId()}|}" class="bg-red-dark mr-3 rounded-circle shadow-l"
-                                             width="50" />
+                                             width="50" height="50"/>
                                     </div>
                                     <div>
                                         <h5 class="mt-1 mb-0" th:text="${u.getFirstName()}+' '+${u.getLastName()}">Vincent Mobi</h5>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="divider mt-3"></div>
                     </div>
-                    <a href="#" data-menu="invite-team-member-modal" class="btn btn-full btn-m rounded-sm gradient-dark font-600">Invite New Member</a>
+                    <a href="#" data-menu="invite-team-member-modal" class="btn btn-full rounded-s shadow-xl btn-full gradient-highlight font-12 btn-m font-600 mt-3">Invite New Member</a>
                 </div>
             </div>
         </div>
