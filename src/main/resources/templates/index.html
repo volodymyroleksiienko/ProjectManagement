@@ -65,7 +65,7 @@
                   </div>
                 </a>
               </div>
-              <div class="align-self-center ml-auto">
+              <div class="align-self-center ml-auto" th:if="${user.getId()==p.getOwner().getId()}">
                 <h1 class="font-20">
                   <a href="#" class="edit-button" data-menu="edit-project-modal" onclick="editProjectModal(this)">
                     <i class="fas fa-pen color-highlight"></i>
@@ -80,7 +80,7 @@
               <div class="user-left">
                 <div class="d-flex">
                   <div class="align-self-center">
-                    <img th:src="'/user/getUserImg/'+${user.getId()}" class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" height="50" />
+                    <img th:src="'/user/getUserImg/'+${p.getOwner()?.getId()}" class="bg-yellow-dark mr-3 rounded-circle shadow-l" width="50" height="50" />
                   </div>
                   <div class="align-self-center">
                     <h5 class="mt-1 mb-0" th:text="${p.getOwner()?.getFirstName()}+' '+${p.getOwner()?.getLastName()}"></h5>
@@ -162,7 +162,7 @@
 
     <!-- Edit project modal start -->
     <div id="edit-project-modal" class="menu menu-box-modal rounded-m bg-theme" data-menu-width="350"
-      data-menu-height="auto">
+      data-menu-height="auto" >
       <div class="menu-title">
         <h1 class="font-800">Edit Project</h1>
         <a href="#" class="close-menu"><i class="fa fa-times-circle"></i></a>

@@ -35,7 +35,7 @@ public class Project implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        return id-((Project) o).getId();
+        return ((Project) o).getId()-id;
     }
 
     @Override

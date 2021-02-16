@@ -54,6 +54,17 @@ public class TeamController {
         }
     }
 
+    @GetMapping("/delete/{projectId}/{userId}")
+    public String deleteTeam(@PathVariable int projectId,@PathVariable int userId){
+        Project project = projectService.findById(projectId);
+        User user = userService.findById(userId);
+        project.getTeamList().remove(user);
+        projectService.save(project);
+        user.getCollaborators().remove(project);
+        userService.save(user);
+        return "redirect:/team/"+projectId;
+    }
+
     public void sendEmailRequest(String email){
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(email);
