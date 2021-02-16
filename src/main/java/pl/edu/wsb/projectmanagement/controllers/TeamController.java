@@ -58,8 +58,8 @@ public class TeamController {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(email);
 
-        msg.setSubject("Test message");
-        msg.setText("Test message");
+        msg.setSubject("Invitation to registration on ProjectManagement!");
+        msg.setText("https://projectmngr.herokuapp.com/");
 
         javaMailSender.send(msg);
     }
