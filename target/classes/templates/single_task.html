@@ -119,7 +119,7 @@
                         You should mark all subtasks from the list to have an possibility to complete the task.
                     </p>
                     <div class="todo-list list-group list-custom-small mr-2">
-                        <a href="#" style="width: 100%; text-align: justify;" th:each="item : ${task.getItemList()}">
+                        <a href="#" style="width: 100%; text-align: justify;" th:each="item : ${task.getItemList()}" th:id="${item.getId()}" onclick="changeSubtaskStatus(this.id)">
                             <i class="fas fa-check rounded-xl color-red2-dark font-12 font-12"></i>
                             <span th:text="${item.getDescription()}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                                 has been the industry's standard dummy text ever since the 1500s</span>
@@ -130,9 +130,7 @@
                             </div>
                         </a>
                     </div>
-
-                    <a th:href="@{'/task/done/'+${task.getId()}}" data-menu="close-project-modal"
-                        class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
+                    <a th:href="@{'/task/done/'+${task.getId()}}" class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
                 </div>
             </div>
         </div>
@@ -145,37 +143,25 @@
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
     <script>
-        function editSprintModal(btnObj) {
-            let trObj = btnObj.closest(".row-id");
-            let trId = $(trObj).attr('id');
+        function changeSubtaskStatus(itemId){
+            let status = $("#"+itemId).find("input").is(":checked");
+            console.log("id: "+itemId+"; ststus: "+!status);
+            $.ajax({
+                method: "post",
+                url: "/task/taskItemSetStatus",
+                contextType: "application/json",
+                data: {
+                    id: itemId,
+                    status: !status,
+                },
+                traditional: true,
+                success: function () {
 
-            console.log("item id:" + $(trObj).attr('id'));
-
-            let name = $(trObj).find('.sprint-name').text();
-
-            let sprintStart = $(trObj).find('.sprint-start').text();
-            let sprintEnd = $(trObj).find('.sprint-end').text();
-
-            $('#sprintIdInput').val(trId);
-            $('#editSprintNameInput').val(name);
-            $('#editStartDateInput').val(sprintStart);
-            $('#editEndDateInput').val(sprintEnd);
-        }
-
-        function editBacklogModal(btnObj) {
-            let trObj = btnObj.closest(".backlog-id");
-            let trId = $(trObj).attr('id');
-
-            console.log("item id:" + $(trObj).attr('id'));
-
-            let description = $(trObj).find('.backlog-description').text().trim();
-            let priority = $(trObj).find('.backlog-priority').text().match(/\d+/);
-
-            $('#backlogIdInput').val(trId);
-            $('#backlogDescription').val(description);
-            $('#editPriorities').val(priority);
-
-            console.log('descr: ' + description + ' ; prior: ' + priority);
+                },
+                error: function () {
+                    alert("Error");
+                }
+            });
         }
     </script>
 </body>
