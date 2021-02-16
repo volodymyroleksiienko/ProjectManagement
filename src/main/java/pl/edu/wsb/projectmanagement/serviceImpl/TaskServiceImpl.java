@@ -1,11 +1,14 @@
 package pl.edu.wsb.projectmanagement.serviceImpl;
 
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import pl.edu.wsb.projectmanagement.entity.Sprint;
 import pl.edu.wsb.projectmanagement.entity.Task;
 import pl.edu.wsb.projectmanagement.entity.TaskItem;
 import pl.edu.wsb.projectmanagement.entity.TaskStatus;
 import pl.edu.wsb.projectmanagement.jpa.TaskJPA;
+import pl.edu.wsb.projectmanagement.service.SprintService;
 import pl.edu.wsb.projectmanagement.service.TaskService;
 import pl.edu.wsb.projectmanagement.service.UserService;
 
@@ -17,6 +20,8 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
     private TaskJPA taskJPA;
     private UserService userService;
+    @Lazy
+    private SprintService sprintService;
 
 
     @Override
@@ -52,12 +57,19 @@ public class TaskServiceImpl implements TaskService {
     public Task update(Task old) {
         Task taskDB = findById(old.getId());
         taskDB.setName(old.getName());
+
         if(old.getAssignee().getId()>0) {
             taskDB.setAssignee(userService.findById((old.getAssignee().getId())));
         }
-        taskDB.getSprint().setId(old.getSprint().getId());
+        if(old.getAssignee().getId()==0) {
+            taskDB.setAssignee(null);
+        }
+
+        taskDB.setSprint(sprintService.findById(old.getSprint().getId()));
+
         taskDB.setTaskStatus(old.getTaskStatus());
         taskDB.setProgress(old.getProgress());
+        System.out.println("task update" + taskDB.getSprint().getId());
         return save(taskDB);
     }
 

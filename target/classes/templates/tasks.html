@@ -144,7 +144,7 @@
                                         </a>
                                     </div>
                                     <div class="align-self-center ml-auto" style="display: inline-flex;">
-                                        <img th:src="@{|/user/getUserImg/${t?.getAssignee()?.getId()}|}" data-src="images/avatars/1s.png" width="50" height="50" class="rounded-circle preload-img" style="margin-right: 2rem;">
+                                        <img th:src="@{|/user/getUserImg/${t?.getAssignee()?.getId()}|}" th:data-src="@{|/user/getUserImg/${t?.getAssignee()?.getId()}|}" width="50" height="50" class="rounded-circle preload-img" style="margin-right: 2rem;">
                                         <h1 class="font-20">
                                             <a th:href="@{|/task/update/${t.getId()}|}" >
                                                 <i class="fas fa-pen color-highlight"></i>

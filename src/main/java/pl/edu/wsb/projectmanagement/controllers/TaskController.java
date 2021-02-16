@@ -66,6 +66,7 @@ public class TaskController {
 
     @PostMapping("/update/{taskId}")
     public String updateTask(@PathVariable int taskId,Task task){
+        System.out.println("Sprint id "+task.getSprint().getId());
         task.setId(taskId);
         taskService.update(task);
         Task taskDB = taskService.findById(taskId);

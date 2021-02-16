@@ -58,7 +58,6 @@
                 </ol>
                 <form id="editTaskForm" th:action="@{|/task/update/${task.getId()}|}" method="post">
                     <input type="hidden" id="editTaskSprintId" name="id" th:value="${task.getId()}">
-                    <input type="hidden"  name="sprint.id" th:value="${task.getSprint().getId()}">
                     <div class="input-style input-style-2 input-required">
                         <span class="color-highlight">Name</span>
                         <em>(required)</em>
@@ -93,14 +92,17 @@
                         <span>Change Sprint</span>
                         <em><i class="fa fa-angle-down"></i></em>
                         <select class="form-control" name="sprint.id" id="sprintsList">
-                            <option th:selected="${task?.getSprint()?.getId()==sp?.getId()}" th:value="${sp.getId()}" th:each="sp :${task.getSprint().getTaskList()}" th:text="${sp.getName()}">Name</option>
+                            <option th:selected="${task?.getSprint()?.getId()==sp?.getId()}"
+                                    th:value="${sp.getId()}"
+                                    th:each="sp :${task.getSprint().getProject().getSprintsList()}"
+                                    th:text="${sp.getName()}">Name</option>
                         </select>
                     </div>
 
                     <div class="input-style input-style-2">
                         <span>Task Status</span>
                         <em><i class="fa fa-angle-down"></i></em>
-                        <select class="form-control" name="taskStatus">
+                        <select class="form-control" name="taskStatus" id="taskStatusInput">
                             <option value="OPEN" th:selected="${task.getTaskStatus().name().equals('OPEN')}">Open</option>
                             <option value="IN_PROCESS" th:selected="${task.getTaskStatus().name().equals('IN_PROCESS')}">In Process</option>
                             <option value="DONE" th:selected="${task.getTaskStatus().name().equals('DONE')}">Done</option>

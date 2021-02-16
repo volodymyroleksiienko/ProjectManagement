@@ -21,7 +21,7 @@ public class Sprint {
     @ManyToOne(fetch = FetchType.EAGER)
     private Project project;
 
-    @OneToMany(mappedBy = "sprint",cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "sprint")
     private List<Task> taskList;
 
     @Override

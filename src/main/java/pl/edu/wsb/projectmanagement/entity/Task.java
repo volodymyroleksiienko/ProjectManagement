@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Data
@@ -38,9 +39,22 @@ public class Task {
     @OneToMany(mappedBy = "task",cascade = CascadeType.ALL)
     private List<TaskItem> itemList;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Sprint sprint;
 
     @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus=TaskStatus.OPEN;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return id == task.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

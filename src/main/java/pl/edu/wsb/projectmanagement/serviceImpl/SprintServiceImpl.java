@@ -1,6 +1,6 @@
 package pl.edu.wsb.projectmanagement.serviceImpl;
 
-import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import pl.edu.wsb.projectmanagement.entity.Sprint;
 import pl.edu.wsb.projectmanagement.entity.Task;
@@ -11,10 +11,14 @@ import pl.edu.wsb.projectmanagement.service.TaskService;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class SprintServiceImpl implements SprintService {
     private SprintJPA sprintJPA;
     private TaskService taskService;
+
+    public SprintServiceImpl(SprintJPA sprintJPA,@Lazy TaskService taskService) {
+        this.sprintJPA = sprintJPA;
+        this.taskService = taskService;
+    }
 
     @Override
     public Sprint save(Sprint sprint) {
