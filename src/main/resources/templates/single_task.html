@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="divider mt-3" th:if="${task.getAssignee()!=null}"></div>
-                    <a th:href="@{'/task/done?id='+${task.getId()}}" data-menu="close-project-modal" th:if="${task.getItemList().size()==0}"
+                    <a th:href="@{'/task/done/'+${task.getId()}}" data-menu="close-project-modal" th:if="${task.getItemList().size()==0}"
                         class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                         </a>
                     </div>
 
-                    <a th:href="@{'/task/done?id='+${task.getId()}}" data-menu="close-project-modal"
+                    <a th:href="@{'/task/done/'+${task.getId()}}" data-menu="close-project-modal"
                         class="btn btn-full btn-m rounded-sm gradient-dark font-600 my-4">Task Done!</a>
                 </div>
             </div>
