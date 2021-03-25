@@ -22,7 +22,7 @@
   </div>
   <div id="page">
     <div class="header header-auto-show header-fixed header-logo-center">
-      <a href="index.html" class="header-title">Profile</a>
+      <a href="#" class="header-title">Profile</a>
       <a href="#" data-menu="menu-main" class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
       <a href="#" data-toggle-theme class="header-icon header-icon-4 show-on-theme-dark"><i class="fas fa-sun"></i></a>
       <a href="#" data-toggle-theme class="header-icon header-icon-4 show-on-theme-light"><i
@@ -42,9 +42,9 @@
     <div class="page-content fixed-height-page">
         <div class="card card-style" data-card-height="400" th:style="'background-image: url(/user/getUserImg/'+${user.getId()}+');'">
             <div class="card-top">
-                <h1 class="color-white font-40 font-900 pl-3 pt-5" th:text="${user.getFirstName()+' '+user.getLastName()}">John Doe</h1>
-                <h1 class="color-white font-18 pl-3 pt-0 mb-0 opacity-50" th:text="${user.getPosition()}">
-                    Project manager
+                <h1 class="color-white font-40 font-900 pl-3 pt-5" style="text-shadow: black 0 5px 40px;" th:text="${user.getFirstName()+' '+user.getLastName()}">John Doe</h1>
+                <h1 class="color-white font-18 pl-3 pt-0 mb-0 opacity-80" th:text="${user.getPosition()}">
+
                 </h1>
             </div>
             <div class="card-overlay"></div>

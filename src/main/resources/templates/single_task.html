@@ -25,8 +25,8 @@
     </div>
     <div id="page">
         <div class="header header-fixed header-logo-center header-auto-show">
-            <a href="index.html" class="header-title">Task</a>
-            <a href="index.html" data-back-button class="header-icon header-icon-1"><i
+            <a href="#" class="header-title">Task</a>
+            <a href="/projects" data-back-button class="header-icon header-icon-1"><i
                     class="fas fa-chevron-left"></i></a>
             <a href="#" data-menu="menu-main" class="header-icon header-icon-4"><i class="fas fa-bars"></i></a>
             <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-dark"><i
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="divider mt-3" th:if="${task.getAssignee()!=null}"></div>
-                    <a th:href="@{'/task/done/'+${task.getId()}}" data-menu="close-project-modal" th:if="${task.getItemList().size()==0}"
+                    <a th:href="@{'/task/done/'+${task.getId()}}" th:if="${task.getItemList().size()==0}"
                         class="btn btn-full btn-m rounded-sm gradient-highlight font-600 my-4">Task Done!</a>
                 </div>
             </div>
@@ -120,8 +120,7 @@
                     <div class="todo-list list-group list-custom-small mr-2">
                         <a href="#" style="width: 100%; text-align: justify;" th:each="item : ${task.getItemList()}" th:id="${item.getId()}" onclick="changeSubtaskStatus(this.id)">
                             <i class="fas fa-check rounded-xl color-red2-dark font-12 font-12"></i>
-                            <span th:text="${item.getDescription()}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s</span>
+                            <span th:text="${item.getDescription()}"></span>
                             <div class="form-check icon-check">
                                 <input class="form-check-input" type="checkbox" th:checked="${item.isStatus()}" th:id="'check'+${item.getId()}" />
                                 <i class="icon-check-1 far fa-square color-gray-dark font-16"></i>
@@ -129,7 +128,7 @@
                             </div>
                         </a>
                     </div>
-                    <a th:href="@{'/task/done/'+${task.getId()}}" class="btn btn-full btn-m rounded-sm gradient-highlight font-600 my-4 ">Task Done!</a>
+                    <a th:href="@{'/task/done/'+${task.getId()}}" id="allSubTasksMarkedButton" class="btn btn-full btn-m rounded-sm gradient-highlight font-600 my-4 ">Task Done!</a>
                 </div>
             </div>
         </div>
@@ -146,6 +145,21 @@
     <script type="text/javascript" th:src="@{../../scripts/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../../scripts/custom.js}"></script>
     <script>
+        $( document ).ready(function() {
+            let ok = 0;
+            let allSubTasks = document.getElementsByClassName('form-check-input');
+            for (let i=0; i<allSubTasks.length; i++){
+                if ($(allSubTasks[i]).is(":checked")){
+                    ok++;
+                }
+            }
+            if (ok===allSubTasks.length){
+                $('#allSubTasksMarkedButton').css('display', 'block');
+            }else {
+                $('#allSubTasksMarkedButton').css('display', 'none');
+            }
+        });
+
         function changeSubtaskStatus(itemId){
             let status = $("#"+itemId).find("input").is(":checked");
             console.log("id: "+itemId+"; ststus: "+!status);
@@ -159,7 +173,18 @@
                 },
                 traditional: true,
                 success: function () {
-
+                    let ok = 0;
+                    let allSubTasks = document.getElementsByClassName('form-check-input');
+                    for (let i=0; i<allSubTasks.length; i++){
+                        if ($(allSubTasks[i]).is(":checked")){
+                            ok++;
+                        }
+                    }
+                    if (ok===allSubTasks.length){
+                        $('#allSubTasksMarkedButton').css('display', 'block');
+                    }else {
+                        $('#allSubTasksMarkedButton').css('display', 'none');
+                    }
                 },
                 error: function () {
                     alert("Error");

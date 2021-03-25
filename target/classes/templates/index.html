@@ -59,7 +59,7 @@
                   </div>
                   <div class="progress rounded-l" style="height: 14px">
                     <div class="progress-bar bg-highlight text-left pl-3 color-white" role="progressbar"
-                         th:style="'width: ' + ${p.getProgress()} + ';'" th:aria-valuenow="${p.getProgress()}"
+                         th:style="'width: ' + ${p.getProgress()} + '%;'" th:aria-valuenow="${p.getProgress()}"
                          aria-valuemin="0" aria-valuemax="100" th:text="${p.getProgress()}+'% Complete'">
                     </div>
                   </div>
@@ -225,15 +225,21 @@
   <script type="text/javascript" language="JavaScript" th:src="@{../../scripts/custom.js}"></script>
 <!--  <script type="text/javascript" src="/scripts/custom.js" defer></script>-->
   <script>
-    // Progress bar
-    let progressBar = document.getElementsByClassName('progress-bar');
+    $( document ).ready(function() {
+      // Progress bar
+      let progressBar = document.getElementsByClassName('progress-bar');
 
-    Array.prototype.forEach.call(progressBar, function (el) {
-      // remove padding left
-      if (el.getAttribute('aria-valuenow') === '0') {
-        el.classList.remove("pl-3");
-      }
-    })
+      Array.prototype.forEach.call(progressBar, function (el) {
+        // remove padding left
+        if (el.getAttribute('aria-valuenow') === '0') {
+          el.classList.remove("pl-3");
+        }
+        else {
+          el.classList.add("pl-3");
+        }
+      });
+    });
+
 
     function editProjectModal(btnObj) {
       let trObj = btnObj.closest(".row-id");
